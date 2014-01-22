@@ -1,9 +1,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo base_url(); ?>assets/javascripts/vendor/jquery.js"><\/script>')</script>
+    
 	<script src="http://www.youtube.com/iframe_api"></script>
-
-	<?php echo script_tag(base_url().'assets/js/vendor/plugins.js'); ?>
-  	<?php echo script_tag(base_url().'assets/js/script.js'); ?>
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	
+	<?php echo script_tag(base_url().'assets/js/vendor/bootstrap.min.js'); ?>
+  	<?php echo script_tag(base_url().'assets/js/admin.js'); ?>
 
   	<script type="text/javascript">
 		var _gaq = _gaq || [];

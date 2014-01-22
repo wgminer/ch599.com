@@ -2,6 +2,99 @@
 @import "bootstrap";
 @import "compass";
 
+@import "variables";
+@import "icons";
+
 body {
-	padding-top: 60px;
+	padding: 60px 0 100px;
+}
+
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 2px solid #e3e3e3;
+	border-bottom: none;
+}
+
+form {
+	margin-bottom: 0;
+
+	p {
+		margin: 0;
+	}
+}
+
+.warning, .error {
+	color: red;
+}
+
+.success, .error {
+	position: fixed;
+	top: 40px;
+	left: 0;
+	opacity: .75px;
+	z-index: 1025;
+}
+
+.no-genre {
+	background-color: rgba(red, .2);
+}
+
+.success {
+	@include box-sizing(border-box);
+	background-color: #00CC00;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.error {
+	@include box-sizing(border-box);
+	background-color: #CC0000;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	width: 100%;
+}
+
+#profile {
+	color: $gray;
+	margin: 20px auto 60px;
+	position: relative;
+	text-align: center;
+	width: 600px;
+
+	img {
+		@include border-radius(50%);
+		border: 1px solid $gray;
+		height: 200px;
+		max-width: 200px;
+		overflow: hidden;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	#name {
+		font-family: "futura-pt", futura, "century gothic", sans-serif;
+		font-weight: 400;
+		font-size: 2em;
+		left: 0px;
+		margin: 0;
+		position: absolute;
+		text-align: right;
+		top: 80px;
+		width: 170px;
+	}
+
+	#bio {
+		height: 88px;
+		position: absolute;
+		right: 0px;
+		text-align: left;				
+		top: 58px;
+		width: 180px;
+	}
 }

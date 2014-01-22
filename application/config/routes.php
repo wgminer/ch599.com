@@ -42,28 +42,45 @@ $route['default_controller'] = 'posts';
 $route['404_override'] = '';
 
 // ADMIN ROUTES
-$route['join'] = 'users/join';
-$route['users/create'] = 'users/create';
+$route['join'] = 'authors/join';
+$route['authors/create'] = 'authors/create';
 
-$route['login'] = 'users/login';
-$route['users/validate'] = 'users/validate';
+$route['milagro'] = 'authors/login';
+$route['authors/validate'] = 'authors/validate';
 
-$route['dashboard'] = 'users/dashboard';
+$route['dashboard'] = 'authors/dashboard';
 
-$route['settings'] = 'users/settings';
-$route['users/update'] = 'users/update';
+$route['settings'] = 'authors/settings';
+$route['authors/update'] = 'authors/update';
+$route['authors/photo'] = 'authors/photo';
+$route['authors/password'] = 'authors/password';
 
 $route['new'] = 'posts/compose';
 $route['posts/create'] = 'posts/create';
+$route['tweet'] = 'posts/tweet';
+$route['posts/post_tweet'] = 'posts/post_tweet';
+$route['facebook'] = 'posts/facebook';
+$route['posts/post_facebook'] = 'posts/post_facebook';
 
-$route['posts/edit/(:num)'] = 'posts/edit/$1';
+$route['rip'] = 'posts/soundcloud';
+$route['posts/download'] = 'posts/download';
+
+$route['edit/(:num)'] = 'posts/edit/$1';
+$route['delete/(:num)'] = 'posts/delete/$1';
 $route['posts/update'] = 'posts/update';
+$route['posts/update_genre'] = 'posts/update_genre';
 
-$route['logout'] = 'users/logout';
+$route['posts/errors/(:any)'] = 'posts/errors/&1';
+
+$route['sitemap'] = 'seo/sitemap';
+
+$route['logout'] = 'authors/logout';
 
 // APP ROUTES
-$route['author/(:any)'] = 'posts/author/$1';
-$route['(:any)'] = 'posts/playlist/$1';
+$route['autoplay'] = 'posts/autoplay';
+$route['playlist'] = 'posts/playlist';
+$route['search'] = 'posts/search';
+$route['(:any)'] = 'posts/router/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

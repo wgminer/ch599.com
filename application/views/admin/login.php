@@ -4,23 +4,25 @@
 		
 		<div class="row">
 			
-			<div class="span6 offset3">
+			<div class="span4 offset4">
 
-				<h1>Login</h1>
+				<h1 style="margin-bottom:20px;">Login</h1>
 				
-				<?php echo form_open('users/validate'); ?>
+				<?php echo form_open('authors/validate'); ?>
 		
 					<?php if(isset($error)) : ?>
-					<p class="error"><?php echo $error ?></p>
+					<p  style="top:0;" class="error"><?php echo $error ?></p>
 					<?php endif ?>
 
-					<label for="user_name">Name</label>
-					<input class="input-block-level" type="text" name="user_name" required>
+					<label for="author_name">Name</label>
+					<input class="input-block-level" type="text" name="author_name" required>
 					
-					<label for="user_password">Password</label>
-					<input class="input-block-level" type="password" name="user_password" required>
+					<label for="author_password">Password</label>
+					<input class="input-block-level" type="password" name="author_password" required>
 
-					<input class="btn btn-block btn-primary" type="submit" value="Login">
+					<hr>
+
+					<input class="btn btn-block btn-primary btn-large" type="submit" value="Login">
 
 				<?php echo form_close(); ?>
 

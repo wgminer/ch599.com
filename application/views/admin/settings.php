@@ -2,43 +2,88 @@
 <?php $this->load->view('admin/includes/navigation'); ?>
 
 <div class="container">
+
+	<div class="row">
+		<div class="span12">
+	
+			<section id="profile">
+				<img src="<?php echo base_url(); ?>assets/img/<?php echo $author->author_photo; ?>" alt="">
+				<h2 id="name"><?php echo $author->author_name; ?></h2>
+				<p id="bio"><?php echo $author->author_bio; ?></p>
+			</section>
+
+		</div>
+	</div>
 	
 	<div class="row">
 		
-		<div class="span6 offset3">
+		<div class="span6">
 
-			<h1>Settings</h1>
+			<h3>Settings</h3>
 			
-			<?php echo form_open_multipart('users/update'); ?>
+			<div class="well">
+				<?php echo form_open_multipart('authors/update'); ?>
 
-				<?php if(isset($error)) : ?>
-				<p class="error"><?php echo $error ?></p>
-				<?php endif ?>
+					<input type="hidden" name="author_id" value="<?php echo $author->author_id; ?>">
 
-				<?php if(isset($success)) : ?>
-				<p class="success"><?php echo $success ?></p>
-				<?php endif ?>
+					<label for="author_name">Name</label>
+					<input class="input-block-level" type="text" name="author_name" value="<?php echo $author->author_name; ?>">
 
-				<input type="hidden" name="user_id" value="<?php echo $user->user_id; ?>">
+					<label for="author_email">Email</label>
+					<input class="input-block-level" type="email" name="author_email" value="<?php echo $author->author_email; ?>">		
 
-				<label for="">Current Photo</label>
-				<img src="<?php echo base_url(); ?>assets/img/<?php echo $user->user_photo; ?>" alt="">
+					<label for="author_bio">Bio</label>
+					<textarea id="author_bio" class="input-block-level" type="text" name="author_bio" rows="5"><?php echo $author->author_bio; ?></textarea>
 
-				<label for="user_name">Name</label>
-				<input class="input-block-level" type="text" name="user_name" value="<?php echo $user->user_name; ?>">
-
-				<label for="user_email">Email</label>
-				<input class="input-block-level" type="email" name="user_email" value="<?php echo $user->user_email; ?>">		
+					<hr>
 				
-				<label for="user_photo">Photo</label>
-				<input class="input-block-level" type="file" name="user_photo" value="<?php echo base_url(); ?>assets/img/<?php echo $user->user_photo; ?>">
+					<input class="btn btn-block btn-primary btn-large" type="submit" value="Save Settings">
+				
+				<?php echo form_close(); ?>
+			</div>
+		</div>
 
-				<label for="user_bio">Bio</label>
-				<textarea class="input-block-level" type="text" name="user_bio" rows="10"><?php echo $user->user_bio; ?></textarea>
+		<div class="span6">
+
+			<h3>Photo</h3>
+			<div class="well">
+				<ol>
+					<li>Photo must be square</li>
+					<li>Max dimensions are 500 x 500 px</li>
+					<li>Max size is 1mb</li>
+				</ol>
+				<?php echo form_open_multipart('authors/photo'); ?>
+
+					<input type="hidden" name="author_id" value="<?php echo $author->author_id; ?>">	
+					
+					<input style="margin-bottom: 20px" class="input-block-level" type="file" name="author_photo" value="<?php echo base_url(); ?>assets/img/<?php echo $author->author_photo; ?>">
+
+					<hr>
+				
+					<input class="btn btn-block btn-primary btn-large" type="submit" value="Upload Photo">
+				
+				<?php echo form_close(); ?>
+			</div>
 			
-				<input class="btn btn-block btn-primary" type="submit" value="Save">
-			
-			<?php echo form_close(); ?>
+			<h3>Password</h3>
+			<div class="well">
+				<?php echo form_open_multipart('authors/password'); ?>
+
+					<input type="hidden" name="author_id" value="<?php echo $author->author_id; ?>">
+
+					<label for="author_old_password">Old Password</label>
+					<input class="input-block-level" type="password" name="author_old_password">	
+
+					<label for="author_new_password">New Password</label>
+					<input class="input-block-level" type="password" name="author_new_password">
+
+					<hr>
+				
+					<input class="btn btn-block btn-primary btn-large" type="submit" value="Update Password">
+				
+				<?php echo form_close(); ?>
+			</div>
+
 
 		</div>
 
