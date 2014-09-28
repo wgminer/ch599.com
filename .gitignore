@@ -1,9 +1,5 @@
-.DS_Store
-
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
-application/config/database.php
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components
