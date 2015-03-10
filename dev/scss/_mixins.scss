@@ -16,3 +16,17 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+@mixin ellipsis () {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

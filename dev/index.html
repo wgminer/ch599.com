@@ -3,17 +3,27 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Boilerplate</title>
+        <title>Channel 599</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="//use.typekit.net/upu6ymf.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
 
         <!-- ANGULAR APP -->
-        <header class="masthead"></header>
+        <header class="masthead">
+            <h1><a href="#/">Channel 599</a></h1>
+            <div class="controls">
+                <button type="button" ng-click="toggle" class="ion-plus-round"></button>
+            </div>
+        </header>
         <main class="view" ng-view=""></main>
+
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script src="//connect.soundcloud.com/sdk.js"></script>
+        <script src="//w.soundcloud.com/player/api.js"></script>
             
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>

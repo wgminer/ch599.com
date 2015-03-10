@@ -1,11 +1,17 @@
 /* Colors */
 
-$dark-gray: #333;
-$light-gray: #ccc;
-$off-white: #eee;
-
+$text-color: #333;
+$light-gray: #ddd;
+$off-white: #f2f2f2;
+$brand-color: #00cccc;
 
 /* Fonts */
 
+$heading-font: "futura-pt", futura, "century gothic", sans-serif;
+$body-font: "proxima-nova", "helvetica neue", helvetica, arial, sans-serif;
 
+/* Presets */
 
+$unit: 20px;
+$border: 1px solid $light-gray;
+$golden-ratio: 1.618;

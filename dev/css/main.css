@@ -1,5 +1,6 @@
 /* Colors */
 /* Fonts */
+/* Presets */
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
@@ -337,8 +338,114 @@ table {
 td, th {
   padding: 0; }
 
+* {
+  box-sizing: border-box; }
+
 body {
   color: #333;
-  font-family: "Open Sans", sans-serif;
+  font-family: "proxima-nova", "helvetica neue", helvetica, arial, sans-serif;
   font-size: 16px;
   line-height: 24px; }
+
+a {
+  color: #00cccc;
+  text-decoration: none; }
+
+.masthead {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 0 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000; }
+  .masthead:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .masthead h1 {
+    font-family: "futura-pt", futura, "century gothic", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -1px;
+    line-height: 1;
+    float: left; }
+  .masthead a {
+    display: block;
+    padding: 20px 0;
+    line-height: 40px;
+    color: #ddd; }
+    .masthead a:hover {
+      color: #00cccc; }
+
+.controls {
+  float: right;
+  padding: 20px 0; }
+  .controls:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .controls button {
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    background-color: transparent; }
+
+.playlist {
+  padding: 120px 0; }
+
+.song {
+  display: block;
+  margin: 0 auto 80px;
+  min-width: 600px;
+  position: relative;
+  width: 38.2%; }
+  .song .media {
+    border: 1px solid #ddd;
+    background-color: #333;
+    cursor: pointer;
+    position: relative;
+    width: 100%; }
+  .song iframe {
+    height: 100%;
+    position: absolute;
+    width: 100%; }
+  .song.youtube img {
+    display: block;
+    width: 100%; }
+  .song.soundcloud .media {
+    background-color: #000; }
+  .song.soundcloud img {
+    display: block;
+    margin: 0 auto;
+    width: 56.25%; }
+  .song.playing {
+    width: 61.8%; }
+    .song.playing .media {
+      height: 0;
+      padding-bottom: 56.25%; }
+    .song.playing .caption {
+      padding: 20px; }
+    .song.playing img {
+      display: none; }
+
+.caption {
+  padding: 20px 0; }
+  .caption h2 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    font-family: "futura-pt", futura, "century gothic", sans-serif;
+    margin: 0;
+    line-height: 1;
+    margin: 0 0 2px; }
+  .caption .meta {
+    color: #999;
+    margin: 0; }
+  .caption .divider {
+    margin: 0 3px; }
