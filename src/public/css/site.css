@@ -325,7 +325,7 @@ td, th {
 
 body {
   background-color: #fff;
-  font-family: "gill sans", "aktiv-grotesk-std", sans-serif;
+  font-family: "aktiv-grotesk-std", sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #222; }
@@ -343,7 +343,7 @@ post, playlist {
 
 .small-caps, label, .button, .playlist .meta, .masthead nav a {
   font-size: 14px;
-  font-family: "gill sans", "aktiv-grotesk-std", sans-serif;
+  font-family: "aktiv-grotesk-std", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase; }
 
@@ -400,11 +400,11 @@ textarea {
 .controls {
   position: fixed;
   left: 0;
-  top: 0;
+  top: -61px;
   border-bottom: 1px solid #ccc;
   padding: 0 40px;
   width: 100%;
-  background-color: #fff;
+  background-color: #f9f9f9;
   z-index: 9999; }
   .controls.playing #play, .controls.playing #loading {
     display: none; }
@@ -431,116 +431,122 @@ textarea {
     float: left;
     font-size: 21px; }
 
-.playlist .song {
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-  padding: 80px 40px;
-  position: relative; }
-  .playlist .song.soundcloud img {
-    display: block;
-    margin: 0 auto;
-    width: 56.25%; }
-  .playlist .song.youtube img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute; }
-  .playlist .song.playing .media img {
-    display: none; }
-.playlist .wrap {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto; }
-  .playlist .wrap:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .playlist .wrap .media {
-    position: static;
-    width: 61.803398875%; }
-.playlist .content {
-  width: 38.196601125%;
-  float: left; }
-.playlist .media {
-  cursor: pointer;
-  float: left;
-  width: 61.803398875%;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  transition: all 0.5s ease; }
-  .playlist .media .aspect-ratio {
-    visibility: visible; }
-.playlist .aspect-ratio {
-  visibility: hidden;
-  background-color: #000;
-  overflow: hidden;
-  position: relative;
-  height: 0;
-  padding-bottom: 56.25%;
-  transition: padding 0.5s ease; }
-  .playlist .aspect-ratio img {
-    width: 100%; }
-  .playlist .aspect-ratio iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%; }
-.playlist .title {
-  font-family: "minion-pro-display", serif;
-  font-size: 3rem;
-  font-weight: 400;
-  position: relative;
-  z-index: 10;
-  margin: 0 0 40px;
-  transition: all 0.5s ease;
-  max-width: 61.803398875%; }
-  .playlist .title a {
-    color: #333; }
-.playlist .meta {
-  margin: 0 0 10px; }
-  .playlist .meta i {
-    margin-right: 10px; }
-  .playlist .meta a {
-    color: #999; }
-.playlist .text {
-  font-size: 21px;
-  font-family: "minion-pro", serif;
-  margin: 40px 0 0;
-  padding-right: 40px; }
-.playlist .annotations {
-  padding-right: 40px;
-  margin-top: 40px; }
-.playlist .annotation {
-  background-color: #fff;
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 60px;
-  cursor: pointer; }
-  .playlist .annotation:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .playlist .annotation p {
-    margin: 0; }
-  .playlist .annotation .time {
-    color: #0cc;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 60px; }
-  .playlist .annotation .comment {
-    width: 100%; }
+.playlist {
+  background-color: #f9f9f9;
+  padding: 0 80px; }
+  .playlist .song {
+    border-bottom: 1px solid #ccc;
+    padding: 80px 0;
+    position: relative; }
+    .playlist .song.soundcloud img {
+      display: block;
+      margin: 0 auto;
+      width: 56.25%; }
+    .playlist .song.youtube img {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute; }
+    .playlist .song.playing .media img {
+      display: none; }
+  .playlist .wrap {
+    position: relative; }
+    .playlist .wrap:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .playlist .wrap .media {
+      position: static;
+      width: 61.803398875%; }
+  .playlist .content {
+    width: 38.196601125%;
+    float: left;
+    padding-right: 40px; }
+  .playlist .media {
+    cursor: pointer;
+    float: left;
+    width: 61.803398875%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: all 0.5s ease; }
+    .playlist .media .aspect-ratio {
+      visibility: visible; }
+  .playlist .aspect-ratio {
+    visibility: hidden;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    transition: padding 0.5s ease; }
+    .playlist .aspect-ratio img {
+      width: 100%; }
+    .playlist .aspect-ratio iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%; }
+  .playlist .title {
+    font-family: "minion-pro-display", serif;
+    font-size: 3rem;
+    font-weight: 400;
+    position: relative;
+    z-index: 10;
+    margin: 0 0 40px;
+    transition: all 0.5s ease;
+    max-width: 61.803398875%; }
+    .playlist .title a {
+      color: #333; }
+  .playlist .meta {
+    margin: 0 0 10px; }
+    .playlist .meta i {
+      margin-right: 10px; }
+    .playlist .meta a {
+      color: #999; }
+  .playlist .text {
+    font-size: 21px;
+    font-family: "minion-pro", serif;
+    margin: 0 0 0; }
+  .playlist .annotations {
+    margin: 0 0 40px; }
+  .playlist .annotation {
+    background-color: #fff;
+    position: relative;
+    padding: 20px 40px 20px 100px;
+    cursor: pointer;
+    margin-bottom: 20px; }
+    .playlist .annotation:after {
+      content: "";
+      display: table;
+      clear: both; }
+    .playlist .annotation:hover {
+      background-color: #fff; }
+    .playlist .annotation p {
+      margin: 0;
+      font-family: "minion-pro", serif;
+      font-size: 21px; }
+    .playlist .annotation .time {
+      color: #0cc;
+      font-family: "aktiv-grotesk-std", sans-serif;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      width: 60px;
+      font-size: 16px; }
+    .playlist .annotation .comment {
+      width: 100%; }
 
 .masthead {
-  top: 0;
+  background-color: #fff;
   z-index: 9999;
-  width: 100%;
-  left: 0; }
+  width: 100%; }
   .masthead .wrap {
     max-width: 1000px;
     margin: 0 auto;

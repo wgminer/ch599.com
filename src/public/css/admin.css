@@ -325,7 +325,7 @@ td, th {
 
 body {
   background-color: #fff;
-  font-family: "gill sans", "aktiv-grotesk-std", sans-serif;
+  font-family: "aktiv-grotesk-std", sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #222; }
@@ -343,7 +343,7 @@ post, playlist {
 
 .small-caps, label, .button, .song-preview .song-preview-nav button {
   font-size: 14px;
-  font-family: "gill sans", "aktiv-grotesk-std", sans-serif;
+  font-family: "aktiv-grotesk-std", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase; }
 
@@ -550,7 +550,7 @@ textarea {
       margin-left: 100px; }
 
 .admin .masthead {
-  font-family: "gill sans", "aktiv-grotesk-std", sans-serif;
+  font-family: "aktiv-grotesk-std", sans-serif;
   padding: 0 40px;
   position: fixed;
   top: 0;

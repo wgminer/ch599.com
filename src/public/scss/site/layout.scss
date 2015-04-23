@@ -1,11 +1,11 @@
 .controls {
     position: fixed;
     left: 0;
-    top: 0;
+    top: -61px;
     border-bottom: 1px solid #ccc;
     padding: 0 40px;
     width: 100%;
-    background-color: #fff;
+    background-color: #f9f9f9;
     z-index: 9999;
 
     &.playing {
@@ -56,11 +56,12 @@
 }
 
 .playlist {
+    background-color: #f9f9f9;
+    padding: 0 80px;
 
     .song {
-        background-color: #fff;
         border-bottom: 1px solid #ccc;
-        padding: 80px 40px;
+        padding: 80px 0;
         position: relative;
         // margin-bottom: 40px;
 
@@ -93,8 +94,6 @@
     .wrap {
         @include clearfix;
         position: relative;
-        max-width: 1000px;
-        margin: 0 auto;
 
         .media {
             position: static;
@@ -105,6 +104,7 @@
     .content {
         width: $gr-s;
         float: left;
+        padding-right: 40px;
     }
 
     .media {
@@ -176,33 +176,42 @@
     .text {
         font-size: 21px;
         font-family: $serif;
-        margin: 40px 0 0;
-        padding-right: 40px;
+        margin: 0 0 0;
     }
 
     .annotations {
-        padding-right: 40px;
-        margin-top: 40px;
+        margin: 0 0 40px;
     }
 
     .annotation {
-        @include clearfix;
         background-color: #fff;
-        margin-bottom: 20px;
+        @include clearfix;
         position: relative;
-        padding-left: 60px;
+        padding: 20px 40px 20px 100px;
         cursor: pointer;
+        // border: 1px solid #ccc;
+        margin-bottom: 20px;
+
+        &:hover {
+            background-color: #fff;
+        }
 
         p {
             margin: 0;
+            font-family: $serif;
+            font-size: 21px;
         }
 
         .time {
             color: $link-color;
+            font-family: $sans-serif;
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            line-height: 1;
             width: 60px;
+            font-size: 16px;
         }
 
         .comment {

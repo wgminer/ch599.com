@@ -36,6 +36,16 @@
                 <div class="wrap">
                     <h2 class="title"><a href="<?php echo base_url() ?><?php echo $song->slug ?>"><?php echo $song->title ?></a></h2>
                     <div class="content">
+                        <!-- <p class="text"><?php echo $song->text ?></p> -->
+                        <div class="annotations">
+                            <?php if ($song->annotations) : ?>
+                            <?php foreach ($song->annotations as $annotation) : ?>
+                                <div class="annotation" data-source-id="<?php echo $song->source_id ?>" data-timestamp="<?php echo $annotation->timestamp ?>">
+                                    <p class="time"><?php echo $annotation->time ?></p>
+                                    <p class="comment"><?php echo $annotation->text ?></p>
+                                </div>
+                            <?php endforeach;  endif; ?>
+                        </div>
                         <p class="meta"><i class="ion-ios-person"></i> <a href="author/<?php echo $song->user_slug ?>"><?php echo $song->user_name ?></a></p>
                         <p class="meta"><i class="ion-ios-musical-notes"></i> <a href="genre/<?php echo $song->genre_slug ?>"><?php echo $song->genre_name ?></a></p>
                         <p class="meta">
@@ -46,16 +56,6 @@
                                 <?php echo date('M j', strtotime($song->created_at)); ?>
                             <?php endif; ?>
                         </p>
-                        <p class="text"><?php echo $song->text ?></p>
-                        <div class="annotations">
-                            <?php if ($song->annotations) : ?>
-                            <?php foreach ($song->annotations as $annotation) : ?>
-                                <div class="annotation" data-source-id="<?php echo $song->source_id ?>" data-timestamp="<?php echo $annotation->timestamp ?>">
-                                    <p class="time"><?php echo $annotation->time ?></p>
-                                    <p class="comment"><?php echo $annotation->text ?></p>
-                                </div>
-                            <?php endforeach;  endif; ?>
-                        </div>
                     </div>
                     <div class="media" ng-click="play('<?php echo $song->source_id ?>')">
                         <div class="aspect-ratio">
