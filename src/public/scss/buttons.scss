@@ -1,0 +1,15 @@
+.button {
+    @extend .small-caps;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 0 40px;
+    line-height: 40px;
+    margin-top: 40px;
+    border-radius: 4px;
+    text-align: center;
+
+    &.icon {
+        width: 42px;
+        padding: 0;
+    }
+}

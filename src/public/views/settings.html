@@ -1,0 +1,29 @@
+<div class="settings">
+    <!-- <h2>Settings</h2> -->
+    <div class="form">
+        
+
+        <div class="form-group">
+            <label for="source_url">URL</label>
+            <input id="source_url" type="text" ng-change="previewPost(preview.source_url)" ng-model="preview.source_url">
+        </div>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input id="title" type="text" ng-model="preview.title">
+        </div>
+        
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <input id="genre" type="text" ng-model="preview.genre_id">
+        </div>
+        
+        <div class="form-group">
+            <label for="text">Text</label>
+            <textarea id="text" rows="4" ng-model="preview.text"></textarea>
+        </div>
+
+        <button ng-click="postAction(preview)" class="button">{{ preview.status_id ? 'Update' : 'Post' }}</button>
+    </div>
+
+</div>

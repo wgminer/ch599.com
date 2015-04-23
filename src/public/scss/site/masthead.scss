@@ -1,0 +1,58 @@
+.masthead {
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    left: 0;
+
+    .wrap {
+        @include clearfix;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px 0;
+    }
+
+    .title, 
+    .links {
+        @include clearfix;
+        float: left;
+        width: 50%;
+        font-size: 21px;
+    }
+
+    p {
+        // color: #999;
+        font-family: $serif;
+        margin-bottom: 40px;
+
+        .lead {
+            color: $text-color;
+            display: block;
+        }
+    }
+
+    nav {
+        @include clearfix;
+
+        a {
+            float: left;
+            // color: ;
+            margin-right: 20px;
+            line-height: 1.2;
+            @extend .small-caps;
+        }
+    }
+
+    h1 {
+        font-size: 12rem;
+        font-family: $display-serif;
+        font-weight: 400;
+        margin: 0;
+        line-height: 160px;
+
+        a {
+            color: $text-color;
+            display: inline-block;
+            transition: all .25s ease;
+        }
+    }
+}
