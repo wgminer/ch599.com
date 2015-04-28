@@ -33,10 +33,22 @@
     
             <article class="song <?php echo $song->source ?>" data-source="<?php echo $song->source ?>" data-source-id="<?php echo $song->source_id ?>" data-source-url="<?php echo $song->source_url ?>">
                 
-                <div class="wrap">
+                <header class="header">
+                    <p class="date">
+                        <?php if (date('Y', strtotime($song->created_at)) != date('Y')) : ?>
+                            <?php echo date('M j Y', strtotime($song->created_at)); ?>
+                        <?php else : ?>
+                            <?php echo date('M j', strtotime($song->created_at)); ?>
+                        <?php endif; ?>
+                    </p>
                     <h2 class="title"><a href="<?php echo base_url() ?><?php echo $song->slug ?>"><?php echo $song->title ?></a></h2>
-                    <div class="content">
-                        <!-- <p class="text"><?php echo $song->text ?></p> -->
+                    
+                </header>
+
+                <section class="content">
+                    
+                    <div class="copy">
+                        <p class="caption"><?php echo $song->text ?></p>
                         <div class="annotations">
                             <?php if ($song->annotations) : ?>
                             <?php foreach ($song->annotations as $annotation) : ?>
@@ -46,23 +58,16 @@
                                 </div>
                             <?php endforeach;  endif; ?>
                         </div>
-                        <p class="meta"><i class="ion-ios-person"></i> <a href="author/<?php echo $song->user_slug ?>"><?php echo $song->user_name ?></a></p>
-                        <p class="meta"><i class="ion-ios-musical-notes"></i> <a href="genre/<?php echo $song->genre_slug ?>"><?php echo $song->genre_name ?></a></p>
-                        <p class="meta">
-                            <i class="ion-ios-calendar-outline"></i>
-                            <?php if (date('Y', strtotime($song->created_at)) != date('Y')) : ?>
-                                <?php echo date('M j Y', strtotime($song->created_at)); ?>
-                            <?php else : ?>
-                                <?php echo date('M j', strtotime($song->created_at)); ?>
-                            <?php endif; ?>
-                        </p>
+                        <p class="meta"><a href="author/<?php echo $song->user_slug ?>"><?php echo $song->user_name ?></a></p>
+                        <p class="meta"><a href="genre/<?php echo $song->genre_slug ?>"><?php echo $song->genre_name ?></a></p>
+                        
                     </div>
-                    <div class="media" ng-click="play('<?php echo $song->source_id ?>')">
+                    <section class="media">
                         <div class="aspect-ratio">
                             <img src="<?php echo $song->image_url ?>" alt="">
-                        </div>
-                    </div>
-                </div>
+                        </div>                        
+                    </section>
+                </section>
                 
             </article>
 

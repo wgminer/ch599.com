@@ -1,0 +1,124 @@
+.song {
+    padding: 80px 0;
+    max-width: 1480px;
+    margin: 0 auto;
+
+    &.soundcloud img {
+        display: block;
+        margin: 0 auto;
+        width: 56.25%;
+    }
+
+    &.youtube img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+    }
+
+    &.playing img {
+        display: none;
+    }
+
+    .header {
+        @include clearfix;
+        position: relative;
+        margin-bottom: 40px;
+
+        .date {
+            @extend .small-caps;
+            width: 25%;
+            float: left;
+            margin: 20px 0 0;
+        }
+
+        .title {
+            font-family: $display-serif;
+            font-size: 3rem;
+            font-weight: 400;
+            position: relative;
+            z-index: 10;
+            transition: all .5s ease;
+            width: 75%;
+            margin: 0;
+            float: left;
+            line-height: 1.2; 
+
+            a { 
+                color: #333;
+            }
+        }
+    }   
+
+    .content {
+        @include clearfix;
+    }
+
+    .copy {
+        float: left;
+        width: 25%;
+    }
+
+    .annotations {
+        margin-bottom: 40px;
+    }
+
+    .annotation {
+        padding: 10px 20px 10px 10px;
+        background-color: #fff;
+        margin: 0 20px 5px 0;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        
+        .time {
+            margin-top: 0;
+        }
+
+        .comment {
+            margin-bottom: 0;
+        }
+    }
+
+    .meta {
+        @extend .small-caps;
+        margin: 0 0 10px;
+        a {
+            color: #ccc;
+        }
+    }
+
+    .caption {
+        margin: 0 0 40px;
+        padding-right: 40px;
+    }
+
+    .media {
+        float: left;
+        width: 75%;
+        padding-right: 40px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: all .5s ease;
+    }
+
+    .aspect-ratio {
+        background-color: #000;
+        overflow: hidden;
+        position: relative;
+        height: 0;
+        padding-bottom: 56.25%;
+        transition: padding .5s ease;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
