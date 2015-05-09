@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" ng-app="channel599">
     <?php $this->load->view('includes/head.site.php'); ?>
-    <body class="site" ng-controller="PlaylistCtrl">
+    <body class="site faded" ng-controller="PlaylistCtrl">
 
         <div class="controls">
             <button id="previous"><i class="ion-ios-skipbackward"></i></button>
@@ -12,66 +12,22 @@
         </div>
 
         <header class="masthead">
-            <div class="wrap">
-                <div class="title">
-                    <h1><a href="">599</a></h1>
-                </div>
-                <div class="links">
-                    <p><span class="lead">You're on Channel 599.</span>A music blog started in Rob's room in 2010</p>
-                    <nav>
-                        <a href="">Latest</a>
-                        <a href="">Search</a>
-                        <a href="">Archive</a>
-                    </nav> 
-                </div>
+            <div class="title">
+                <h1><a href="">599</a></h1>
+            </div>
+            <div class="links">
+                <p>You're on Channel 599,<br>a music blog started in Rob's room in 2010.</p>
+                <nav>
+                    <a href="">Latest</a>
+                    <a href="">Search</a>
+                    <a href="">Archive</a>
+                </nav> 
             </div>
         </header>
 
         <section class="playlist">
 
-        <?php foreach ($songs as $song) : ?>
-    
-            <article class="song <?php echo $song->source ?>" data-source="<?php echo $song->source ?>" data-source-id="<?php echo $song->source_id ?>" data-source-url="<?php echo $song->source_url ?>">
-                
-                <header class="header">
-                    <p class="date">
-                        <?php if (date('Y', strtotime($song->created_at)) != date('Y')) : ?>
-                            <?php echo date('M j Y', strtotime($song->created_at)); ?>
-                        <?php else : ?>
-                            <?php echo date('M j', strtotime($song->created_at)); ?>
-                        <?php endif; ?>
-                    </p>
-                    <h2 class="title"><a href="<?php echo base_url() ?><?php echo $song->slug ?>"><?php echo $song->title ?></a></h2>
-                    
-                </header>
-
-                <section class="content">
-                    
-                    <div class="copy">
-                        <p class="caption"><?php echo $song->text ?></p>
-                        <div class="annotations">
-                            <?php if ($song->annotations) : ?>
-                            <?php foreach ($song->annotations as $annotation) : ?>
-                                <div class="annotation" data-source-id="<?php echo $song->source_id ?>" data-timestamp="<?php echo $annotation->timestamp ?>">
-                                    <p class="time"><?php echo $annotation->time ?></p>
-                                    <p class="comment"><?php echo $annotation->text ?></p>
-                                </div>
-                            <?php endforeach;  endif; ?>
-                        </div>
-                        <p class="meta"><a href="author/<?php echo $song->user_slug ?>"><?php echo $song->user_name ?></a></p>
-                        <p class="meta"><a href="genre/<?php echo $song->genre_slug ?>"><?php echo $song->genre_name ?></a></p>
-                        
-                    </div>
-                    <section class="media">
-                        <div class="aspect-ratio">
-                            <img src="<?php echo $song->image_url ?>" alt="">
-                        </div>                        
-                    </section>
-                </section>
-                
-            </article>
-
-        <?php endforeach; ?>
+        <?php $this->load->view('includes/songs.php'); ?>
 
         </section>
 

@@ -8,6 +8,7 @@ var player = function () {
 
     var updateControls = function () {
         $controls.removeClass('playing paused loading');
+        $controls.addClass('show');
         if (player.status == 1) {
             $controls.addClass('playing');
         } else if (player.status == 2) {
@@ -135,7 +136,12 @@ var player = function () {
                 
             } else if (song.source == 'soundcloud') {
 
-                SC.oEmbed(song.source_url, {auto_play: true}, function(oembed){
+                var params = {
+                    show_comments: false,
+                    auto_play: true
+                }
+
+                SC.oEmbed(song.source_url, params, function(oembed){
 
                     $aspect.prepend(oembed.html);
 

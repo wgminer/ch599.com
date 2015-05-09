@@ -1,7 +1,8 @@
 .song {
-    padding: 80px 0;
-    max-width: 1480px;
-    margin: 0 auto;
+    @include clearfix;
+    padding: 80px 0 0;
+    margin-bottom: 80px;
+    // margin: 0 auto;
 
     &.soundcloud img {
         display: block;
@@ -22,43 +23,75 @@
         display: none;
     }
 
-    .header {
-        @include clearfix;
-        position: relative;
-        margin-bottom: 40px;
-
-        .date {
-            @extend .small-caps;
-            width: 25%;
-            float: left;
-            margin: 20px 0 0;
-        }
-
-        .title {
-            font-family: $display-serif;
-            font-size: 3rem;
-            font-weight: 400;
-            position: relative;
-            z-index: 10;
-            transition: all .5s ease;
-            width: 75%;
-            margin: 0;
-            float: left;
-            line-height: 1.2; 
-
-            a { 
-                color: #333;
-            }
-        }
-    }   
-
-    .content {
-        @include clearfix;
+    .media {
+        cursor: pointer;
+        z-index: 1000;
+        transition: all .5s ease;
+        float: left;
+        width: 50%;
+        padding-left: 40px;
     }
 
-    .copy {
+    .content {
+        width: 50%;
         float: left;
-        width: 25%;
+        padding: 40px 40px 30px;
+        border-bottom: 1px solid #eee;
+        border-left: 1px solid #eee;
+        margin-left: -1px;
+    }
+
+    .aspect-ratio {
+        background-color: #000;
+        overflow: hidden;
+        position: relative;
+        height: 0;
+        padding-bottom: 56.25%;
+        transition: padding .5s ease;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .title {
+        font-family: $display-serif;
+        font-size: 2rem;
+        font-weight: 400;
+        z-index: 10;
+        transition: all .5s ease;
+        margin: 0 0 10px;
+        line-height: 1.2; 
+        max-width: 600px;
+
+        a { 
+            color: #333;
+        }
+    }
+
+    .date {
+        @extend .small-caps;
+        margin: 0;
+    }
+
+    .caption {
+        margin: 0;
+        max-width: 400px;
+        font-size: 1.125rem;
+    }
+
+    hr {
+        width: 60px;
+        margin: 20px 0 25px;
+        border: 0;
+        height: 1px;
+        background-color: #eee;
     }
 
     .annotations {
@@ -86,39 +119,6 @@
         margin: 0 0 10px;
         a {
             color: #ccc;
-        }
-    }
-
-    .caption {
-        margin: 0 0 40px;
-        padding-right: 40px;
-    }
-
-    .media {
-        float: left;
-        width: 75%;
-        padding-right: 40px;
-        cursor: pointer;
-        z-index: 1000;
-        transition: all .5s ease;
-    }
-
-    .aspect-ratio {
-        background-color: #000;
-        overflow: hidden;
-        position: relative;
-        height: 0;
-        padding-bottom: 56.25%;
-        transition: padding .5s ease;
-
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            height: 100%;
-            width: 100%;
         }
     }
 }

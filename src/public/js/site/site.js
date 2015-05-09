@@ -28,4 +28,6 @@ $(function () {
         player.seek($(this));
     });
 
+    $('body').removeClass('faded');
+
 })
