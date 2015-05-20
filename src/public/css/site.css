@@ -325,7 +325,7 @@ td, th {
 
 body {
   background-color: #fff;
-  font-family: "gill sans", sans-serif;
+  font-family: "freight-sans-pro", sans-serif;
   font-size: 100%;
   line-height: 1.5;
   color: #222; }
@@ -343,7 +343,7 @@ post, playlist {
 
 .small-caps, label, .button, .masthead nav a, .song .date, .song .meta {
   font-size: 12px;
-  font-family: "gill sans", sans-serif;
+  font-family: "freight-sans-pro", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase; }
 
@@ -410,8 +410,8 @@ textarea {
   position: fixed;
   left: 50%;
   top: -41px;
-  border-bottom: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
   width: 100%;
   background-color: #fff;
   z-index: 9999;
@@ -539,7 +539,7 @@ textarea {
       width: 100%; }
   .song .title {
     font-family: "minion-pro-display", serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 400;
     z-index: 10;
     transition: all 0.5s ease;
@@ -551,6 +551,7 @@ textarea {
   .song .date {
     margin: 0; }
   .song .caption {
+    font-family: "minion-pro", serif;
     margin: 0;
     max-width: 400px;
     font-size: 1.125rem; }

@@ -16,7 +16,7 @@
                 <?php endif; ?>
             </p>
             <h2 class="title"><a href="<?php echo base_url() ?><?php echo $song->slug ?>"><?php echo $song->title ?></a></h2>
-            <!-- <p class="caption"><?php echo $song->text ?></p> -->
+            <p class="caption"><?php echo $song->text ?></p>
             <hr>
             <p class="meta"><a href="author/<?php echo $song->user_slug ?>"><?php echo $song->user_name ?></a></p>
             <p class="meta"><a href="genre/<?php echo $song->genre_slug ?>"><?php echo $song->genre_name ?></a></p>
