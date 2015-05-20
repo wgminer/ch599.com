@@ -1,0 +1,12 @@
+.small-caps {
+    font-size: 12px;
+    font-family: $sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;  
+    text-overflow: ellipsis;
+}

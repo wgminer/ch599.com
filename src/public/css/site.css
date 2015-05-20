@@ -338,10 +338,7 @@ img {
   display: block;
   max-width: 100%; }
 
-post, playlist {
-  display: block; }
-
-.small-caps, label, .button, .masthead nav a, .song .date, .song .meta {
+.small-caps, label, .button, .song__date, .song__meta, .masthead nav a {
   font-size: 12px;
   font-family: "freight-sans-pro", sans-serif;
   letter-spacing: 2px;
@@ -396,6 +393,83 @@ textarea {
   .button.icon {
     width: 42px;
     padding: 0; }
+
+.song {
+  padding: 80px 0 0;
+  margin-bottom: 80px; }
+  .song:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .song--soundcloud img {
+    display: block;
+    margin: 0 auto;
+    width: 56.25%; }
+  .song--youtube img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute; }
+  .song--playing img {
+    display: none; }
+  .song__media {
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.5s ease;
+    max-width: 1000px;
+    margin: 0 auto; }
+  .song__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 30px; }
+  .song__aspect-ratio {
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    transition: padding 0.5s ease; }
+    .song__aspect-ratio iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: 100%; }
+  .song__title {
+    font-family: "minion-pro-display", serif;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 20px 0 30px;
+    max-width: 66%; }
+    .song__title--artist {
+      display: block;
+      font-size: 1.5rem; }
+    .song__title--seperator {
+      display: none;
+      font-size: 1.5rem; }
+    .song__title--name {
+      display: block;
+      font-size: 2.5rem; }
+    .song__title a {
+      color: #333; }
+  .song__text {
+    font-family: "minion-pro", serif;
+    margin: 0;
+    max-width: 66%;
+    font-size: 1.125rem; }
+  .song__date {
+    margin: 0; }
+  .song__meta {
+    margin: 0 0 10px; }
+    .song__meta a {
+      color: #999; }
+  .song__annotation {
+    cursor: pointer;
+    color: #0cc; }
 
 .faded {
   max-height: 100vh;
@@ -487,93 +561,3 @@ textarea {
       color: #222;
       display: inline-block;
       transition: all 0.25s ease; }
-
-.song {
-  padding: 80px 0 0;
-  margin-bottom: 80px; }
-  .song:after {
-    content: "";
-    display: table;
-    clear: both; }
-  .song.soundcloud img {
-    display: block;
-    margin: 0 auto;
-    width: 56.25%; }
-  .song.youtube img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute; }
-  .song.playing img {
-    display: none; }
-  .song .media {
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 0.5s ease;
-    float: left;
-    width: 50%;
-    padding-left: 40px; }
-  .song .content {
-    width: 50%;
-    float: left;
-    padding: 40px 40px 30px;
-    border-bottom: 1px solid #eee;
-    border-left: 1px solid #eee;
-    margin-left: -1px; }
-  .song .aspect-ratio {
-    background-color: #000;
-    overflow: hidden;
-    position: relative;
-    height: 0;
-    padding-bottom: 56.25%;
-    transition: padding 0.5s ease; }
-    .song .aspect-ratio iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: 100%;
-      width: 100%; }
-  .song .title {
-    font-family: "minion-pro-display", serif;
-    font-size: 2.5rem;
-    font-weight: 400;
-    z-index: 10;
-    transition: all 0.5s ease;
-    margin: 0 0 10px;
-    line-height: 1.2;
-    max-width: 600px; }
-    .song .title a {
-      color: #333; }
-  .song .date {
-    margin: 0; }
-  .song .caption {
-    font-family: "minion-pro", serif;
-    margin: 0;
-    max-width: 400px;
-    font-size: 1.125rem; }
-  .song hr {
-    width: 60px;
-    margin: 20px 0 25px;
-    border: 0;
-    height: 1px;
-    background-color: #eee; }
-  .song .annotations {
-    margin-bottom: 40px; }
-  .song .annotation {
-    padding: 10px 20px 10px 10px;
-    background-color: #fff;
-    margin: 0 20px 5px 0;
-    border: 1px solid #ccc;
-    cursor: pointer; }
-    .song .annotation .time {
-      margin-top: 0; }
-    .song .annotation .comment {
-      margin-bottom: 0; }
-  .song .meta {
-    margin: 0 0 10px; }
-    .song .meta a {
-      color: #ccc; }

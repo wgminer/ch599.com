@@ -5,11 +5,13 @@
 
         <header class="masthead">
             <h1><a href="<?php echo base_url() ?>"><i class="ion-ios-arrow-thin-left"></i> 599</a></h1>
-<!--             <nav>
+            <!--             
+            <nav>
                 <a href="#/" ng-class="{active: currentRoute == 'dashboard'}">Dashboard</a>
                 <a href="#/settings" ng-class="{active: currentRoute == 'settings'}">Settings</a>
                 <a href="#/logout">Log Out</a>
-            </nav> -->
+            </nav> 
+            -->
         </header>
 
         <main class="main" ng-view=""></main>

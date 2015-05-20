@@ -4,7 +4,7 @@ $(function () {
 
     player.init($('.controls'));
 
-    $('.song .media').click(function () {
+    $('.song__media').click(function () {
         player.create($(this).parents('.song'));
     });
 
@@ -24,7 +24,7 @@ $(function () {
         player.previous();
     });
 
-    $('.annotation').click(function () {
+    $('.song__annotation').click(function () {
         player.seek($(this));
     });
 

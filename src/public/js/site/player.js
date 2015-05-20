@@ -57,6 +57,8 @@ var player = function () {
             var timestamp = $annotation.data('timestamp');
             var source_id = $annotation.data('source-id');
 
+            console.log(player.source_id, source_id);
+
             if (player && player.source_id == source_id) {
 
                 if (player.source == 'youtube') {
@@ -75,7 +77,7 @@ var player = function () {
         },
         create: function ($song, seekTo) {
 
-            var $aspect = $song.find('.aspect-ratio');
+            var $aspect = $song.find('.song__aspect-ratio');
             var song = {
                 source: $song.data('source'),
                 source_id: $song.data('source-id'),
@@ -87,7 +89,7 @@ var player = function () {
             }
 
             if ($playing) {
-                $playing.removeClass('playing')
+                $playing.removeClass('song--playing')
                     .find('iframe').remove();
             }
 

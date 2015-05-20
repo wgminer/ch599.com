@@ -1,11 +1,14 @@
 @import "variables";
-@import "mixins";
-@import "normalize";
+
+// Boilerplate
+@import "boilerplate/mixins";
+@import "boilerplate/normalize";
+@import "boilerplate/base";
 
 // Components
-@import "base";
-@import "forms";
-@import "buttons";
+@import "components/typography";
+@import "components/forms";
+@import "components/buttons";
 
 // Admin specific
 @import "admin/layout";

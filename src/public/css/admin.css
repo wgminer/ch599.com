@@ -338,9 +338,6 @@ img {
   display: block;
   max-width: 100%; }
 
-post, playlist {
-  display: block; }
-
 .small-caps, label, .button, .song-preview .song-preview-nav button {
   font-size: 12px;
   font-family: "freight-sans-pro", sans-serif;

@@ -1,13 +1,16 @@
 @import "variables";
-@import "mixins";
-@import "normalize";
+
+// Boilerplate
+@import "boilerplate/mixins";
+@import "boilerplate/normalize";
+@import "boilerplate/base";
 
 // Components
-@import "base";
-@import "forms";
-@import "buttons";
+@import "components/typography";
+@import "components/forms";
+@import "components/buttons";
+@import "components/song";
 
 // Site specific
 @import "site/layout";
 @import "site/masthead";
-@import "site/song";
