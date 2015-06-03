@@ -10,7 +10,7 @@ class SiteController extends CI_Controller {
         if ($pos) {
             $artist = substr($title, 0,  $pos);
             $name = substr($title, $pos + 3, strlen($title));
-            return '<span class="song__title--artist">' . $artist . '</span><span class="song__title--seperator"> - </span><span class="song__title--name">' . $name . '</span>'; 
+            return '<span class="song__title--name">' . $name . '</span><span class="song__title--artist">' . $artist . '</span>'; 
         } else {
             return '<span class="song__title--name">' . $title . '</span>';
         }
@@ -57,9 +57,9 @@ class SiteController extends CI_Controller {
 
         $data['songs'] = $this->CRUD->read('songs', $match);
 
-        foreach ($data['songs'] as $song) {
-            $song->title = $this->segmentTitle($song->title);
-        }
+        // foreach ($data['songs'] as $song) {
+        //     $song->title = $this->segmentTitle($song->title);
+        // }
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->addAnnotations($song->text, $song->source_id);

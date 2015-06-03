@@ -57,7 +57,7 @@ var player = function () {
             var timestamp = $annotation.data('timestamp');
             var source_id = $annotation.data('source-id');
 
-            console.log(player.source_id, source_id);
+            console.log(player, player.source_id, source_id);
 
             if (player && player.source_id == source_id) {
 
@@ -66,8 +66,10 @@ var player = function () {
                 }
 
                 player.seekTo(timestamp);
-                this.play();
-
+                if (player.status != 1) {
+                    this.play();
+                }
+                
             } else {
 
                 var $song = $annotation.parents('.song');
@@ -93,7 +95,7 @@ var player = function () {
                     .find('iframe').remove();
             }
 
-            $song.addClass('playing');
+            $song.addClass('song--playing');
             $playing = $song;
             
             if (song.source == 'youtube') {
