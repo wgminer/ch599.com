@@ -28,10 +28,10 @@ class CRUD extends CI_Model {
 
         if ($table == 'songs') {
             $this->db->join('users', 'users.id = songs.user_id ');
-            $this->db->join('genres', 'genres.id = songs.genre_id ');
+            // $this->db->join('genres', 'genres.id = songs.genre_id ');
             $this->db->select('songs.*');
             $this->db->select('users.name as user_name, users.slug as user_slug');
-            $this->db->select('genres.name as genre_name, genres.slug as genre_slug');
+            // $this->db->select('genres.name as genre_name, genres.slug as genre_slug');
             $this->db->order_by('songs.created_at', 'DESC');
         }
 

@@ -13,11 +13,6 @@ class SongController extends CI_Controller {
 
         $results = $this->CRUD->read('songs', $match); 
 
-        foreach ($results as $song) {
-            $annotations = $this->CRUD->read('annotations', array('song_id' => $song->id)); 
-            $song->annotations = $annotations;
-        }
-
         echo json_encode($results);
     }
 
