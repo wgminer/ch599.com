@@ -67,12 +67,24 @@ class Migration extends CI_Controller {
 
         foreach ($posts as $post) {
 
+            if ($post->post_status == 'published') {
+                $status_id = 1;
+            } 
+
+            if ($post->post_status == 'draft') {
+                $status_id = 2;
+            } 
+
+            if ($post->post_status == 'error') {
+                $status_id = 3;
+            } 
+
             $song = array(
                 'id' => $post->post_id,
                 'title' => $post->post_title,
                 'slug' => $post->post_slug, 
                 'hash' => $post->post_mini_url,
-                'status' => $post->post_status,
+                'status_id' => $status_id,
                 'image_url' => $post->post_img, 
                 'text' => $post->post_text, 
                 'source' => $post->post_source,

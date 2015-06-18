@@ -347,52 +347,78 @@ body {
   overflow: hidden; }
 
 .container {
+  display: block;
   max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center; }
+  margin: 0 auto; }
+  .container--float:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .container--flex {
+    display: flex;
+    align-items: center; }
+  .container--filter {
+    margin-top: 20px; }
 
 .masthead {
   background-color: rgba(255, 255, 255, 0.95);
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   left: 0;
-  padding: 5px 40px;
-  border-bottom: 1px solid #ddd; }
-  .masthead .container {
-    display: block; }
-    .masthead .container:after {
-      content: "";
-      display: table;
-      clear: both; }
+  padding: 0 40px;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000; }
   .masthead__title {
     margin: 0;
     float: left;
-    width: 200px;
     font-size: 32px;
     font-family: "minion-pro-display", serif;
     font-weight: 400;
-    line-height: 40px;
-    line-height: 40px; }
-  .masthead__date {
+    line-height: 50px; }
+    .masthead__title__link {
+      text-decoration: none;
+      color: #222; }
+  .masthead__nav {
+    float: right; }
+    .masthead__nav:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .masthead__link {
     float: left;
-    margin: 0 0 0 40px;
-    line-height: 40px; }
-  .masthead__new {
-    float: right;
     font-size: 16px;
     display: block;
-    line-height: 40px;
+    line-height: 50px;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 20px;
     border: 0;
     cursor: pointer;
-    background-color: transparent; }
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #222; }
+  .masthead__filter {
+    float: left;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0 20px 0 0;
+    line-height: 40px; }
 
 .list {
   margin: 0 auto;
-  padding-top: 100px; }
+  padding-top: 106px; }
+  .list__empty {
+    margin-top: 40px;
+    font-size: 21px;
+    color: #ccc;
+    font-family: "minion-pro-display", serif; }
 
 .song {
   padding: 20px 40px;
@@ -404,20 +430,20 @@ body {
   .song__media {
     flex: 0 0 auto;
     display: block;
-    width: 200px; }
+    width: 150px; }
   .song__image {
     flex: 0 0 auto;
     display: block;
     width: 100%; }
   .song__content {
     flex: 1 1 auto;
-    padding: 20px 0 20px 40px; }
+    padding: 20px 0 20px 20px; }
   .song__title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-family: "minion-pro-display", serif;
-    margin: 0 0 10px;
+    margin: 0;
     line-height: 1.2;
     font-weight: 400;
     font-size: 32px; }
@@ -426,3 +452,67 @@ body {
     font-size: 18px;
     font-weight: 400;
     max-width: 600px; }
+
+.preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 60%;
+  overflow: scroll; }
+  .preview__image {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0); }
+
+.form {
+  width: 40%;
+  padding: 90px 40px 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: scroll; }
+
+.form-group__label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+  display: block; }
+.form-group__control {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 2px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  line-height: 40px;
+  padding: 0 10px; }
+  .form-group__control--input {
+    height: 42px; }
+  .form-group__control--select {
+    height: 42px; }
+  .form-group__control--textarea {
+    padding: 10px;
+    line-height: 1.5; }
+
+.button {
+  background-color: transparent;
+  padding: 0 40px;
+  line-height: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  padding: 0;
+  margin: 40px 0 0;
+  width: 100%;
+  display: block; }

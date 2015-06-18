@@ -1,0 +1,60 @@
+<div class="masthead">
+    <div class="container container--float">
+        <h1 class="masthead__title"><a class="masthead__title__link" href="#/">599</a></h1>
+        <nav class="masthead__nav">
+            <a href="#/new" class="masthead__link"><i class="ion-plus "></i> New Post</a>
+            <a href="#/profile" class="masthead__link">Profile</a>
+            <a href="/sign-out" class="masthead__link">Sign Out</a>
+        </nav>
+    </div>
+    <div class="container container--float container--filter">
+        <button class="masthead__filter" ng-click="visibleList = 1">Published</button>
+        <button class="masthead__filter" ng-click="visibleList = 2">Draft</button>
+        <button class="masthead__filter" ng-click="visibleList = 3">Broken ({{error.length}})</button>
+    </div>
+</div>
+
+<div class="list" ng-show="visibleList == 1">
+    <section ng-show="published != 'false'" ng-repeat="song in published" data="song" class="list__item song">
+        <div class="container container--flex">
+            <div class="song__media">
+                <img class="song__image" src="{{song.image_url}}" alt="">
+            </div>
+            <div class="song__content">
+                <h2 class="song__title">{{song.title}}</h2>
+                <p class="song__text">{{song.text}}</p>
+            </div>
+        </div>
+    </section>
+    <p class="list__empty container" ng-hide="published != 'false'">Nothing Published</p>
+</div>
+
+<div class="list" ng-show="visibleList == 2">
+    <section ng-show="draft != 'false'" ng-repeat="song in draft" data="song" class="list__item song">
+        <div class="container container--flex">
+            <div class="song__media">
+                <img class="song__image" src="{{song.image_url}}" alt="">
+            </div>
+            <div class="song__content">
+                <h2 class="song__title">{{song.title}}</h2>
+                <p class="song__text">{{song.text}}</p>
+            </div>
+        </div>
+    </section>
+    <p class="list__empty container" ng-hide="draft != 'false'">No Drafts</p>
+</div>
+
+<div class="list" ng-show="visibleList == 3">
+    <section ng-show="error != 'false'" ng-repeat="song in error" data="song" class="list__item song">
+        <div class="container container--flex">
+            <div class="song__media">
+                <img class="song__image" src="{{song.image_url}}" alt="">
+            </div>
+            <div class="song__content">
+                <h2 class="song__title">{{song.title}}</h2>
+                <p class="song__text">{{song.text}}</p>
+            </div>
+        </div>
+    </section>
+    <p class="list__empty container" ng-hide="error != 'false'">Nothing Broken...Yay!</p>
+</div>

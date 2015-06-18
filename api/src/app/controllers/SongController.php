@@ -11,6 +11,10 @@ class SongController extends CI_Controller {
             $match['user_id'] = $_GET['user_id'];
         }
 
+        if (isset($_GET['status_id'])) {
+            $match['status_id'] = $_GET['status_id'];
+        }
+
         $results = $this->CRUD->read('songs', $match); 
 
         echo json_encode($results);
@@ -28,9 +32,9 @@ class SongController extends CI_Controller {
             'source' => $input['source'],
             'source_url' => $input['source_url'],
             'source_id' => $input['source_id'],
-            'user_id' => $this->session->userdata('user_id'),
+            'user_id' => 2, //$this->session->userdata('user_id'),
             'genre_id' => $input['genre_id'],
-            'status_id' => 1
+            'status_id' => $input['status_id']
         );
 
         $created = $this->CRUD->create('songs', $newPost);

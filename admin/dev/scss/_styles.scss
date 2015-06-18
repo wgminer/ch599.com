@@ -15,60 +15,93 @@ body {
 }
 
 .container {
+    display: block;
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
+
+    &--float {
+        @include clear;
+    }
+
+    &--flex {
+        display: flex;
+        align-items: center;
+    }
+
+    &--filter {
+        margin-top: 20px;
+    }
 }
 
 .masthead {
     background-color: rgba(#fff, .95);
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     left: 0;
-    padding: 5px 40px;
+    padding: 0 40px;
     border-bottom: 1px solid #ddd;
-
-    .container {
-        display: block;
-        @include clear;
-    }
+    z-index: 1000;
 
     &__title {
         margin: 0;
         float: left;
-        width: 200px;
         font-size: 32px;
         font-family: $display;
         font-weight: 400;
-        line-height: 40px;
-        line-height: 40px;
+        line-height: 50px;
+
+        &__link {
+            text-decoration: none;
+            color: $text-color;
+        }
     }
     
-    &__date {
-        float: left;
-        margin: 0 0 0 40px;
-        line-height: 40px;
+    &__nav {
+        @include clear;
+        float: right; 
     }
 
-    &__new {
-        float: right;
+    &__link {
+        float: left;
         font-size: 16px;
         display: block;
-        line-height: 40px;
+        line-height: 50px;
         padding: 0;
-        margin: 0;
+        margin: 0 0 0 20px;
         border: 0;
         cursor: pointer;
         background-color: transparent;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        text-decoration: none;
+        color: $text-color;
+    }
+
+    &__filter {
+        float: left;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        margin: 0 20px 0 0;
+        line-height: 40px;
     }
 }
 
 .list {
-    // max-width: 800px;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 106px;
+
+    &__empty {
+        margin-top: 40px;
+        font-size: 21px;
+        color: #ccc;
+        font-family: $display;
+    }
 }
 
 .song {
@@ -79,7 +112,7 @@ body {
     &__media {
         flex: 0 0 auto;
         display: block;
-        width: 200px;
+        width: 150px;
     }
 
     &__image {
@@ -90,13 +123,13 @@ body {
 
     &__content {
         flex: 1 1 auto;
-        padding: 20px 0 20px 40px;
+        padding: 20px 0 20px 20px;
     }
 
     &__title {
         @include ellipsis;
         font-family: $display;
-        margin: 0 0 10px;
+        margin: 0;
         line-height: 1.2;
         font-weight: 400;
         font-size: 32px;
@@ -108,4 +141,86 @@ body {
         font-weight: 400;
         max-width: 600px;
     }
+}
+
+.preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    overflow: scroll;
+
+    &__image {
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0)
+    }
+}
+
+.form {
+    // border-left: $border;
+    width: 40%;
+    padding: 90px 40px 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: scroll;
+}
+
+.form-group {
+
+    &__label {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 14px;
+        display: block; 
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    &__control {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-radius: 2px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        line-height: 40px;
+        padding: 0 10px; 
+
+        &--input {
+            height: 42px;
+        }
+
+        &--select {
+            height: 42px;
+        }
+
+        &--textarea {
+            padding: 10px;
+            line-height: 1.5;
+        }
+    }
+}
+
+.button {
+    background-color: transparent;
+    padding: 0 40px;
+    line-height: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    border-radius: 2px;
+    border: $border;
+    padding: 0;
+    margin: 40px 0 0;
+    width: 100%;
+    display: block;
 }

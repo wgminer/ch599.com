@@ -74,6 +74,9 @@ $route['songs/delete/(:num)'] = 'SongController/delete/$1';
 // Genre routes 
 $route['genres'] = 'GenreController/index';
 
+// Status routes 
+$route['statuses'] = 'StatusController/index';
+
 // Admin routes
 $route['admin'] = 'AdminController/admin';
 
