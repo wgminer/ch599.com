@@ -57,7 +57,7 @@ class CRUD extends CI_Model {
         $this->db->update($table, $data);
 
         if ($this->db->affected_rows() > 0) {
-            return true;
+            return $data;
         }
     } 
 

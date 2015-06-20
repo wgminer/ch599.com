@@ -17,7 +17,12 @@ class SongController extends CI_Controller {
 
         $results = $this->CRUD->read('songs', $match); 
 
-        echo json_encode($results);
+        if ($results != false) {
+            echo json_encode($results);
+        } else {
+            echo json_encode([]);
+        }
+        
     }
 
     public function create () {
@@ -38,24 +43,6 @@ class SongController extends CI_Controller {
         );
 
         $created = $this->CRUD->create('songs', $newPost);
-        $created['annotations'] = array();
-
-        foreach ($input['annotations'] as $annotation) {
-            if (isset($annotation['time']) && isset($annotation['timestamp']) && isset($annotation['text'])) {
-                
-                $newAnnotation = array(
-                    'song_id' => $created['id'],
-                    'time' => $annotation['time'],
-                    'timestamp' => $annotation['timestamp'],
-                    'text' => $annotation['text']
-                );
-
-                $createdAnnotation = $this->CRUD->create('annotations', $newAnnotation);
-
-                array_push($created['annotations'], $createdAnnotation);
-
-            }
-        }
 
         echo json_encode($created);
     
@@ -68,6 +55,7 @@ class SongController extends CI_Controller {
         $match = array('id' => $id);
 
         $post = array(
+            'id' => $id,
             'title' => $input['title'],
             'slug' => url_title($input['title'], 'dash', true),
             'image_url' => $input['image_url'],
@@ -75,14 +63,20 @@ class SongController extends CI_Controller {
             'source' => $input['source'],
             'source_url' => $input['source_url'],
             'source_id' => $input['source_id'],
-            'user_id' => $this->session->userdata('user_id'),
+            'user_id' => 2, //$this->session->userdata('user_id'),
             'genre_id' => $input['genre_id'],
-            'status_id' => 1
+            'status_id' => $input['status_id']
         );
 
         $updated = $this->CRUD->update('songs', $match, $post);
         echo json_encode($updated);
     
+    }
+
+    public function delete ($id) {
+        $match = array('id' => $id);
+        $deleted = $this->CRUD->delete('songs', $match);
+        echo json_encode($deleted);
     }
 
 }

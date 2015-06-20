@@ -369,6 +369,9 @@ body {
   padding: 0 40px;
   border-bottom: 1px solid #ddd;
   z-index: 1000; }
+  .masthead__fixed {
+    position: fixed;
+    top: -70px; }
   .masthead__title {
     margin: 0;
     float: left;
@@ -400,7 +403,7 @@ body {
     font-size: 14px;
     text-decoration: none;
     color: #222; }
-  .masthead__filter {
+  .masthead__action {
     float: left;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -409,7 +412,14 @@ body {
     border: 0;
     padding: 0;
     margin: 0 20px 0 0;
-    line-height: 40px; }
+    line-height: 40px;
+    outline: none; }
+    .masthead__action--active {
+      border-bottom: solid 3px #0cc;
+      margin-bottom: -2px; }
+    .masthead__action--right {
+      float: right;
+      margin: 0 0 0 20px; }
 
 .list {
   margin: 0 auto;
@@ -420,13 +430,58 @@ body {
     color: #ccc;
     font-family: "minion-pro-display", serif; }
 
+.aspect-ratio {
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  transition: padding 0.5s ease; }
+  .aspect-ratio--soundcloud img {
+    display: block;
+    margin: 0 auto;
+    width: 56.25%; }
+  .aspect-ratio--youtube img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute; }
+
+.modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  z-index: 5000; }
+  .modal__content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px 30px; }
+  .modal__preview {
+    margin: 50px auto 0;
+    max-width: 500px;
+    width: 100%;
+    display: block; }
+  .modal__form {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 0 auto 33vh;
+    padding: 40px; }
+
 .song {
   padding: 20px 40px;
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #ddd;
+  position: relative; }
   .song:after {
     content: "";
     display: table;
     clear: both; }
+  .song:hover .song__actions {
+    opacity: 1; }
   .song__media {
     flex: 0 0 auto;
     display: block;
@@ -437,7 +492,7 @@ body {
     width: 100%; }
   .song__content {
     flex: 1 1 auto;
-    padding: 20px 0 20px 20px; }
+    padding: 20px 150px 20px 20px; }
   .song__title {
     white-space: nowrap;
     overflow: hidden;
@@ -452,31 +507,70 @@ body {
     font-size: 18px;
     font-weight: 400;
     max-width: 600px; }
-
-.preview {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 60%;
-  overflow: scroll; }
-  .preview__image {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-    display: block;
-    position: absolute;
+  .song__actions {
+    transition: all 0.25s ease;
+    right: 40px;
     top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0); }
+    transform: translateY(-50%);
+    position: absolute;
+    white-space: nowrap;
+    min-width: 120px; }
+    .song__actions:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .song__button {
+    display: inline-block;
+    transition: all 0.25s ease;
+    background-color: transparent;
+    padding: 0;
+    margin: 0 0 0 10px;
+    width: 60px;
+    height: 60px;
+    color: #999;
+    border-radius: 30px;
+    font-size: 21px;
+    border: 1px solid #ddd; }
+    .song__button:hover {
+      color: #0cc;
+      border-color: #0cc; }
 
-.form {
-  width: 40%;
-  padding: 90px 40px 40px;
-  position: absolute;
-  top: 0;
-  right: 0;
-  overflow: scroll; }
+.delete {
+  display: inline-block; }
+  .delete:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .delete__confirm {
+    display: none;
+    min-width: 60px;
+    height: 60px;
+    padding: 0 20px;
+    margin: 0;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px; }
+    .delete__confirm:hover {
+      color: #0cc;
+      border-color: #0cc;
+      z-index: 2; }
+    .delete__confirm--delete {
+      border-radius: 30px 0 0 30px;
+      margin-right: -4px;
+      padding: 0 20px 0 30px; }
+    .delete__confirm--cancel {
+      border-radius: 0 30px 30px 0;
+      padding: 0 30px 0 20px; }
+  .delete--confirm {
+    margin-left: 10px; }
+    .delete--confirm .delete__initiate {
+      display: none; }
+    .delete--confirm .delete__confirm {
+      display: inline-block; }
 
 .form-group__label {
   text-transform: uppercase;
@@ -516,3 +610,10 @@ body {
   margin: 40px 0 0;
   width: 100%;
   display: block; }
+
+.profile {
+  max-width: 500px;
+  padding: 0 40px 40px;
+  margin: 0 auto; }
+  .profile__group {
+    margin-top: 90px; }

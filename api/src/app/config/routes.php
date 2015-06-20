@@ -61,15 +61,19 @@ $route['users/auth'] = 'UserController/auth';
 $route['users/deauth'] = 'UserController/deauth';
 
 // User routes
+$route['users'] = 'UserController/index';
 $route['users/create'] = 'UserController/create';
-$route['users/update/(:num)'] = 'SongController/update/$1';
+$route['users/update/password/(:num)'] = 'UserController/update_password/$1';
+$route['users/update/(:num)'] = 'UserController/update/$1';
+$route['users/(:num)'] = 'UserController/index/$1';
 
 // Post routes 
 $route['songs'] = 'SongController/index';
 $route['songs/create'] = 'SongController/create';
-$route['songs/get/(:num)'] = 'SongController/get/$1';
 $route['songs/update/(:num)'] = 'SongController/update/$1';
 $route['songs/delete/(:num)'] = 'SongController/delete/$1';
+$route['songs/(:num)'] = 'SongController/get/$1';
+
 
 // Genre routes 
 $route['genres'] = 'GenreController/index';

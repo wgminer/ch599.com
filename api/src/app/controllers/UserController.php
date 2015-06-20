@@ -3,9 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserController extends CI_Controller {
 
-    public function register()
-    {
-        $this->load->view('register');
+    public function index ($id = false) {
+        
+        $match = array('id >' => 0);
+
+        if ($id) {
+            $match = array('id' => $id);
+        }
+
+        $results = $this->CRUD->read('users', $match); 
+
+        if ($results != false) {
+            echo json_encode($results);
+        } else {
+            echo json_encode([]);
+        }        
     }
 
     public function create()
@@ -29,65 +41,34 @@ class UserController extends CI_Controller {
         }
     }
 
-    public function settings()
-    {
-        $this->load->view('settings');
-    }
+    public function update ($id) {
 
-    public function update()
-    {   
-        $id = $this->input->post('id');
-        $bio = $this->input->post('bio');
-        $email = $this->input->post('email');
-        $name = $this->input->post('name');
-        $password = md5($this->input->post('password'));
-        $slug = url_title($name, 'dash', true);
+        $input = json_decode(trim(file_get_contents('php://input')), true);
+
+        $match = array('id' => $id);
         
-        $data = array(
-            'name' => $name,
-            'slug' => $slug,
-            'email' => $email,
-            'password' => $password,
-            'bio' => $bio
+        $user = array(
+            'name' => $input['name'],
+            'slug' => url_title($input['name'], 'dash', true),
+            'email' => $input['email'],
+            'bio' => $input['bio']
         );
 
-        if ($user = $this->CRUD->update('users', $id, $data)) {
-            var_dump($user);
-        }
+        $updated = $this->CRUD->update('users', $match, $user);
+        echo json_encode($updated);
     }
 
-    public function login()
-    {
-        $this->load->view('login');
-    }
+    public function update_password ($id) {
 
-    public function auth()
-    {
-        $email = $this->input->post('email');
-        $password = md5($this->input->post('password'));
+        $input = json_decode(trim(file_get_contents('php://input')), true);
 
-        $match = array(
-            'email' => $email,
-            'password' => $password,
-        );
+        $match = array('id' => $id);
         
-        $result = $this->CRUD->read('users', $match);
+        $user = array(
+            'password' => md5($input['new'])
+        );
 
-        if ($result) {
-
-            $cookie = array(
-                'user_id' => $result[0]->id,
-            );
-            $this->session->set_userdata($cookie);
-
-            redirect('admin');
-        } else {
-            echo 'invalid';
-        }
-    }
-
-    public function deauth()
-    {
-        $this->load->view('welcome_message');
+        $updated = $this->CRUD->update('users', $match, $user);
+        echo json_encode(true);
     }
 }

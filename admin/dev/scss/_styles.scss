@@ -43,6 +43,11 @@ body {
     border-bottom: 1px solid #ddd;
     z-index: 1000;
 
+    &__fixed {
+        position: fixed;
+        top: -70px;
+    }
+
     &__title {
         margin: 0;
         float: left;
@@ -79,7 +84,7 @@ body {
         color: $text-color;
     }
 
-    &__filter {
+    &__action {
         float: left;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -89,6 +94,17 @@ body {
         padding: 0;
         margin: 0 20px 0 0;
         line-height: 40px;
+        outline: none;
+
+        &--active {
+            border-bottom: solid 3px $brand-color;
+            margin-bottom: -2px;
+        }
+
+        &--right {
+            float: right;
+            margin: 0 0 0 20px;
+        }
     }
 }
 
@@ -104,10 +120,71 @@ body {
     }
 }
 
+.aspect-ratio {
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    transition: padding .5s ease;
+
+    &--soundcloud img {
+        display: block;
+        margin: 0 auto;
+        width: 56.25%;
+    }
+
+    &--youtube img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+    }
+}
+
+.modal {
+    position: fixed;
+    background-color: rgba(#000, .5);
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 5000;
+
+    &__content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 40px 30px;
+    }
+
+    &__preview {
+        margin: 50px auto 0;
+        max-width: 500px;
+        width: 100%;
+        display: block;
+    }
+
+    &__form {
+        background-color: #fff;
+        max-width: 500px;
+        margin: 0 auto 33vh;
+        padding: 40px;
+    }
+}
+
 .song {
     @include clear;
     padding: 20px 40px;
     border-bottom: 1px solid #ddd;
+    position: relative;
+
+    &:hover {
+        .song__actions {
+            opacity: 1;
+        }
+    }
 
     &__media {
         flex: 0 0 auto;
@@ -123,7 +200,7 @@ body {
 
     &__content {
         flex: 1 1 auto;
-        padding: 20px 0 20px 20px;
+        padding: 20px 150px 20px 20px;
     }
 
     &__title {
@@ -141,36 +218,89 @@ body {
         font-weight: 400;
         max-width: 600px;
     }
-}
 
-.preview {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 60%;
-    overflow: scroll;
-
-    &__image {
-        max-width: 500px;
-        width: 100%;
-        margin: 0 auto;
-        display: block;
-        position: absolute;
+    &__actions {
+        transition: all .25s ease;
+        @include clear;
+        right: 40px;
         top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0)
+        transform: translateY(-50%);
+        position: absolute;
+        // opacity: 0;
+        white-space: nowrap;
+        min-width: 120px;
+    }
+
+    &__button {
+        display: inline-block;
+        transition: all .25s ease;
+        background-color: transparent;
+        padding: 0;
+        margin: 0 0 0 10px;
+        width: 60px;
+        height: 60px;
+        color: #999;
+        border-radius: 30px;
+        font-size: 21px;
+        border: $border;
+
+        &:hover {
+            color: $brand-color;
+            border-color: $brand-color;
+        }
     }
 }
 
-.form {
-    // border-left: $border;
-    width: 40%;
-    padding: 90px 40px 40px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    overflow: scroll;
+.delete {
+    @include clear;
+    display: inline-block;
+    
+    &__initiate {
+
+    }
+
+    &__confirm {
+        display: none;
+        min-width: 60px;
+        height: 60px;
+        padding: 0 20px;
+        margin: 0;
+        border: $border;
+        background-color: transparent;
+        position: relative;
+        z-index: 1;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 2px;
+
+        &:hover {
+            color: $brand-color;
+            border-color: $brand-color;
+            z-index: 2;
+        }
+
+        &--delete {
+            border-radius: 30px 0 0 30px;
+            margin-right: -4px;
+            padding: 0 20px 0 30px;
+        }
+        &--cancel {
+            border-radius: 0 30px 30px 0;
+            padding: 0 30px 0 20px;
+        }
+    }
+
+    &--confirm {
+        margin-left: 10px;
+
+        .delete__initiate {
+            display: none;
+        }
+
+        .delete__confirm {
+            display: inline-block;
+        }
+    }
 }
 
 .form-group {
@@ -223,4 +353,14 @@ body {
     margin: 40px 0 0;
     width: 100%;
     display: block;
+}
+
+.profile {
+    max-width: 500px;
+    padding: 0 40px 40px;
+    margin: 0 auto;
+
+    &__group {
+        margin-top: 90px;
+    }
 }
