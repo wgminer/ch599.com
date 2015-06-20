@@ -1,0 +1,13 @@
+<div class="song" ng-repeat="song in songs">
+    <div class="song__media" ng-click="playSong()">
+        <div class="aspect-ratio aspect-ratio--{{song.source}}">
+            <img src="{{song.image_url}}" alt="" class="song__image">
+        </div>
+        <div class="song__overlay"></div>
+        <button class="song__play"><i class="ion-play"></i></button>
+    </div>
+    <div class="song__info">
+        <h2 class="song__title">{{song.title}}</h2>
+        <p class="song__text">{{song.text}}</p>
+    </div>
+</div>

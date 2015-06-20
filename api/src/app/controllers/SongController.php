@@ -6,6 +6,8 @@ class SongController extends CI_Controller {
     public function index () {
         
         $match = array('songs.id >' => 0);
+        $limit = false;
+        $offset = 0;
 
         if (isset($_GET['user_id'])) {
             $match['user_id'] = $_GET['user_id'];
@@ -15,7 +17,15 @@ class SongController extends CI_Controller {
             $match['status_id'] = $_GET['status_id'];
         }
 
-        $results = $this->CRUD->read('songs', $match); 
+        if (isset($_GET['limit'])) {
+            $limit = $_GET['limit'];
+        }
+
+        if (isset($_GET['offset'])) {
+            $offset = $_GET['offset'];
+        }
+
+        $results = $this->CRUD->read('songs', $match, $limit, $offset); 
 
         if ($results != false) {
             echo json_encode($results);

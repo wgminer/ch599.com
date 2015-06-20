@@ -22,7 +22,7 @@ class CRUD extends CI_Model {
         }
     } 
 
-    public function read($table, $match) {
+    public function read($table, $match, $limit = false, $offset = 0) {
 
         $this->db->where($match);
 
@@ -39,6 +39,10 @@ class CRUD extends CI_Model {
             $this->db->select('id, name, slug, email, bio, photo, created_at, updated_at');
         }
 
+        if ($limit) {
+            $this->db->limit($limit, $offset);
+        }
+        
         $query = $this->db->get($table);
 
         if ($query->num_rows() > 0) {
