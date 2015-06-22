@@ -1,10 +1,13 @@
 'use strict';
 
 var app = angular.module('channel599', [
-    'ngRoute'
+    'ngRoute',
+    'angularMoment'
 ]);
 
-app.run();
+app.constant('angularMomentConfig', {
+    preprocess: 'utc'
+});
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -12,7 +15,13 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/playlist.html',
             controller: 'PlaylistCtrl',
         })
+        .when('/:slug', {
+            templateUrl: 'views/song.html',
+            controller: 'SongCtrl',
+        })
         .otherwise({
             redirectTo: '/'
         });
 });
+
+app.run();

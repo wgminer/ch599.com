@@ -3,6 +3,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SongController extends CI_Controller {
 
+    public function segmentTitle ($title) 
+    {
+        $dashPos = strrpos($title, ' - ');
+        
+        if ($dashPos) {
+            $artist = substr($title, 0,  $dashPos);
+            $name = substr($title, $dashPos + 3, strlen($title));
+            return '<a href="" class="song__title__artist">' . $artist . '</a><span class="song__title__name">' . $name . '</span>'; 
+        } else {
+            return '<span class="song__title__name">' . $title . '</span>';
+        }
+    }  
+
+    public function parseTwitter ($text) 
+    {
+
+        /*
+        var output,
+            text    = "@RayFranco is answering to @AnPel, this is a real '@username83' but this is an@email.com, and this is a @probablyfaketwitterusername",
+            regex   = /(^|[^@\w])@(\w{1,15})\b/g,
+            replace = '$1<a href="http://twitter.com/$2">@$2</a>';
+
+        */
+
+        $replaced = preg_replace_callback(
+            '/@(\w{1,15})\b/', 
+            function ($matches) {    
+                // var_dump($matches);
+                return '<a href="http://twitter.com/' . $matches[1] . '">' . $matches[0] . '</a>';
+            }, 
+            $text
+        );
+        return $replaced;
+    }
+
     public function index () {
         
         $match = array('songs.id >' => 0);
@@ -11,6 +46,10 @@ class SongController extends CI_Controller {
 
         if (isset($_GET['user_id'])) {
             $match['user_id'] = $_GET['user_id'];
+        }
+
+        if (isset($_GET['slug'])) {
+            $match['songs.slug'] = $_GET['slug'];
         }
 
         if (isset($_GET['status_id'])) {
@@ -26,6 +65,15 @@ class SongController extends CI_Controller {
         }
 
         $results = $this->CRUD->read('songs', $match, $limit, $offset); 
+
+        if (isset($_GET['formatted'])) {
+            
+            foreach ($results as $song) {
+                // $song->title = $this->segmentTitle($song->title);
+                $song->text = $this->parseTwitter($song->text);
+            }
+
+        }
 
         if ($results != false) {
             echo json_encode($results);

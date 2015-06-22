@@ -2,10 +2,14 @@
 
 angular
     .module('channel599', [
-        'ngRoute'
+        'ngRoute',
+        'angularMoment'
     ])
     .run(function ($rootScope) {
         $rootScope.message = 'YOLO World';
+    })
+    .constant('angularMomentConfig', {
+        preprocess: 'utc'
     })
     .config(function ($routeProvider, $locationProvider) {
 
@@ -22,4 +26,4 @@ angular
                 redirectTo: '/'
             });
 
-    })
+    });
