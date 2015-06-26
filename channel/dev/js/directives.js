@@ -23,6 +23,7 @@ app.directive('song', function ($interval, $location, $rootScope) {
                 $('html, body').animate({scrollTop: offset.top + 'px'}, 500);
                 // $('html, body').scrollTop(offset.top);
 
+                $('.bar').addClass('bar--dark');
                 $element.addClass('song--playing');
                 $element.parent('.view').addClass('view--darken');
 
@@ -54,6 +55,27 @@ app.directive('song', function ($interval, $location, $rootScope) {
                 }, 500);
 
             });
+
+        }
+    };
+});
+
+app.directive('dynamicIframe', function ($interval, $location, $rootScope, Api) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            var $element = $(element);
+
+        }
+    };
+});
+
+app.directive('masthead', function ($interval, $location, $rootScope, Api) {
+    return {
+        restrict: 'C',
+        link: function (scope, element, attrs) {
+
 
         }
     };

@@ -13,8 +13,28 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body ng-class="{'no-scroll': modalOpen}">
+
+        <header class="masthead">
+            <div class="masthead__inner">
+                <h1 class="masthead__title"><a href="#/" class="masthead__link">599</a></h1>
+            </div>
+        </header>
+
+        <div class="bar">
+            <div class="controls controls--navigation">
+                <button class="controls__button"><i class="ion-navicon"></i></button>
+                <button class="controls__button"><i class="ion-ios-search"></i></button>
+            </div>
+            <div class="controls controls--player">
+                <button class="controls__button"><i class="ion-ios-arrow-up"></i></button>
+                <button class="controls__button"><i class="ion-ios-play-outline"></i></button>
+                <button class="controls__button"><i class="ion-ios-arrow-down"></i></button>
+            </div>
+        </div>
+
         
         <div class="player">
+
             <div class="song song--playing">
                 <div class="song__inner">
                     
@@ -26,7 +46,7 @@
 
                     <div class="song__media">
                         <div class="aspect-ratio aspect-ratio--{{playing.source}}">
-                            <iframe dynamic-iframe class="song__iframe" frameborder="0" allowfullscreen></iframe>
+                            <iframe height="100%" width="100%" class="song__iframe" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
 

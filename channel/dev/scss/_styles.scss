@@ -30,16 +30,26 @@ body {
 }
 
 .masthead {
-    margin-bottom: 40px;
-    min-height: 50vh;
+    height: 50vh;
     padding-top: 25vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    width: 100%;
 
-    &--fixed {
-        position: fixed;
-        min-height: 50px;
-        width: 100%;
-        left: 0;
-        top: 0;
+    &--mini {
+        padding: 0;
+        height: 60px;
+
+        .masthead__title {
+            font-size: 32px;
+            line-height: 60px;
+        }
+
+        .masthead__link {
+            color: #222;
+        }
     }
 
     &__inner {
@@ -55,6 +65,54 @@ body {
         margin: 0;
         font-weight: normal;
     }
+
+    &__link {
+        color: #333;
+        text-decoration: none;
+    }
+}
+
+.bar {
+    background-color: #fff;
+    position: fixed;
+    right: 0;
+    width: 61px;
+    border-left: $border;
+    top: 0;
+    bottom: 0;
+    z-index: 4;
+    color: #333;
+    transition: all .5s ease;
+    
+    &--dark {
+        border-left: 1px solid #222;
+        background-color: #333;
+        color: #222;
+    }
+}
+
+.controls {
+    position: absolute;
+    left: 0;
+    // transform: translate3d(0, -50%, 0);
+
+    &--player {
+        bottom: 80px;
+    }
+
+    &--navigation {
+        top: 40px;
+    }
+
+    &__button {
+        width: 60px;
+        height: 60px;
+        font-size: 21px;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .view {
@@ -62,6 +120,7 @@ body {
     background-color: #fff;
     position: relative;
     z-index: 2;
+    padding-top: 50vh;
 
     &--darken {
         background-color: #333;
@@ -69,25 +128,27 @@ body {
 }
 
 .player {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    display: none;
     background-color: #333;
-    min-height: 100vh;
+    height: 100%;
     color: #fff;
+    z-index: 3;
+    overflow: auto;
+
 
     &--playing {
-        z-index: 3;
+        display: block;
     }
 }
 
 .song {
-    transition: height .5s ease;
     @include clear;    
     position: relative;
-    padding: 40px 0 80px;
+    padding: 60px 0 60px;
     min-height: 0vh;
 
     &--playing {
@@ -215,7 +276,7 @@ body {
         position: relative;
         z-index: 1;
         opacity: 1;
-        transition: opacity .5s ease;
+        // transition: opacity .5s ease;
     }
 
     &__iframe {
@@ -229,7 +290,7 @@ body {
     }
 
     &__overlay {
-        transition: opacity .25s ease;
+        // transition: opacity .2.5s ease;
         position: absolute;
         top: 0;
         left: 0;
@@ -241,7 +302,7 @@ body {
     }
 
     &__play {
-        transition: opacity .25s ease;
+        transition: opacity .2.5s ease;
         border-radius: 40px;
         background-color: transparent;
         position: absolute;
