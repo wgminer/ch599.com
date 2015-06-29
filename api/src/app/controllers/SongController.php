@@ -48,6 +48,14 @@ class SongController extends CI_Controller {
             $match['user_id'] = $_GET['user_id'];
         }
 
+        if (isset($_GET['user_slug'])) {
+            $match['user_slug'] = $_GET['user_slug'];
+        }
+
+        if (isset($_GET['genre_id'])) {
+            $match['genre_id'] = $_GET['genre_id'];
+        }
+
         if (isset($_GET['slug'])) {
             $match['songs.slug'] = $_GET['slug'];
         }

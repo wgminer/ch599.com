@@ -201,6 +201,7 @@ body {
     &__content {
         flex: 1 1 auto;
         padding: 20px 150px 20px 20px;
+        position: relative;
     }
 
     &__title {
@@ -222,7 +223,7 @@ body {
     &__actions {
         transition: all .25s ease;
         @include clear;
-        right: 40px;
+        right: 0;
         top: 50%;
         transform: translateY(-50%);
         position: absolute;
@@ -243,6 +244,7 @@ body {
         border-radius: 30px;
         font-size: 21px;
         border: $border;
+        outline: none;
 
         &:hover {
             color: $brand-color;

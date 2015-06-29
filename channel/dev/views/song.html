@@ -1,3 +1,20 @@
-
-
-<!-- {{song}} -->
+<div class="song" data-source="<%= source %>" data-source-id="<%= source_id %>" data-source-url="<%= source_url %>">
+    <div class="song__inner">
+        <div class="song__meta">
+            <a href="#/<%= user_name %>" class="song__author"><%= user_name %></a>
+            <span class="song__date"><%= moment(created_at).fromNow() %></span>
+        </div>
+        <div class="song__media">
+            <div class="aspect-ratio aspect-ratio--<%= source %>">
+                <img src="<%= image_url %>" alt="" class="song__image">
+            </div>
+            <div class="song__overlay" ng-click="play(song)">
+                <button class="song__play"><i class="ion-play"></i></button>
+            </div>
+        </div>
+        <div class="song__info">
+            <h2 class="song__title"><%= title %></h2>
+            <p class="song__text"><%= text %></p>
+        </div>
+    </div>
+</div>

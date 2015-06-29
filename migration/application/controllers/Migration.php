@@ -79,6 +79,12 @@ class Migration extends CI_Controller {
                 $status_id = 3;
             } 
 
+            if ($post->post_genre_id) {
+                $genre_id = $post->post_genre_id;
+            } else {
+                $genre_id = 0;
+            }
+
             $song = array(
                 'id' => $post->post_id,
                 'title' => $post->post_title,
@@ -91,7 +97,7 @@ class Migration extends CI_Controller {
                 'source_url' => 'http://www.youtube.com/watch?v=' . $post->post_media, 
                 'source_id' => $post->post_media, 
                 'user_id' => $post->post_author_id,
-                'genre_id' => $post->post_genre_id, 
+                'genre_id' => $genre_id, 
                 'created_at' => $post->post_created,
                 'updated_at' => $post->post_updated
             );

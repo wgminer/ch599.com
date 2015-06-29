@@ -5,14 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Channel 599</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
+
         <script src="//use.typekit.net/owf6hsl.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body ng-class="{'no-scroll': modalOpen}">
+    <body player>
 
         <header class="masthead">
             <div class="masthead__inner">
@@ -21,50 +22,30 @@
         </header>
 
         <div class="bar">
-            <div class="controls controls--navigation">
-                <button class="controls__button"><i class="ion-navicon"></i></button>
-                <button class="controls__button"><i class="ion-ios-search"></i></button>
+            <div class="controls controls--navigation controls--show">
+                <button id="filters" class="controls__button"><i class="ion-ios-settings"></i></button>
+                <button id="search" class="controls__button"><i class="ion-ios-search"></i></button>
             </div>
-            <div class="controls controls--player">
-                <button class="controls__button"><i class="ion-ios-arrow-up"></i></button>
-                <button class="controls__button"><i class="ion-ios-play-outline"></i></button>
-                <button class="controls__button"><i class="ion-ios-arrow-down"></i></button>
+            <div class="controls controls--player" ng-class="{'controls--show': showControls}">
+                <button id="previous" ng-click="prev()" class="controls__button"><i class="ion-ios-arrow-up"></i></button>
+                <button id="play" ng-show="player.status == 2" ng-click="play()" class="controls__button"><i class="ion-ios-play"></i></button>
+                <button id="pause" ng-show="player.status == 1" ng-click="pause()" class="controls__button"><i class="ion-ios-pause"></i></button>
+                <button id="loading" ng-show="player.status != 1 && player.status != 2" class="controls__button"><i class="ion-ios-loop-strong"></i></button>
+                <button id="next" ng-click="next()" class="controls__button"><i class="ion-ios-arrow-down"></i></button>
             </div>
         </div>
 
+        <div class="nav"></div>
+        <div class="filters"></div>
+
+        <div class="view" ng-view="" autoscroll=""></div>
+
+        <div class="player"></div>
         
-        <div class="player">
-
-            <div class="song song--playing">
-                <div class="song__inner">
-                    
-                    <div class="song__meta">
-                        <a href="" class="song__author">{{playing.user_name}}</a>
-                        <span class="song__date" am-time-ago="playing.created_at">{{playing.created_at}}</span>
-                        <span class="song__genre">{{playing.genre_name}}</span>
-                    </div>
-
-                    <div class="song__media">
-                        <div class="aspect-ratio aspect-ratio--{{playing.source}}">
-                            <iframe height="100%" width="100%" class="song__iframe" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <div class="song__info">
-                        <h2 class="song__title" ng-bind-html="playing.title | html"></h2>
-                        <p class="song__text" ng-bind-html="playing.text | html"></p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <main class="view" ng-view="" autoscroll="true"></main>
-
         <script src="//www.youtube.com/iframe_api"></script>
         <script src="//connect.soundcloud.com/sdk.js"></script>
         <script src="//w.soundcloud.com/player/api.js"></script>
-        
+
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/moment/moment.js"></script>
         <script src="../bower_components/underscore/underscore.js"></script>

@@ -492,7 +492,8 @@ body {
     width: 100%; }
   .song__content {
     flex: 1 1 auto;
-    padding: 20px 150px 20px 20px; }
+    padding: 20px 150px 20px 20px;
+    position: relative; }
   .song__title {
     white-space: nowrap;
     overflow: hidden;
@@ -509,7 +510,7 @@ body {
     max-width: 600px; }
   .song__actions {
     transition: all 0.25s ease;
-    right: 40px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     position: absolute;

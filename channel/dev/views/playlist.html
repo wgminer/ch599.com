@@ -1,24 +1,22 @@
-<div class="song" song ng-repeat="song in songs track by song.id">
-    <div class="song__inner">
-        
-        <div class="song__meta">
-            <a href="" class="song__author">{{song.user_name}}</a>
-            <span class="song__date" am-time-ago="song.created_at" am-preprocess="utc">{{song.created_at}}</span>
-            <span class="song__genre">{{song.genre_name}}</span>
-        </div>
-
-        <div class="song__media" ng-click="playSong(song)">
-            <div class="aspect-ratio aspect-ratio--{{song.source}}">
-                <img src="{{song.image_url}}" alt="" class="song__image">
+<div class="playlist">
+    <div class="song" ng-repeat="song in songs track by $index" data-source="{{ song.source }}" data-source-id="{{ song.source_id }}" data-source-url="{{ song.source_url }}">
+        <div class="song__inner">
+            <div class="song__meta">
+                <a href="#/author/{{ song.user_slug }}" class="song__author">{{ song.user_name }}</a>
+                <span class="song__date" am-time-ago="song.created_at"></span>
             </div>
-            <div class="song__overlay"></div>
-            <button class="song__play"><i class="ion-play"></i></button>
+            <div class="song__media">
+                <div class="aspect-ratio aspect-ratio--{{ song.source }}">
+                    <img src="{{ song.image_url }}" alt="" class="song__image">
+                </div>
+                <div class="song__overlay" ng-click="play(song)">
+                    <button class="song__play"><i class="ion-play"></i></button>
+                </div>
+            </div>
+            <div class="song__info">
+                <h2 class="song__title">{{ song.title }}</h2>
+                <p class="song__text">{{ song.text }}</p>
+            </div>
         </div>
-
-        <div class="song__info">
-            <h2 class="song__title" ng-bind-html="song.title | html"></h2>
-            <p class="song__text" ng-bind-html="song.text | html"></p>
-        </div>
-
     </div>
 </div>

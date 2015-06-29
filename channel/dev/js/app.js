@@ -13,7 +13,15 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/playlist.html',
-            controller: 'PlaylistCtrl',
+            controller: 'MainCtrl',
+        })
+        .when('/author/:slug', {
+            templateUrl: 'views/playlist.html',
+            controller: 'AuthorCtrl',
+        })
+        .when('/genre/:slug', {
+            templateUrl: 'views/playlist.html',
+            controller: 'GenreCtrl',
         })
         .when('/:slug', {
             templateUrl: 'views/song.html',
@@ -23,5 +31,3 @@ app.config(function ($routeProvider) {
             redirectTo: '/'
         });
 });
-
-app.run();
