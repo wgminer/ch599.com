@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 				tasks: ['sass:dev'],
 				options: {
 					livereload: true,
-					spawn:false
+					spawn: false
 				},
 			},
 
