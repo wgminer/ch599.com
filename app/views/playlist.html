@@ -1,0 +1,9 @@
+<div class="playlist">
+    <song ng-repeat="song in playlist track by song.id" class="song playlist__row">
+        <button class="song__play song__hover">
+            <i class="ion-play"></i>
+            <i class="ion-pause"></i>
+        </button>
+        <h3 class="song__title">{{song.title}}</h3>
+    </song>
+</div>

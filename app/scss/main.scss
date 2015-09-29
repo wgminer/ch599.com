@@ -1,0 +1,95 @@
+@import "mixins";
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-family: "Open Sans", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    @include clearfix;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.masthead {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 40px;
+
+    &__title {
+        float: left;
+        font-size: 14px;
+        line-height: 40px;
+        margin: 0;
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+    }
+}
+
+.song {
+    @include clearfix;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: block;
+    border-bottom: 1px solid #eee;
+    transition: opacity .2s ease;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+        background-color: #eee;
+
+        .song__play {
+            opacity: 1;
+        }
+    }
+
+    &--loading {
+        opacity: .25;
+        pointer-events: none;
+    }
+    
+    .ion-pause {
+        display: none;
+    }
+
+    &--playing {
+
+        .ion-play {
+            display: none;
+        }
+
+        .ion-pause {
+            display: block;
+        }
+    }
+
+    &__play {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        float: left;
+        width: 40px;
+        line-height: 20px;
+        padding: 10px 0;
+        opacity: 0;
+        cursor: pointer;
+        transition: opacity .2s ease;
+    }
+
+    &__title {
+        @include ellipsis;
+        font-size: 14px;
+        float: left;
+        width: 400px;
+        line-height: 20px;
+        margin: 0;
+        padding: 10px 0;
+    }
+}
