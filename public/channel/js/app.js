@@ -2,7 +2,8 @@
 
 var app = angular.module('channel599', [
     'ngRoute',
-    'angularMoment'
+    'angularMoment',
+    'angular-underscore'
 ]);
 
 app.constant('angularMomentConfig', {

@@ -31,50 +31,50 @@ app.directive('song', function ($interval, $rootScope, Player) {
         restrict: 'C',
         link: function (scope, element, attrs) {
 
-            var randomAlign = function () {
-                var floats = ['song--right', 'song--left', 'song--middle'];
-                var r = Math.floor(Math.random() * floats.length);
-                return floats[r];
-            }
+            // var randomAlign = function () {
+            //     var floats = ['song--right', 'song--left', 'song--middle'];
+            //     var r = Math.floor(Math.random() * floats.length);
+            //     return floats[r];
+            // }
 
             var $song = $(element);
-            scope.song.playing = false;
+            // scope.song.playing = false;
 
             $song.addClass('song--' + scope.song.source);
 
-            if (scope.song.highlighted == '1') {
-                $song.addClass('song--highlighted');
-            }
+            // if (scope.song.highlighted == '1') {
+            //     $song.addClass('song--highlighted');
+            // }
 
-            var makePlaying = function () {
-                scope.song.playing = true;
-                $song.addClass('song--playing');
-                $rootScope.$broadcast('positionPlayer');
-            }
+            // var makePlaying = function () {
+            //     scope.song.playing = true;
+            //     $song.addClass('song--playing');
+            //     $rootScope.$broadcast('positionPlayer');
+            // }
 
-            scope.$on('createPlayer', function (event, song) {
+            // scope.$on('createPlayer', function (event, song) {
 
-                if (scope.song != song) {
-                    scope.song.playing = false;
-                    $song.removeClass('song--playing');   
-                } else {
-                    makePlaying();
-                }
+            //     if (scope.song != song) {
+            //         scope.song.playing = false;
+            //         $song.removeClass('song--playing');   
+            //     } else {
+            //         makePlaying();
+            //     }
 
-            });
+            // });
 
-            var player = Player.get();
-            if (typeof player != 'undefined' && player.source_id == scope.song.source_id) {
-                makePlaying();
-            }
+            // var player = Player.get();
+            // if (typeof player != 'undefined' && player.source_id == scope.song.source_id) {
+            //     makePlaying();
+            // }
 
-            scope.play = function () {
-                scope.song.playing = true;
-                $song.addClass('song--playing');
+            // scope.play = function () {
+            //     scope.song.playing = true;
+            //     $song.addClass('song--playing');
 
-                scope.song.index = scope.$index;
-                $rootScope.$broadcast('createPlayer', scope.song);
-            }
+            //     scope.song.index = scope.$index;
+            //     $rootScope.$broadcast('createPlayer', scope.song);
+            // }
 
         }
     };
@@ -249,6 +249,48 @@ app.directive('player', function ($interval, $rootScope, Player) {
     };
 });
 
+app.directive('scrolljack', function ($interval, $rootScope, Api) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            var jack = function (e) {
+
+
+                e = window.event || e;
+                var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+
+                console.log(delta, element[0].scrollWidth - element[0].clientWidth, element[0].scrollLeft)
+
+                if ((delta == 1 && element[0].scrollLeft != 0) || (delta == -1 && (element[0].scrollWidth - element[0].clientWidth != element[0].scrollLeft))) {
+                    element[0].scrollLeft -= (delta * 60); 
+                    e.preventDefault();
+                } else {
+                    $(element).off('mousewheel', jack);
+                }
+                    
+                
+            }
+
+            imagesLoaded( element[0], function( instance ) {
+                
+
+                if (element[0].clientWidth < element[0].scrollWidth) {
+                    $(element).hover(function () {
+                        console.log('on');
+                        $(element).on('mousewheel', jack);
+                    }, function () {
+                        console.log('off');
+                        $(element).off('mousewheel', jack);
+                    });
+                }
+            });
+
+        }
+    }
+});
+    
+
 app.directive('playlist', function ($interval, $rootScope, Api) {
     return {
         restrict: 'C',
@@ -267,7 +309,7 @@ app.directive('playlist', function ($interval, $rootScope, Api) {
                         $rootScope.$broadcast('playlistLoaded');
 
                         if (callback.length > 0) {
-                            scope.songs = scope.songs.concat(callback);
+                            scope.playlist = scope.playlist.concat(callback);
                         } else {
                             $(window).off('scroll', infiniteScroll);
                         }
@@ -277,7 +319,7 @@ app.directive('playlist', function ($interval, $rootScope, Api) {
             }
 
             scope.params = '';
-            scope.songs = [];
+            scope.playlist = [];
             scope.offset = 0;
             scope.loading = false;
 
@@ -298,15 +340,15 @@ app.directive('playlist', function ($interval, $rootScope, Api) {
             init();
             
             scope.$on('nextSong', function (event, index) {
-                var playing = _.findWhere(scope.songs, {playing: true});
+                var playing = _.findWhere(scope.playlist, {playing: true});
                 var index = playing.index + 1;
-                scope.songs[index].index = index;
-                $rootScope.$broadcast('createPlayer', scope.songs[index]);
+                scope.playlist[index].index = index;
+                $rootScope.$broadcast('createPlayer', scope.playlist[index]);
             });
 
             scope.$on('prevSong', function (event, index) {
-                var playing = _.findWhere(scope.songs, {playing: true});
-                $rootScope.$broadcast('createPlayer', scope.songs[playing.index - 1]);
+                var playing = _.findWhere(scope.playlist, {playing: true});
+                $rootScope.$broadcast('createPlayer', scope.playlist[playing.index - 1]);
             });
 
             var infiniteScroll = function () {

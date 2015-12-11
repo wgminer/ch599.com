@@ -132,7 +132,6 @@
             <label for="music_video-no" class="form-group__label form-group__label--radio"><input id="music_video-no" name="music_video-no" class="form-group__control form-group__control--radio" type="radio" ng-model="preview.highlighted" value="0"> No</label>
         </div>
 
-        <p>{{preview | json}}></p>
         <button ng-show="!preview.id" ng-click="submit(preview)" class="button">{{ preview.status_id == 2 ? 'Save Draft' : 'Post Song' }}</button>
         <button ng-show="preview.id" ng-click="update(preview, preview.$index)" class="button">Update Song</button>
     </div>

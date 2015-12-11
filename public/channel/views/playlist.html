@@ -1,30 +1,16 @@
-<header class="masthead">
-    <div class="masthead__inner">
-        <p class="masthead__bio">You're on <a class="masthead__link" href="latest">Channel 599 </a>—<br>A music blog started in Rob's room in 2010.</p>
-    </div>
-</header>
-
 <div class="playlist">
-    <div class="playlist__inner">
-        <div ng-repeat="song in songs track by $index" class="song" random-position>
-            <div class="song__inner">
-                <div class="song__meta">
-                    <a href="author/{{ song.user_slug }}" class="song__author">{{ song.user_name }}</a>
-                    <span class="song__date" am-time-ago="song.created_at"></span>
-                </div>
-                <div class="song__media">
-                    <div class="aspect-ratio aspect-ratio--{{ song.source }}">
-                        <img src="{{ song.image_url }}" alt="" class="song__image">
-                    </div>
-                    <div class="song__overlay" ng-click="play(song)">
-                        <button class="song__play"><i class="ion-play"></i></button>
-                    </div>
-                </div>
-                <div class="song__info">
-                    <h2 class="song__title" ng-bind-html="song.title | unsafe"></h2>
-                    <p class="song__text" ng-bind-html="song.text | unsafe"></p>
-                </div>
+
+    <div class="song song--{{ song.source }}" ng-repeat="song in playlist">
+        <div class="song__media">
+            <div class="aspect-ratio aspect-ratio--{{ song.source }}">
+                <img src="{{ song.image_url }}" alt="" class="song__image">
             </div>
         </div>
+        <div class="song__details">
+            <h2 class="song__title">{{ song.title }}</h2>
+            <p class="song__text" ng-bind-html="song.text | unsafe"></p>
+        </div>
+        
     </div>
+
 </div>

@@ -1,0 +1,48 @@
+
+.song {
+
+    &:last-child {
+        margin-right: 0;
+    }
+    
+    &--soundcloud {
+        max-width: 660px * .5625;
+    }
+
+    &--youtube {
+        max-width: 660px;
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
+
+.aspect-ratio {
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    
+    &--soundcloud {
+        padding-bottom: 100%;
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    &--youtube {
+        padding-bottom: 56.25%;
+
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+        }
+    }
+}

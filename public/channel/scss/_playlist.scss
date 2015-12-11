@@ -1,0 +1,10 @@
+.playlist {
+    padding-top: 100px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.month {
+    margin-bottom: 120px;
+    @include clear;
+}
