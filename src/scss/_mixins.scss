@@ -1,0 +1,73 @@
+@mixin center ($position) {
+	position: $position;
+	left: 50%;
+	top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+@mixin centerX ($position) {
+	position: $position;
+	left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+}
+
+@mixin centerY ($position) {
+	position: $position;
+	top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+}
+
+@mixin clear {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin unellipsis {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+@mixin underline {
+    color: $text-color;
+    text-decoration: none;
+    background: 
+        linear-gradient(#fff, #fff), 
+        linear-gradient(#fff, #fff), 
+        linear-gradient($text-color, $text-color);
+    background-size: 
+        0.05rem 1px, 
+        0.05rem 1px, 
+        1px 1px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    text-shadow: 
+        0.03rem 0 #fff, 
+        -0.03rem 0 #fff,
+        0 0.03rem #fff,
+        0 -0.03rem #fff,
+        0.06rem 0 #fff,
+        -0.06rem 0 #fff,
+        0.09rem 0 #fff,
+        -0.09rem 0 #fff,
+        0.12rem 0 #fff,
+        -0.12rem 0 #fff,
+        0.15rem 0 #fff,
+        -0.15rem 0 #fff;
+    background-position: 
+        0% 93%, 
+        100% 93%, 
+        0% 93%; 
+}   

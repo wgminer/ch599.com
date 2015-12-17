@@ -1,16 +1,23 @@
 {
   "name": "599",
-  "version": "1.0.0",
-  "app": "app",
-  "admin": "public/admin",
-  "channel": "public/channel",
-  "dependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-connect": "~0.7.1",
-    "grunt-contrib-less": "~0.11.1",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-sass": "^0.14.1",
-    "load-grunt-tasks": "^0.4.0",
-    "time-grunt": "^0.3.1"
+  "version": "2.0.0",
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "browser-sync": "^2.8.2",
+    "cssnano": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-jade-usemin": "1.0.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-rev": "^6.0.1",
+    "gulp-sass": "^2.0.4",
+    "gulp-uglify": "^1.5.1",
+    "gulp-usemin": "^0.3.16",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.8.0",
+    "vinyl-ftp": "^0.4.5"
   }
 }
