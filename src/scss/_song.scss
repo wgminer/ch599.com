@@ -29,6 +29,13 @@
         }
     }
 
+    &.is--playing {
+        .song__image img,
+        .song__info {
+            opacity: 0 !important;
+        }
+    }
+
     &__media {
         position: relative;
         cursor: pointer;
@@ -117,5 +124,14 @@
         font-size: 3rem;
         color: #111;
         z-index: -1;
+    }
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
     }
 }

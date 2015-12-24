@@ -10,7 +10,7 @@
     
     <?php foreach ($songs as $song) : ?>
 
-    <article class="song song--<?php echo $song->source; ?>">
+    <article class="song song--<?php echo $song->source; ?>" source="<?php echo $song->source; ?>" source-id="<?php echo $song->source_id; ?>" source-url="<?php echo $song->source_url; ?>">
         <div class="song__media">
             <div class="song__image">
                 <img src="<?php echo $song->image_url; ?>" alt="">

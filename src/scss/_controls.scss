@@ -1,4 +1,5 @@
 
+
 .bar {
 	position: fixed;
 	left: 0;
@@ -8,30 +9,36 @@
 	border-right: 1px solid #eee;
 }
 
-.player {
-
-}
-
-.controls {
-
-	&__play {
-
-	}
-
-	&__prev {
-
-	}
-
-	&__next {
-
-	}
-}
-
 .control-group {
 	position: absolute;
-	top: 50%;
-	transform: translate3d(0, -50%, 0);
 	width: 100%;
+	
+	&--site {
+		top: 0;
+	}
+
+	&--player {
+		top: 50%;
+		transform: translate3d(0, -50%, 0);
+	}
+
+	&.is--playing {
+		.control--play {
+			display: block;
+		}
+	}
+
+	&.is--paused {
+		.control--pause {
+			display: block;
+		}
+	}
+
+	&.is--loading {
+		.control--loading {
+			display: block;
+		}
+	}
 }
 
 .control {
@@ -43,4 +50,38 @@
 	display: block;
 	margin: 0;
 	background-color: transparent;
+	text-align: center;	
+
+	&--home {
+		line-height: 60px;
+		height: 60px;
+		font-size: 1.25rem;
+		color: $text-color;
+	}
+
+	&--search {
+		font-size: 1.25rem;
+	}
+
+	&--play {
+		display: none;
+	}
+
+	&--pause {
+		display: none;
+	}
+
+	&--loading {
+		display: none;
+
+		i:before {
+			animation: spin 1s infinite linear;
+			display: block;
+		}
+	}
+
+	@keyframes spin {
+	    0% { transform: rotate(0deg); }
+	    100% { transform: rotate(359deg); } 
+	}
 }

@@ -2,38 +2,34 @@
 
 $(function () {
 
-    var bg = '#ff0000';
+    Player.init($('.control-group--player'));
 
-    $('.dropdown__title').click(function () {
+       $('.song__media').click(function () {
+           Player.create($(this).parents('.song'));
+       });
 
-        $(this).parents('.dropdown').toggleClass('is--open');
+       $('.control--play').click(function () {
+           Player.play();
+       });
 
-    });
+       $('.control--pause').click(function () {
+           Player.pause();
+       });
 
-    // var setColor = function (hex) {
-    //     $('.hero').css('background-color', hex);
-    // }
+       $('.control--next').click(function () {
+           Player.next();
+       });
 
-    // setColor(bg);
+       $('.control--previous').click(function () {
+           Player.previous();
+       });
 
-    // $(window).scroll(function () {
+       $('.song__annotation').click(function () {
+           Player.seek($(this));
+       });
 
-    //     var st = $('body').scrollTop();
-    //     // console.log(st);
+       $('body').removeClass('faded');
 
-    //     $('.post').each(function () {
 
-    //         var top = $(this).position().top;
-    //         var height = $(this).outerHeight();
-    //         var hex = $(this).attr('data-color');
-
-    //         if (st >= top - (height/2) && st <= top + (height/2) && bg != hex) {
-    //             bg = hex;
-    //             setColor(bg);
-    //         }
-
-    //     });
-
-    // });
 
 })
