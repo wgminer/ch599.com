@@ -74,12 +74,16 @@
 .toolbar {
     @include clear;
     line-height: 2.5rem;
-    padding: 0 2rem 0 60px;
+    padding: 0 2rem;
     position: absolute;
     z-index: 50;
     top: 0;
     width: 100%;
     left: 0;
+
+    &__title {
+        float: left;
+    }
 
     &__group {
         @include clear;
@@ -96,6 +100,10 @@
     }
 }
 
+.dashboard {
+    padding: 4rem 0 8rem;
+}
+
 .settings {
     max-width: 33%;
     margin: 0 auto;
@@ -103,5 +111,88 @@
     &__group {
         @include clear;
         margin: 15vh 0;
+    }
+}
+
+.tab-group {
+    @include clear;
+    padding: 0 2rem;
+}
+
+.tab {
+    float: left;
+    margin-right: 1.5rem;
+    padding-bottom: 5px;
+
+    &.is--active {
+        color: $text-color;
+        border-bottom: 2px solid $text-color;
+        padding-bottom: 3px;
+    }
+}
+
+.list {
+    table-layout: fixed;
+    width: 100%;
+    font-size: .875rem;
+    margin-top: 2rem;
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+    th {
+        text-align: left;
+        padding: 0 1rem 1rem;
+        cursor: pointer;
+    }
+
+    tr {
+        cursor: pointer;
+    }
+
+    tr:hover {
+        background-color: #eee;
+    }
+
+    &__image {
+        width: 10%;
+        padding: 1rem 0 1rem 2rem;
+    }   
+
+    &__title {
+        width: 60%;
+        padding: 1rem;
+    }
+
+    &__song-title {
+        font-size: 16px;
+        @include ellipsis;
+        font-weight: 700;
+        color: #222;
+        margin: 0;
+    }
+
+    &__song-text {
+        margin: 0;
+        font-size: .875rem;
+        color: $text-color;
+    }
+
+    &__genre {
+        width: 15%;
+        padding: 2.5rem 1rem 1rem;
+        @include ellipsis;
+    }
+
+    &__created-at {
+        width: 15%;
+        padding: 2.5rem 1rem 1rem;
+        @include ellipsis;
     }
 }

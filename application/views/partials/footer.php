@@ -13,7 +13,18 @@
 
     <?php if (isset($user)) : ?>
 
+    <script>
+    var baseUrl = '<?php echo base_url() ?>';
+    var user = {
+        id: parseInt(<?php echo $user->id ?>),
+        name: '<?php echo $user->name ?>',
+        slug: '<?php echo $user->slug ?>'
+    };
+
+    </script>
+
     <script src="<?php echo base_url() ?>libs/angular/angular.js"></script>
+    <script src="<?php echo base_url() ?>libs/angular-route/angular-route.js"></script>
     <script src="<?php echo base_url() ?>public/js/admin/app.js"></script>
     <script src="<?php echo base_url() ?>public/js/admin/controllers.js"></script>
     <script src="<?php echo base_url() ?>public/js/admin/directives.js"></script>

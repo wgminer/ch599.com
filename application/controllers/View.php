@@ -19,11 +19,13 @@ class View extends CI_Controller {
     }
 
     public function dashboard () {
+        $data['admin'] = true;
         $data['user'] = $this->is_authed(true);
         $this->load->view('dashboard', $data);
     }
 
     public function settings () {
+        $data['admin'] = true;
         $data['user'] = $this->is_authed(true);
         $this->load->view('settings', $data);
     }
@@ -47,6 +49,7 @@ class View extends CI_Controller {
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
+            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
         }
 
         if ($this->input->get('ajax', true)) {
@@ -72,6 +75,7 @@ class View extends CI_Controller {
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
+            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
         }
 
         if ($this->input->get('ajax', true)) {
@@ -96,6 +100,7 @@ class View extends CI_Controller {
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
+            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
         }
 
         if ($this->input->get('ajax', true)) {

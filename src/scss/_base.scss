@@ -17,3 +17,7 @@ a {
     color: $brand-color;
     text-decoration: none;
 }
+
+.ellipsis {
+	@include ellipsis;
+}

@@ -1,23 +1,49 @@
 'use strict';
 
-app.directive('masthead', function ($interval, $rootScope) {
+app.directive('tabs', function ($location, Api) {
     return {
-        restrict: 'C',
+        restrict: 'A',
         link: function (scope, element, attrs) {
 
-            $(window).scroll(function () {
-                var st = $(window).scrollTop();
+            Api.get('/songs?user_id=' + user.id + '&status_id=3')
+                .then(function (callback) {
+                    scope.errors = callback.length;
+                }, function (error) {
+                    console.log(error);
+                });
 
-                if (st >= 70) {
-                    $(element).addClass('masthead__fixed');
-                } else {
-                    $(element).removeClass('masthead__fixed');
+            scope.$on('$routeChangeSuccess', function () {
+                var path = $location.path();
+                scope.status = 1;
+                if (path == '/drafts') {
+                    scope.status = 2;
+                } else if (path == '/errors') {
+                    scope.status = 3;
                 }
             });
 
         }
     };
 });
+
+app.directive('dropdown', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            var $element = $(element);
+
+            scope.toggle = function () {
+                $element.toggleClass('is--open');
+            }
+
+        }
+    };
+})
+
+$('.dropdown__title').click(function () {
+        
+    })
 
 app.directive('deleteSong', function ($interval, $rootScope, Api) {
     return {

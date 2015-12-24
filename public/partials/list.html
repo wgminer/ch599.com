@@ -1,0 +1,21 @@
+<table class="list">
+    <!-- <thead>
+        <tr>
+            <th class="list__image"></th>
+            <th class="list__title">Title</th>
+            <th class="list__genre">Genre</th>
+            <th class="list__created-at">Created</th>
+        </tr>
+    </thead> -->
+    <tbody>
+        <tr ng-repeat="song in songs">
+            <td class="list__image"><img src="{{song.image_url}}" alt=""></td>
+            <td class="list__title">
+                <p class="list__song-title">{{song.title}}</p>
+                <p class="list__song-text">{{song.text}}</p>
+            </td>
+            <td class="list__genre">{{song.genre_name}}</td>
+            <td class="list__created-at">{{song.created_at}}</td>
+        </tr>
+    </tbody>
+</table>

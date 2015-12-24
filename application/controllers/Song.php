@@ -44,14 +44,13 @@ class Song extends CI_Controller {
         $results = $this->CRUD->read('songs', $match, $limit, $offset); 
 
         if ($results != false) {
-
-            if (isset($_GET['formatted'])) {
-                foreach ($results as $song) {
-                    // $song->title = $this->segmentTitle($song->title);
-                    $song->text = $this->parseTwitter($song->text);
+            
+            foreach ($results as $song) {
+                if (isset($_GET['formatted'])) {
+                    $song->text = $this->Format->parseTwitter($song->text);
                 }
+                $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
             }
-
             echo json_encode($results);
         } else {
             echo json_encode([]);
@@ -72,7 +71,7 @@ class Song extends CI_Controller {
             'source' => $input['source'],
             'source_url' => $input['source_url'],
             'source_id' => $input['source_id'],
-            'user_id' => 2, //$this->session->userdata('user_id'),
+            'user_id' => $this->session->userdata('user_id'),
             'genre_id' => $input['genre_id'],
             'status_id' => $input['status_id']
         );

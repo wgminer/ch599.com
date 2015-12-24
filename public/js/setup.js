@@ -34,8 +34,4 @@ $(function () {
         Playlist.paginate($(this));
     });
 
-    $('.dropdown__title').click(function () {
-        $(this).parent('.dropdown').toggleClass('is--open');
-    })
-
 })

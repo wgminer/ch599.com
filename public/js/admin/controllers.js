@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('DashboardCtrl', function ($scope, $rootScope, $location, Api, YouTube, SoundCloud) {
+app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube, SoundCloud) {
 
     Api.get('/statuses')
         .then(function (callback) {
@@ -16,30 +16,20 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, $location, Api, Yo
             console.log(error);
         });
 
-    var initLists = function () {
-        Api.get('/songs?user_id=2&status_id=1')
-            .then(function (callback) {
-                $scope.published = callback;
-            }, function (error) {
-                console.log(error);
-            });
-
-        Api.get('/songs?user_id=2&status_id=2')
-            .then(function (callback) {
-                $scope.draft = callback;
-            }, function (error) {
-                console.log(error);
-            });
-
-        Api.get('/songs?user_id=2&status_id=3')
-            .then(function (callback) {
-                $scope.error = callback;
-            }, function (error) {
-                console.log(error);
-            });
+    var path = $location.path();
+    var status = 1;
+    if (path == '/drafts') {
+        status = 2;
+    } else if (path == '/errors') {
+        status = 3;
     }
 
-    initLists();
+    Api.get('/songs?user_id=' + user.id + '&status_id=' + status)
+        .then(function (callback) {
+            $scope.songs = callback;
+        }, function (error) {
+            console.log(error);
+        });
 
     $scope.visibleList = 1;
     $rootScope.modalOpen = false;
