@@ -1,7 +1,6 @@
 // Requirements
 
 var gulp = require('gulp'); 
-var browserSync = require('browser-sync');
 var clean = require('gulp-clean');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
@@ -15,11 +14,6 @@ var livereload = require('gulp-livereload');
 // var ftp = require('vinyl-ftp');
 // var gutil = require('gulp-util');
 // var secrets = require('./secrets.json');
-
-gulp.task('clean', function(cb) {
-    return gulp.src('public', {read: false})
-        .pipe(clean());
-});
 
 gulp.task('styles', function () {
 
@@ -43,12 +37,6 @@ gulp.task('scripts', function () {
         .pipe(livereload());
 });
 
-gulp.task('browser-sync', function () {
-    browserSync.init(['public/css/**/*.css', 'public/js/**/*.js'], {
-        proxy: 'localhost:8888/channel-599',
-    });
-});
-
 gulp.task('php', function () {
     return gulp.src('./application/views/**/*.php')
         .pipe(livereload());
@@ -56,8 +44,7 @@ gulp.task('php', function () {
 
 gulp.task('serve', ['styles', 'scripts'], function () {
     livereload.listen();
-    gulp.watch('./application/views/**/*.php', ['php']);
-    gulp.watch('./src/scss/**/*.scss', ['styles']);
-    // gulp.watch('./src/**/*.jade', ['markup']);
-    gulp.watch('./src/js/**/*.js', ['scripts']);
+    gulp.watch('views/**/*.php', {cwd: './application'}, ['php']);
+    gulp.watch('scss/**/*.scss', {cwd: './src'}, ['styles']);
+    gulp.watch('js/**/*.js', {cwd: './src'}, ['scripts']);
 });

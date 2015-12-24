@@ -7,13 +7,13 @@ html {
 }
 
 body {
-    font-family: "minion-pro", monospace;
+    font-family: "consolas", monospace;
     color: $text-color;
     line-height: 1.5;
     background-color: #fff;
 }
 
 a {
+    color: $brand-color;
     text-decoration: none;
-    color: $text-color;
 }

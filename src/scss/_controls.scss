@@ -1,0 +1,46 @@
+
+.bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 60px;
+	height: 100%;
+	border-right: 1px solid #eee;
+}
+
+.player {
+
+}
+
+.controls {
+
+	&__play {
+
+	}
+
+	&__prev {
+
+	}
+
+	&__next {
+
+	}
+}
+
+.control-group {
+	position: absolute;
+	top: 50%;
+	transform: translate3d(0, -50%, 0);
+	width: 100%;
+}
+
+.control {
+	width: 100%;
+	line-height: 40px;
+	height: 40px;
+	border: 0;
+	padding: 0;
+	display: block;
+	margin: 0;
+	background-color: transparent;
+}

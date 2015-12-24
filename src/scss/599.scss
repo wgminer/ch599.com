@@ -1,8 +1,15 @@
 @import "variables";
 @import "mixins";
 
+// Core
 @import "normalize";
 @import "base";
 @import "layout";
+
+// Elements
 @import "forms";
 @import "buttons";
+
+// Components
+@import "song";
+@import "controls";

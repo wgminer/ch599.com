@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "devDependencies": {
     "autoprefixer": "^6.1.2",
-    "browser-sync": "^2.8.2",
     "cssnano": "^3.4.0",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",

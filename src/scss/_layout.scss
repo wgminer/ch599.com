@@ -91,114 +91,37 @@
 }
 
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
+    padding: 33vh 2rem;
     transition: background-color .25s ease;
 
+    h1 {
+        display: inline;
+        font-size: 1rem;
+        margin: 0;
+    }
+
     &__title {
-        text-align: center;
-        font-family: $display;
-        font-weight: 400;
-        font-size: 4rem;
+        width: 100%;
+        font-family: $title;
+        font-weight: 700;
+        font-size: 3rem;
         line-height: 1;
         margin: 0;
+        letter-spacing: -1px;
 
         a {
-            color: #eee;
+            text-decoration: none;
+            color: $text-color;
         }
+    }
+
+    &__text {
+        color: $text-color;
+        // max-width: 50%;
     }
 }
 
 .feed {
-}
-
-.song {
-    margin: 0 auto;
-
-    &--soundcloud {
-
-        img {
-            display: block;
-            margin: 0 auto;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 100%;
-        }
-    }
-
-    &--youtube {
-
-        img {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            position: absolute;
-        }
-    }
-
-    &__body {
-        display: flex;
-        margin: 0;
-        @include clear;
-    }
-
-    &__media,
-    &__content {
-        width: 50%;
-        float: left;
-        // padding: 2rem;
-        margin-bottom: 2rem;
-    }
-
-    &__image {
-        background-color: #000;
-        overflow: hidden;
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        cursor: pointer;
-    }
-
-    &__content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-    }
-
-    &__center {
-        width: 100%;
-    }
-    
-    &__title {
-        font-weight: 400;
-        font-size: 2rem;
-        margin: 0 0 1rem;
-        font-family: $display;
-        line-height: 1.2;
-        @include ellipsis;
-
-        &:hover {
-            @include unellipsis;
-        }
-    }
-    
-    &__text {
-        margin: 0;
-        // padding: 0 1rem;
-        font-family: "freight-sans-pro";
-        max-width: 50%;
-
-        a {
-            @include underline;
-        }
-    }
 }
