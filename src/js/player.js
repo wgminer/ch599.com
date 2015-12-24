@@ -23,11 +23,20 @@ var Player = (function () {
 
     module.play = function () {
 
-        if (player.source == 'youtube') {
-            player.playVideo();
+        if ($playing) {
+            if (player.source == 'youtube') {
+                player.playVideo();
+            } else {
+                player.play();
+            }
         } else {
-            player.play();
+            var $first = $('.song').first();
+            if ($first) {
+                module.create($first);
+            }
         }
+
+        
     }
 
     module.pause = function () {
@@ -51,8 +60,15 @@ var Player = (function () {
         
     }
 
-    module.previous = function () {
+    module.prev = function () {
 
+        if ($playing) {
+            var $prev = $playing.prev('.song');
+
+            if ($prev) {
+                module.create($prev);
+            }
+        }
     }
 
     module.seek = function ($annotation) {

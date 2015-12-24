@@ -1,127 +1,17 @@
-.container {
-
-}
-
-.login {
-    width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-backface-visibility: hidden;
-    transform: translate3d(-50%, -50%, 0);
-}
-
-.dropdown {
-    position: relative;
-
-    &.is--open {
-
-        .dropdown__menu {
-            display: block;
-        }
-    }
-    
-    &__menu {
-        display: none;
-        position: absolute;
-        min-width: 150px;
-        right: 0;
-        border: 1px solid #ccc;
-        padding: 1rem 0;
-    }
-
-    &__title {
-
-        i {
-            margin-left: .5rem;
-            color: #ccc;
-        }
-    }
-
-    &__list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    &__item {
-        line-height: 2rem;
-
-        a {
-            display: block;
-            padding: 0 1rem;
-
-            &:hover {   
-                background-color: $hover-color;
-            }
-        }
-    }
-}
-
-.toolbar {
-    @include clear;
-    line-height: 2.5rem;
-    padding: 0 2rem;
-    border-bottom: 1px solid #ccc;
-
-    &__title {
-        font-family: $serif;
-        float: left;
-        font-size: 1.25rem;
-    }
-    
-    &__group {
-        @include clear;
-        float: right;
-    }
-
-    &__link {
-        float: left;
-        margin: 0;
-        padding: 0 1rem;
-        border-right: 1px solid #ccc;
-    }
-
-    &__dropdown {
-        float: left;
-        padding: 0 1rem;
-    }
-}
-
 .hero {
     width: 50%;
     margin: 0 auto;
     padding: 33vh 2rem;
     transition: background-color .25s ease;
-
-    h1 {
-        display: inline;
-        font-size: 1rem;
-        margin: 0;
-    }
-
-    &__title {
-        width: 100%;
-        font-family: $title;
-        font-weight: 700;
-        font-size: 3rem;
-        line-height: 1;
-        margin: 0;
-        letter-spacing: -1px;
-
-        a {
-            text-decoration: none;
-            color: $text-color;
-        }
-    }
-
-    &__text {
-        color: $text-color;
-        // max-width: 50%;
-    }
 }
 
-.feed {
+.paginate {
+	background-color: transparent;
+	border: 1px solid $brand-color;
+	padding: .5rem 3rem;
+	margin: 6rem auto 6rem;
+	display: block;
+	text-align: center;
+	border-radius: 3px;
+	color: $brand-color;
 }

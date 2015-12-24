@@ -29,7 +29,7 @@ class Auth extends CI_Controller {
 
             $this->session->set_userdata($cookie);
 
-            redirect('/admin', 'refresh');
+            redirect('/latest', 'refresh');
 
         } else {
             redirect('/milagro', 'refresh');
@@ -42,7 +42,7 @@ class Auth extends CI_Controller {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('logged_in');
 
-        redirect('/milagro', 'refresh');
+        redirect('/latest', 'refresh');
     }
 
 }

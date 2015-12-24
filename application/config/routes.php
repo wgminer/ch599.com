@@ -83,7 +83,8 @@ $route['translate_uri_dashes'] = FALSE;
     $route['auth'] = 'auth/auth';
     $route['sign-out'] = 'auth/deauth';
 
-    $route['admin'] = 'view/admin';
+    $route['dashboard'] = 'view/dashboard';
+    $route['settings'] = 'view/settings';
 
 
 // Channel Routes

@@ -1,31 +1,26 @@
 .song {
-    margin: 0 auto 4rem;
+    margin-bottom: 4rem;
+    margin: 0 auto 12vh;
     max-width: 50%;
     padding: 0 2rem;
 
     &--soundcloud {
 
         img {
-            display: block;
-            margin: 0 auto;
-            position: absolute;
             top: 0;
-            bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
             height: 100%;
+            transform: translateX(-50%);
         }
     }
 
     &--youtube {
 
         img {
-            display: block;
-            margin: 0 auto;
-            width: 100%;
             top: 50%;
+            left: 0;
+            width: 100%;
             transform: translateY(-50%);
-            position: absolute;
         }
     }
 
@@ -34,6 +29,12 @@
         .song__info {
             opacity: 0 !important;
         }
+    }
+
+    img {
+        position: absolute;
+        display: block;
+        margin: 0 auto;
     }
 
     &__media {
@@ -72,14 +73,17 @@
         padding: 2rem;
         opacity: 0;
         transition: opacity .5s ease;
+
+        a {
+            color: $brand-color;
+            text-decoration: none;
+        }
     }
     
     &__title {
         font-weight: 400;
         font-size: 1rem;
         margin: 1rem 0 0;
-        // font-family: $title;
-        // text-align: center;
         line-height: 1.2;
         @include ellipsis;
 
@@ -99,21 +103,12 @@
         margin: 0;
         line-height: 1.5;
         color: #fff;
-
-        a {
-            color: $brand-color;
-            text-decoration: none;
-        }
     }
 
     &__text {
         color: #fff;
         margin: 2rem 0 0;
         max-width: 50%;
-
-        a {
-            color: #fff;
-        }
     }
 
     &__play-icon {
