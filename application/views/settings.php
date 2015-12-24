@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <label for="bio" class="form-group__label">Bio</label>
-            <textarea id="bio" class="form-group__control form-group__control--textarea" rows="4" ng-model="user.bio"></textarea>
+            <textarea id="bio" class="form-group__control form-group__control--textarea" rows="6" ng-model="user.bio"></textarea>
         </div>
         <button ng-click="updateUser(user)" class="button">Update Profile</button>
     </div>

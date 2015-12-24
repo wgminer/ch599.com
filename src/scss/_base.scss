@@ -11,6 +11,10 @@ body {
     color: $text-color;
     line-height: 1.5;
     background-color: #fff;
+
+    &.is--not-scrollable {
+    	overflow: hidden;
+    }
 }
 
 a {
@@ -21,3 +25,4 @@ a {
 .ellipsis {
 	@include ellipsis;
 }
+

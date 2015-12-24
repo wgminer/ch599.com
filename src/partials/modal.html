@@ -1,0 +1,43 @@
+<div class="modal" modal>
+    <div class="modal__content">
+        
+        <div class="song-preview-details">
+            <div class="form-group" ng-show="preview.image_url">
+                <label class="form-group__label" for="source_url">Image</label>
+                <img ng-src="{{ preview.image_url}}" alt="">
+            </div>
+
+            <div class="form-group">
+                <label class="form-group__label" for="source_url">URL</label>
+                <input id="source_url" class="form-group__control" type="text" ng-change="previewSong(preview.source_url)" ng-model="preview.source_url">
+            </div>
+
+            <div class="form-group" ng-show="preview.image_url">
+                <label class="form-group__label" for="title">Title</label>
+                <input id="title" class="form-group__control" type="text" ng-model="preview.title">
+            </div>
+            
+            <div class="form-group" ng-show="preview.image_url">
+                <label class="form-group__label" for="genre">Genre</label>
+                <select ng-model="preview.genre_id" class="form-group__control" ng-options="genre.id as genre.name for genre in genres">
+                    <option value="">Select</option>
+                </select>
+            </div>
+            
+            <div class="form-group" ng-show="preview.image_url">
+                <label class="form-group__label" for="text">Text</label>
+                <textarea class="form-group__control" id="text" rows="4" ng-model="preview.text"></textarea>
+            </div>
+
+            <button ng-click="postAction(preview)" class="button">{{ preview.status_id ? 'Update' : 'Post Song' }}</button>
+        
+        </div>
+
+<!--     <div class="song-preview-nav">
+        <button ng-click="previewView = 'details'" ng-class="{active: previewView == 'details'}">1. Details</button>
+        <button ng-click="previewView = 'annotations'" ng-class="{active: previewView == 'annotations'}">2. Annotations</button>
+        <button ng-click="previewView = 'twitter'" ng-class="{active: previewView == 'twitter'}">3. Twitter</button>
+    </div>
+ -->
+    </div>
+</div>
