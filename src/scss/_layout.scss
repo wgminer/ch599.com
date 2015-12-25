@@ -15,3 +15,60 @@
 	border-radius: 3px;
 	color: $brand-color;
 }
+
+.image {
+	float: left;
+	position: relative;
+	padding: .25rem;
+
+	&__overlay {
+		position: absolute;	
+		top: .25rem;
+		left: .25rem;
+		bottom: .25rem;
+		right: .25rem;
+		z-index: 2;
+		background-color: rgba($brand-color, .25);
+	}
+
+	img {
+		z-index: 1;
+		position: relative;
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.column {
+	width: 50%;
+	float: left;
+}
+
+.authors {
+	// width: 75%;
+	min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    padding: 4rem 1.75rem 0 60px;
+	
+	&__text {
+		width: 50%;
+		padding-left: 1rem;
+		display: flex;
+        align-items: center;
+        justify-content: center;
+	}
+
+    &__images {
+		width: 50%;
+		padding-left: 1rem;
+		display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__inner {
+    	@include clear;
+		display: box;
+    }
+}

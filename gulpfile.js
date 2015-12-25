@@ -43,6 +43,12 @@ gulp.task('partials', function () {
         .pipe(livereload());
 });
 
+gulp.task('images', function () {
+    return gulp.src('./src/img/**/*')
+        .pipe(gulp.dest('./public/img'))
+        .pipe(livereload());
+});
+
 gulp.task('php', function () {
     return gulp.src('./application/views/**/*.php')
         .pipe(livereload());
@@ -50,10 +56,11 @@ gulp.task('php', function () {
 
 
 
-gulp.task('serve', ['styles', 'partials', 'scripts'], function () {
+gulp.task('serve', ['styles', 'images', 'partials', 'scripts'], function () {
     livereload.listen();
     gulp.watch('views/**/*.php', {cwd: './application'}, ['php']);
     gulp.watch('scss/**/*.scss', {cwd: './src'}, ['styles']);
     gulp.watch('js/**/*.js', {cwd: './src'}, ['scripts']);
     gulp.watch('partials/**/*.html', {cwd: './src'}, ['partials']);
+    gulp.watch('images/**/*', {cwd: './src'}, ['images']);
 });
