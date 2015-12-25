@@ -33,17 +33,18 @@ $(function () {
 
         if (key === 32) {
             Player.toggle();
+            // event.preventDefault();
         }
 
         if (key === 39) {
             Player.next();
+            // event.preventDefault();
         }
 
         if (key === 37) {
             Player.prev();
+            // event.preventDefault();
         }
-
-        event.preventDefault();
     });
 
     Playlist.init($('.feed'));

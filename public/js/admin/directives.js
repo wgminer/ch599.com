@@ -5,12 +5,21 @@ app.directive('tabs', function ($location, Api) {
         restrict: 'A',
         link: function (scope, element, attrs) {
 
-            Api.get('/songs?user_id=' + user.id + '&status_id=3')
-                .then(function (callback) {
-                    scope.errors = callback.length;
-                }, function (error) {
-                    console.log(error);
-                });
+            var init = function () {
+                Api.get('/songs?user_id=' + user.id + '&status_id=3')
+                    .then(function (callback) {
+                        scope.errors = callback.length;
+                        $(element).show();
+                    }, function (error) {
+                        console.log(error);
+                    });
+            }
+
+            scope.$on('reload', function(event, data) {
+                init();
+            });
+
+            init();
 
             scope.$on('$routeChangeSuccess', function () {
                 var path = $location.path();
@@ -154,6 +163,16 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
             };
 
             init();
+
+            scope.updateButton = function (status_id) {
+                if (status_id == 1) {
+                    return 'Update';
+                } else if (status_id == 2) {
+                    return 'Publish';
+                } else {
+                    return 'Fix';
+                }
+            }
 
             scope.close = function () {
                 $element.click(function () {

@@ -104,7 +104,7 @@ $autoload['helper'] = array('url', 'text', 'form', 'html');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('twitter', 'variables');
 
 
 /*

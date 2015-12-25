@@ -60,8 +60,3 @@ app.controller('SettingsCtrl', function ($scope, $location, Api) {
 
 });
 
-app.controller('ModalCtrl', function ($scope, $rootScope, $location, Api, YouTube, SoundCloud) {
-
-})
-
-

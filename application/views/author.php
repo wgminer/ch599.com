@@ -2,9 +2,11 @@
 <?php $this->load->view('partials/toolbar'); ?>
 <?php $this->load->view('partials/controls'); ?>
 
-
 <div class="hero">
-	<p>You're on <a href="<?php echo base_url() ?>">Channel 599</a>,<br> a music blog started in Rob's room.</p>
+    <p><?php echo $author->name; ?></p>
+    <?php if ($author->bio != '') : ?>
+        <p>"<?php echo $author->bio; ?>"</p>
+    <?php endif; ?>
 </div>
 
 <div class="feed" reload>

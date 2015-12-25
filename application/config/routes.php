@@ -84,14 +84,23 @@ $route['translate_uri_dashes'] = FALSE;
     $route['sign-out'] = 'auth/deauth';
 
     $route['dashboard'] = 'view/dashboard';
-    $route['settings'] = 'view/settings';
+    $route['profile'] = 'view/profile';
     $route['errors'] = 'cron/errors';
 
 
 // Channel Routes
 
     $route['latest'] = 'view/latest';
-    $route['genre/(:any)'] = 'view/genre/$1';
-    $route['author/(:any)'] = 'view/author/$1';
     $route['authors'] = 'view/authors';
+
+    $route['genre/(:any)'] = 'view/genre/$1';
+    $route['g/(:any)'] = 'view/genre/$1';
+
+    $route['author/(:any)'] = 'view/author/$1';
+    $route['a/(:any)'] = 'view/author/$1';
+
+    $route['song/(:any)'] = 'view/song/$1';
+    $route['s/(:any)'] = 'view/song/$1';
+
+    
 

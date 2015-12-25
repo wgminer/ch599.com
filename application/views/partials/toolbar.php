@@ -11,7 +11,7 @@
             <div class="dropdown__menu">
                 <ul class="dropdown__list">
                     <li class="dropdown__item"><a href="<?php echo base_url() ?>dashboard/#/published">Dashboard</a></li>
-                    <li class="dropdown__item"><a href="<?php echo base_url() ?>settings">Settings</a></li>
+                    <li class="dropdown__item"><a href="<?php echo base_url() ?>profile">Profile</a></li>
                     <li class="dropdown__item"><a href="<?php echo base_url() ?>sign-out">Sign Out</a></li>
                 </ul>
             </div>

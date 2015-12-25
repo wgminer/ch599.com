@@ -105,16 +105,17 @@
 }
 
 .dashboard {
-    padding: 4rem 0 8rem;
+    padding: 6rem 0 8rem;
 }
 
-.settings {
+.profile {
     max-width: 33%;
     margin: 0 auto;
+    padding-top: 6rem;
 
     &__group {
         @include clear;
-        margin: 15vh 0;
+        margin: 0 0 4rem;
     }
 }
 
@@ -126,12 +127,12 @@
 .tab {
     float: left;
     margin-right: 1.5rem;
-    padding-bottom: 5px;
+    padding-bottom: 1px;
 
     &.is--active {
         color: $text-color;
-        border-bottom: 2px solid $text-color;
-        padding-bottom: 3px;
+        border-bottom: 1px solid $text-color;
+        padding-bottom: 0;
     }
 }
 
@@ -139,7 +140,7 @@
     table-layout: fixed;
     width: 100%;
     font-size: .875rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     img {
         max-width: 100%;

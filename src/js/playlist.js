@@ -4,7 +4,7 @@ var Playlist = (function () {
 
     var module = {};
     var $playlist;
-    var increment = 20;
+    var increment = 50;
     var offset = increment;
     var href = window.location.href;
 

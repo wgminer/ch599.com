@@ -2,9 +2,8 @@
 <?php $this->load->view('partials/toolbar'); ?>
 <?php $this->load->view('partials/controls'); ?>
 
-
 <div class="hero">
-	<p>You're on <a href="<?php echo base_url() ?>">Channel 599</a>,<br> a music blog started in Rob's room.</p>
+    <p><?php echo $genre->name; ?></p>
 </div>
 
 <div class="feed" reload>

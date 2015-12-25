@@ -61,11 +61,12 @@ class Song extends CI_Controller {
     public function create () {
 
         $input = json_decode(trim(file_get_contents('php://input')), true);
+        $hash = $this->Social->hash();
 
         $newPost = array(
             'title' => $input['title'],
             'slug' => url_title($input['title'], 'dash', true),
-            'hash' => $this->Social->hash(),
+            'hash' => $hash,
             'image_url' => $input['image_url'],
             'text' => $input['text'],
             // 'highlighted' => $input['highlighted'],
@@ -78,6 +79,7 @@ class Song extends CI_Controller {
         );
 
         $created = $this->CRUD->create('songs', $newPost);
+        $this->Social->tweet($input['text'] . ' ch559.com/' . $hash);
 
         echo json_encode($created);
     

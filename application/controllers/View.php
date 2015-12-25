@@ -21,23 +21,27 @@ class View extends CI_Controller {
     public function dashboard () {
         $data['admin'] = true;
         $data['user'] = $this->is_authed(true);
+        $data['title'] = 'Dashboard';
         $this->load->view('dashboard', $data);
     }
 
-    public function settings () {
+    public function profile () {
         $data['admin'] = true;
         $data['user'] = $this->is_authed(true);
-        $this->load->view('settings', $data);
+        $data['title'] = 'Profile';
+        $this->load->view('profile', $data);
     }
 
     public function login () {
         $data['user'] = $this->is_authed(false);
+        $data['title'] = 'Login';
         $this->load->view('login', $data);
     }
 
     public function latest () {
 
         $data['user'] = $this->is_authed(false);
+        $data['title'] = 'Latest';
 
         if ($this->input->get('offset', true)) {
             $offset = $this->input->get('offset', true);
@@ -46,7 +50,7 @@ class View extends CI_Controller {
         }
 
         
-        $data['songs'] = $this->CRUD->read('songs', array('songs.id >' => 0), 20, $offset); 
+        $data['songs'] = $this->CRUD->read('songs', array('songs.id >' => 0), $this->config->item('limit'), $offset); 
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
@@ -63,6 +67,7 @@ class View extends CI_Controller {
 
     public function authors () {
         $data['user'] = $this->is_authed(false);
+        $data['title'] = 'Authors';
         $this->load->view('authors', $data);
     }
 
@@ -75,9 +80,11 @@ class View extends CI_Controller {
         } else {
             $offset = 0;
         }
-
         
-        $data['songs'] = $this->CRUD->read('songs', array('genres.slug' == $slug), 20, $offset); 
+        $data['genre'] = $this->CRUD->read('genres', array('slug' => $slug))[0];
+
+        $data['songs'] = $this->CRUD->read('songs', array('genres.slug' => $slug), $this->config->item('limit'), $offset); 
+        $data['title'] = $data['songs'][0]->genre_name;
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
@@ -92,7 +99,7 @@ class View extends CI_Controller {
 
     }
 
-    public function user ($slug) {
+    public function author ($slug) {
 
         $data['user'] = $this->is_authed(false);
 
@@ -102,7 +109,11 @@ class View extends CI_Controller {
             $offset = 0;
         }
 
-        $data['songs'] = $this->CRUD->read('songs', array('users.slug' == $slug), 20, $offset); 
+        $data['author'] = $this->CRUD->read('users', array('slug' => $slug))[0];
+        $data['author']->bio = $this->Format->parseTwitter($data['author']->bio);
+
+        $data['songs'] = $this->CRUD->read('songs', array('users.slug' => $slug), $this->config->item('limit'), $offset); 
+        $data['title'] = $data['songs'][0]->user_name;
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
@@ -112,7 +123,7 @@ class View extends CI_Controller {
         if ($this->input->get('ajax', true)) {
             $this->load->view('partials/songs', $data);
         } else {
-            $this->load->view('user', $data);
+            $this->load->view('author', $data);
         }
 
     }
