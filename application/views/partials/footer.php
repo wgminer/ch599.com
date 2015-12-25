@@ -9,18 +9,18 @@
 
     <script src="<?php echo base_url() ?>public/js/player.js"></script>
     <script src="<?php echo base_url() ?>public/js/playlist.js"></script>
+    <script src="<?php echo base_url() ?>public/js/search.js"></script>
     <script src="<?php echo base_url() ?>public/js/setup.js"></script>
 
     <?php if (isset($user)) : ?>
 
     <script>
-    var baseUrl = '<?php echo base_url() ?>';
-    var user = {
-        id: parseInt(<?php echo $user->id ?>),
-        name: '<?php echo $user->name ?>',
-        slug: '<?php echo $user->slug ?>'
-    };
-
+        var baseUrl = '<?php echo base_url() ?>';
+        var user = {
+            id: parseInt(<?php echo $user->id ?>),
+            name: '<?php echo $user->name ?>',
+            slug: '<?php echo $user->slug ?>'
+        };
     </script>
 
     <script src="<?php echo base_url() ?>libs/angular/angular.js"></script>

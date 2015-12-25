@@ -3,7 +3,7 @@
 <?php $this->load->view('partials/controls'); ?>
 
 <div class="hero">
-    <p><?php echo $genre->name; ?></p>
+    <p>Search: <?php echo $title; ?></p>
 </div>
 
 <div class="feed" reload>

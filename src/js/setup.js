@@ -53,4 +53,10 @@ $(function () {
         Playlist.paginate($(this));
     });
 
+    Search.init($('.search'));
+
+    $('.control--search').click(function () {
+        Search.toggle();
+    })
+
 })

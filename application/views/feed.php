@@ -4,13 +4,15 @@
 
 
 <div class="hero">
-	<p>You're on <a href="<?php echo base_url() ?>">Channel 599</a>,<br> a music blog started in Rob's room.</p>
+	<p>You're on Channel 599,<br> a music blog started in Rob's room.</p>
 </div>
 
 <div class="feed" reload>
     <?php $this->load->view('partials/songs'); ?>
 </div>
 
+<?php if ($paginate) : ?>
 <button class="paginate">Moar</button>
+<?php endif; ?>
 
 <?php $this->load->view('partials/footer'); ?>

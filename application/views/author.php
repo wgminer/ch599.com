@@ -13,6 +13,8 @@
     <?php $this->load->view('partials/songs'); ?>
 </div>
 
+<?php if ($paginate) : ?>
 <button class="paginate">Moar</button>
+<?php endif; ?>
 
 <?php $this->load->view('partials/footer'); ?>

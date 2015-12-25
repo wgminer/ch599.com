@@ -102,5 +102,7 @@ $route['translate_uri_dashes'] = FALSE;
     $route['song/(:any)'] = 'view/song/$1';
     $route['s/(:any)'] = 'view/song/$1';
 
+    $route['search'] = 'view/search';
+
     
 

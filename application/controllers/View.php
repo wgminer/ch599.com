@@ -38,9 +38,25 @@ class View extends CI_Controller {
         $this->load->view('login', $data);
     }
 
+    public function song ($slug) {
+
+        $data['user'] = $this->is_authed(false);
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
+        $data['title'] = 'Latest';
+
+        $data['song'] = $this->CRUD->read('songs', array('songs.slug' => $slug))[0]; 
+        $data['song']->text = $this->Format->parseTwitter($data['song']->text);
+        $data['song']->created_at = date_format(date_create($data['song']->created_at), 'Y-m-d');
+
+        $this->load->view('song', $data);
+    }
+
     public function latest () {
 
         $data['user'] = $this->is_authed(false);
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
         $data['title'] = 'Latest';
 
         if ($this->input->get('offset', true)) {
@@ -49,12 +65,17 @@ class View extends CI_Controller {
             $offset = 0;
         }
 
-        
         $data['songs'] = $this->CRUD->read('songs', array('songs.id >' => 0), $this->config->item('limit'), $offset); 
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
             $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+        }
+
+        if (count($data['songs']) < $this->config->item('limit')) {
+            $data['paginate'] = false;
+        } else {
+            $data['paginate'] = true;
         }
 
         if ($this->input->get('ajax', true)) {
@@ -66,14 +87,20 @@ class View extends CI_Controller {
     }
 
     public function authors () {
+
         $data['user'] = $this->is_authed(false);
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
         $data['title'] = 'Authors';
+
         $this->load->view('authors', $data);
     }
 
     public function genre ($slug) {
 
         $data['user'] = $this->is_authed(false);
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
 
         if ($this->input->get('offset', true)) {
             $offset = $this->input->get('offset', true);
@@ -91,6 +118,12 @@ class View extends CI_Controller {
             $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
         }
 
+        if (count($data['songs']) < $this->config->item('limit')) {
+            $data['paginate'] = false;
+        } else {
+            $data['paginate'] = true;
+        }
+
         if ($this->input->get('ajax', true)) {
             $this->load->view('partials/songs', $data);
         } else {
@@ -102,6 +135,9 @@ class View extends CI_Controller {
     public function author ($slug) {
 
         $data['user'] = $this->is_authed(false);
+
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
 
         if ($this->input->get('offset', true)) {
             $offset = $this->input->get('offset', true);
@@ -120,12 +156,59 @@ class View extends CI_Controller {
             $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
         }
 
+        if (count($data['songs']) < $this->config->item('limit')) {
+            $data['paginate'] = false;
+        } else {
+            $data['paginate'] = true;
+        }
+
         if ($this->input->get('ajax', true)) {
             $this->load->view('partials/songs', $data);
         } else {
             $this->load->view('author', $data);
         }
 
+    }
+
+    public function search () {
+
+        $data['user'] = $this->is_authed(false);
+        $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
+        $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
+
+        if ($this->input->get('offset', true)) {
+            $offset = $this->input->get('offset', true);
+        } else {
+            $offset = 0;
+        }
+
+        if ($this->input->get('q', true)) {
+
+            $term = $this->input->get('q', true);
+            $data['title'] = '"' . $term . '"';
+
+            if (strpos($term, ' ') !== false) {
+
+                $data['songs'] = array();
+                $terms = explode(' ', $term);
+
+                foreach ($terms as $term) {
+                    $songs = $this->CRUD->read('songs', array('songs.title' => $term), $this->config->item('limit'), $offset, true); 
+                    $data['songs'] = array_merge($data['songs'], $songs);
+                }
+
+            } else {
+                $data['songs'] = $this->CRUD->read('songs', array('songs.title' => $term), $this->config->item('limit'), $offset, true); 
+            }
+        }
+
+        if (count($data['songs']) < $this->config->item('limit')) {
+            $data['paginate'] = false;
+        } else {
+            $data['paginate'] = true;
+        }
+
+        $this->load->view('search', $data);
     }
 
 }

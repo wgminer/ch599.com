@@ -22,9 +22,13 @@ class Crud_model extends CI_Model {
         }
     } 
 
-    public function read($table, $match, $limit = false, $offset = 0) {
+    public function read($table, $match, $limit = false, $offset = 0, $search = false) {
 
-        $this->db->where($match);
+        if ($search) {
+            $this->db->like($match);
+        } else {
+            $this->db->where($match);
+        }
 
         if ($table == 'songs') {
             $this->db->join('users', 'users.id = songs.user_id ');

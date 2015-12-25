@@ -79,7 +79,7 @@ class Song extends CI_Controller {
         );
 
         $created = $this->CRUD->create('songs', $newPost);
-        $this->Social->tweet($input['text'] . ' ch559.com/' . $hash);
+        $this->Social->tweet($input['text'] . ' ch599.com/' . $hash);
 
         echo json_encode($created);
     
