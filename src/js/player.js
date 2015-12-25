@@ -71,6 +71,17 @@ var Player = (function () {
         }
     }
 
+    module.toggle = function () {
+        if ($playing) {
+
+            if (player.status == 1) {
+                module.pause();
+            } else if (player.status == 2) {
+                module.play();
+            }
+        }
+    }
+
     module.seek = function ($annotation) {
 
         var timestamp = $annotation.data('timestamp');

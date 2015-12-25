@@ -1,35 +1,49 @@
 <div class="modal" modal>
     <div class="modal__content">
-        
-        <div class="song-preview-details">
-            <div class="form-group" ng-show="preview.image_url">
-                <label class="form-group__label" for="source_url">Image</label>
-                <img ng-src="{{ preview.image_url}}" alt="">
+        <div class="modal__preview">
+            <div class="preview preview--{{preview.source}}">
+                <div class="preview__media">
+                    <div class="preview__image">
+                        <img ng-show="preview.image_url" src="{{ preview.image_url}}" alt="">
+                    </div>
+                </div>
+                <h2 class="preview__title"><a href="">{{preview.title}}</a></h2>
             </div>
-
+        </div>
+        <div class="modal__form">
             <div class="form-group">
                 <label class="form-group__label" for="source_url">URL</label>
                 <input id="source_url" class="form-group__control" type="text" ng-change="previewSong(preview.source_url)" ng-model="preview.source_url">
             </div>
 
-            <div class="form-group" ng-show="preview.image_url">
+            <div class="form-group">
                 <label class="form-group__label" for="title">Title</label>
                 <input id="title" class="form-group__control" type="text" ng-model="preview.title">
             </div>
             
-            <div class="form-group" ng-show="preview.image_url">
+            <div class="form-group">
                 <label class="form-group__label" for="genre">Genre</label>
                 <select ng-model="preview.genre_id" class="form-group__control" ng-options="genre.id as genre.name for genre in genres">
                     <option value="">Select</option>
                 </select>
             </div>
             
-            <div class="form-group" ng-show="preview.image_url">
+            <div class="form-group">
                 <label class="form-group__label" for="text">Text</label>
                 <textarea class="form-group__control" id="text" rows="4" ng-model="preview.text"></textarea>
             </div>
 
-            <button ng-click="postAction(preview)" class="button">{{ preview.status_id ? 'Update' : 'Post Song' }}</button>
+            <div class="button-group">
+                <button ng-click="submit(preview, 1)" class="button button--primary" ng-hide="preview.status_id">Post</button>
+                <button ng-click="update(preview, 1)" class="button button--primary" ng-show="preview.status_id">{{ preview.status_id == 1 ? 'Update' : 'Publish' }}</button>
+
+                <button ng-click="submit(preview, 2)" class="button button" ng-hide="preview.status_id">Save Draft</button>
+                <button ng-click="update(preview, 2)" class="button button" ng-show="preview.status_id">Save Draft</button>
+
+                <button ng-click="close()" class="button button--last">Cancel</button>
+            </div>
+
+            
         
         </div>
 

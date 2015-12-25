@@ -74,24 +74,65 @@ app.directive('deleteSong', function ($interval, $rootScope, Api) {
     };
 });
 
-app.directive('modal', function ($rootScope, $compile, Api, YouTube, SoundCloud) {
+app.directive('toast', function ($rootScope, $location, Api, YouTube, SoundCloud) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
 
+            scope.message = 'Everything is ok!';
+
+            scope.$on('toast', function(event, data) {
+                scope.message = data.message;
+                scope.status = data.status;
+                show();
+            });
+
+            $(element).click(function () {
+                $(element).removeClass('is--visible');
+            });
+
+            var show = function () {
+                $(element).addClass('is--visible');
+                setTimeout(function () {
+                    $(element).removeClass('is--visible');
+                }, 2500);
+            }
+
+        }
+    }
+});
+
+app.directive('reload', function ($rootScope, $location, Api, YouTube, SoundCloud) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            scope.$on('reload', function(event, data) {
+                window.location.reload(true);
+            });
+
+        }
+    }
+});
+
+app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            var $element = $(element);
+
+            var showPost = function (status) {
+
+                if (status == 1) {
+                    $location.path('/published');
+                }
+
+            }
+
             var init = function () {
-
-                var $element = $(element);
+                
                 $('body').addClass('is--not-scrollable');
-
-                $element.click(function () {
-                    $element.remove();        
-                    $('body').removeClass('is--not-scrollable');
-                });
-
-                $element.find('.modal__content').click(function (event) {
-                    event.stopPropagation();
-                });
 
                 scope.preview = angular.copy(scope.song);
 
@@ -113,49 +154,52 @@ app.directive('modal', function ($rootScope, $compile, Api, YouTube, SoundCloud)
 
             init();
 
-            scope.toggleModal = function (event, elementClass) {
-                if (event && elementClass) {
-                    if (event.target.className == elementClass) {
-                        $rootScope.modalOpen = !$rootScope.modalOpen;
-                    }
-                } else {
-                    scope.preview = {status_id: '1'};
-                    $rootScope.modalOpen = !$rootScope.modalOpen;
-                }
+            scope.close = function () {
+                $element.click(function () {
+                    $element.remove();        
+                    $('body').removeClass('is--not-scrollable');
+                });
             }
 
-            scope.editSong = function (song, index) {
-                $rootScope.modalOpen = true;
-                scope.preview = angular.copy(song);
-                scope.preview.$index = index;
-            }
+            scope.submit = function (song, status) {
 
-            scope.submit = function (song) {
+                $element.hide();
+                song.status_id = status;
+
+
                 Api.post('/songs/create', angular.toJson(song))
                     .then(function (callback) {
 
-                        if (callback.status_id == 1) {
-                            scope.published.unshift(callback);
-                        } else if (callback.status_id == 2) {
-                            scope.draft.unshift(callback);
-                        }
+                        $rootScope.$broadcast('reload');
+                        $rootScope.$broadcast('toast', {
+                            message: 'Song posted!', 
+                            status: 'success'
+                        });
 
-                        scope.visibleList = callback.status_id;   
-                        $rootScope.modalOpen = false;
+                        $element.remove();
+                        $('body').removeClass('is--not-scrollable'); 
 
                     }, function(error){
                         console.log(error);
                     });
             }
 
-            scope.update = function (song, index) {
-                console.log(song, index);
+            scope.update = function (song, status) {
+
+                $element.hide();
+                song.status_id = status;
+
                 Api.post('/songs/update/' + song.id, angular.toJson(song))
                     .then(function (callback) {
 
-                        initLists();
-                        scope.visibleList = callback.status_id;                
-                        $rootScope.modalOpen = false;
+                        $rootScope.$broadcast('reload');
+                        $rootScope.$broadcast('toast', {
+                            message: 'Song updated!', 
+                            status: 'success'
+                        });
+
+                        $element.remove(); 
+                        $('body').removeClass('is--not-scrollable');
 
                     }, function(error){
                         console.log(error);
@@ -174,7 +218,7 @@ app.directive('modal', function ($rootScope, $compile, Api, YouTube, SoundCloud)
             }
 
             scope.previewSong = function (url) {
-                var keepTitle = false;
+
                 if (url != '') {
                     if (url.indexOf('youtu') > -1) {
                         YouTube.newYTSong(url)
@@ -206,12 +250,9 @@ app.directive('triggerModal', function ($http, $compile, $rootScope, Api) {
         },
         link: function (scope, element, attrs) {
 
-            console.log(scope);
-
             element.bind('click', function () {
                 $http.get(baseUrl + '/public/partials/modal.html')
                     .success(function (html) {
-                        console.log(html);
                         $('body').append($compile(html)(scope));
                     });
             });

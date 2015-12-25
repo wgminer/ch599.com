@@ -28,6 +28,24 @@ $(function () {
         Player.seek($(this));
     });
 
+    $(window).keydown(function(event) {
+        var key = event.keyCode;
+
+        if (key === 32) {
+            Player.toggle();
+        }
+
+        if (key === 39) {
+            Player.next();
+        }
+
+        if (key === 37) {
+            Player.prev();
+        }
+
+        event.preventDefault();
+    });
+
     Playlist.init($('.feed'));
 
     $('.paginate').click(function () {

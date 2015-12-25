@@ -2,23 +2,29 @@
 
 app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube, SoundCloud) {
 
-    var path = $location.path();
-    var status = 1;
-    if (path == '/drafts') {
-        status = 2;
-    } else if (path == '/errors') {
-        status = 3;
+    var init = function () {
+
+        var path = $location.path();
+        var status = 1;
+        if (path == '/drafts') {
+            status = 2;
+        } else if (path == '/errors') {
+            status = 3;
+        }
+
+        Api.get('/songs?user_id=' + user.id + '&status_id=' + status)
+            .then(function (callback) {
+                $scope.songs = callback;
+            }, function (error) {
+                console.log(error);
+            });
     }
 
-    Api.get('/songs?user_id=' + user.id + '&status_id=' + status)
-        .then(function (callback) {
-            $scope.songs = callback;
-        }, function (error) {
-            console.log(error);
-        });
-
-    $scope.visibleList = 1;
-    $rootScope.modalOpen = false;
+    init();
+    
+    $scope.$on('reload', function(event, args) {
+        init();
+    });
 
 });
 

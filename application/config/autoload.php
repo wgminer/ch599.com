@@ -137,4 +137,4 @@ $autoload['language'] = array();
 |   $autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array('Crud_model' => 'CRUD', 'Color_model' => 'Color',  'Format_model' => 'Format');
+$autoload['model'] = array('Crud_model' => 'CRUD', 'Color_model' => 'Color',  'Format_model' => 'Format', 'Social_model' => 'Social');

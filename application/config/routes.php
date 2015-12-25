@@ -92,4 +92,5 @@ $route['translate_uri_dashes'] = FALSE;
     $route['latest'] = 'view/latest';
     $route['genre/(:any)'] = 'view/genre/$1';
     $route['author/(:any)'] = 'view/author/$1';
+    $route['authors'] = 'view/authors';
 

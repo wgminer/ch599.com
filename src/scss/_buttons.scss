@@ -2,9 +2,28 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: .65rem 1rem .5rem;
-    background-color: #eee;
+    background-color: #fff;
     margin: 0rem 0 0;
     font-size: .875rem;
     line-height: 1;
     float: right;
+
+    &--primary {
+    	background-color: #eee;
+    }
+}
+
+.button-group {
+	@include clear;
+	margin-top: 2rem;
+
+	.button {
+		float: left;
+		margin-right: .5rem;
+	
+		&--last {
+			float: right;
+			margin: 0;
+		}
+	}
 }

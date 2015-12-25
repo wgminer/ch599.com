@@ -31,7 +31,8 @@ class View extends CI_Controller {
     }
 
     public function login () {
-        $this->load->view('login');
+        $data['user'] = $this->is_authed(false);
+        $this->load->view('login', $data);
     }
 
     public function latest () {
@@ -58,6 +59,11 @@ class View extends CI_Controller {
             $this->load->view('feed', $data);
         }
 
+    }
+
+    public function authors () {
+        $data['user'] = $this->is_authed(false);
+        $this->load->view('authors', $data);
     }
 
     public function genre ($slug) {

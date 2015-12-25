@@ -65,13 +65,14 @@ class Song extends CI_Controller {
         $newPost = array(
             'title' => $input['title'],
             'slug' => url_title($input['title'], 'dash', true),
+            'hash' => $this->Social->hash(),
             'image_url' => $input['image_url'],
             'text' => $input['text'],
-            'highlighted' => $input['highlighted'],
+            // 'highlighted' => $input['highlighted'],
             'source' => $input['source'],
             'source_url' => $input['source_url'],
             'source_id' => $input['source_id'],
-            'user_id' => $this->session->userdata('user_id'),
+            'user_id' => $this->session->userdata('id'),
             'genre_id' => $input['genre_id'],
             'status_id' => $input['status_id']
         );
@@ -94,11 +95,11 @@ class Song extends CI_Controller {
             'slug' => url_title($input['title'], 'dash', true),
             'image_url' => $input['image_url'],
             'text' => $input['text'],
-            'highlighted' => $input['highlighted'],
+            // 'highlighted' => $input['highlighted'],
             'source' => $input['source'],
             'source_url' => $input['source_url'],
             'source_id' => $input['source_id'],
-            'user_id' => 2, //$this->session->userdata('user_id'),
+            'user_id' => 2, //$this->session->userdata('id'),
             'genre_id' => $input['genre_id'],
             'status_id' => $input['status_id']
         );
