@@ -85,6 +85,7 @@ $route['translate_uri_dashes'] = FALSE;
 
     $route['dashboard'] = 'view/dashboard';
     $route['settings'] = 'view/settings';
+    $route['errors'] = 'cron/errors';
 
 
 // Channel Routes

@@ -62,7 +62,7 @@ app.factory('Auth', function ($q, $interval) {
 
 app.factory('YouTube', function ($http, $q) {
 
-    var ytAPIKey = 'AIzaSyCkoszshUaUgV-2CrviQI0I4pTkd8j61gc';
+    var ytAPIKey = 'AIzaSyByLHiwIljNcIO7sSuhTT22RsnhDHg2X8c';
 
     var newYTSong = function(url) {
 
