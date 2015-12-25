@@ -55,11 +55,6 @@ app.factory('Api', function ($http, $q) {
 
 });
 
-app.factory('Auth', function ($q, $interval) {
-
-
-});
-
 app.factory('YouTube', function ($http, $q) {
 
     var ytAPIKey = 'AIzaSyByLHiwIljNcIO7sSuhTT22RsnhDHg2X8c';

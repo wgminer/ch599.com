@@ -50,39 +50,6 @@ app.directive('dropdown', function () {
     };
 })
 
-app.directive('deleteSong', function ($interval, $rootScope, Api) {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-
-            var $element = $(element);
-            var $init = $element.find('.delete__initiate');
-
-            $init.click(function() {
-
-                if (!$element.hasClass('delete--confirm')) {
-                    $element.addClass('delete--confirm');
-                };
-
-            });
-
-            scope.delete = function (list, song, index) {
-                console.log('delete: ' + list + ' and ' + index);
-
-                Api.post('/songs/delete/' + song.id)
-                    .then(function (callback) {                
-                        list.splice(index, 1);
-                    });
-            }
-
-            scope.cancel = function () {
-                $element.removeClass('delete--confirm');
-            }
-
-        }
-    };
-});
-
 app.directive('toast', function ($rootScope, $location, Api, YouTube, SoundCloud) {
     return {
         restrict: 'A',
