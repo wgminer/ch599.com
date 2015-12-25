@@ -34,11 +34,21 @@
             </div>
 
             <div class="button-group">
-                <button ng-click="submit(preview, 1)" class="button button--primary" ng-hide="preview.status_id">Post</button>
-                <button ng-click="update(preview, 1)" class="button button--primary" ng-show="preview.status_id">{{ preview.status_id == 1 ? 'Update' : 'Publish' }}</button>
+                
+                <!-- POST BUTTONS -->
+                <button ng-hide="preview.status_id" ng-click="submit(preview, 1)" class="button button--primary">Post</button>
+                <button ng-hide="preview.status_id" ng-click="submit(preview, 2)" class="button">Draft</button>
 
-                <button ng-click="submit(preview, 2)" class="button button" ng-hide="preview.status_id">Save Draft</button>
-                <button ng-click="update(preview, 2)" class="button button" ng-show="preview.status_id">Save Draft</button>
+                <!-- UPDATE BUTTONS -->
+                <button ng-show="preview.status_id" ng-hide="confirm" ng-click="update(preview, 1)" class="button button--primary">{{ preview.status_id == 1 ? 'Update' : 'Publish' }}</button>
+                <button ng-show="preview.status_id" ng-hide="confirm" ng-click="update(preview, 2)" class="button">Draft</button>
+                
+                <!-- DELETE BUTTONS -->
+                <button ng-show="preview.status_id" ng-hide="confirm" ng-click="confirm = true" class="button">Delete</button>
+                
+                <!-- <span ng-show="confirm"class="button-group__inline-label">Sure?</span> -->
+                <button ng-show="confirm" ng-click="delete(preview.id)" class="button button--danger">Yes, Delete</button>
+                <button ng-show="confirm" ng-click="confirm = false" class="button">Nevermind</button>
 
                 <button ng-click="close()" class="button button--last">Cancel</button>
             </div>

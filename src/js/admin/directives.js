@@ -121,6 +121,7 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
         link: function (scope, element, attrs) {
 
             var $element = $(element);
+            scope.confirm = false;
 
             var showPost = function (status) {
 
@@ -195,6 +196,24 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
                         $rootScope.$broadcast('reload');
                         $rootScope.$broadcast('toast', {
                             message: 'Song updated!', 
+                            status: 'success'
+                        });
+
+                        $element.remove(); 
+                        $('body').removeClass('is--not-scrollable');
+
+                    }, function(error){
+                        console.log(error);
+                    });
+            }
+
+            scope.delete = function (id) {
+                Api.get('/songs/delete/' + id)
+                    .then(function (callback) {
+
+                        $rootScope.$broadcast('reload');
+                        $rootScope.$broadcast('toast', {
+                            message: 'Song deleted!', 
                             status: 'success'
                         });
 
