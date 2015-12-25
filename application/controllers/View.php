@@ -202,6 +202,11 @@ class View extends CI_Controller {
             }
         }
 
+        foreach ($data['songs'] as $song) {
+            $song->text = $this->Format->parseTwitter($song->text);
+            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+        }
+
         if (count($data['songs']) < $this->config->item('limit')) {
             $data['paginate'] = false;
         } else {
