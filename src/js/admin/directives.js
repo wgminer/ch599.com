@@ -131,6 +131,38 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
             init();
 
+            var validate = function (song) {
+                console.log(song);
+
+                if (typeof song.source_url == 'undefined') {
+                    $rootScope.$broadcast('toast', {
+                        message: 'Seriously...', 
+                        status: 'danger'
+                    });
+                    return false;
+                } else if (typeof song.title == 'undefined' || song.title == '') {
+                    $rootScope.$broadcast('toast', {
+                        message: 'A title is required!', 
+                        status: 'danger'
+                    });
+                    return false;
+                } else if (typeof song.genre_id == 'undefined' || song.genre_id == null) {
+                    $rootScope.$broadcast('toast', {
+                        message: 'A genre is required!', 
+                        status: 'danger'
+                    });
+                    return false;
+                } else if (typeof song.text == 'undefined' || song.text == '') {
+                    $rootScope.$broadcast('toast', {
+                        message: 'Say anything...', 
+                        status: 'danger'
+                    });
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
             scope.updateButton = function (status_id) {
                 if (status_id == 1) {
                     return 'Update';
@@ -150,47 +182,57 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
             scope.submit = function (song, status) {
 
-                $element.hide();
-                song.status_id = status;
+                
 
+                if (validate(song)) {
 
-                Api.post('/songs/create', angular.toJson(song))
-                    .then(function (callback) {
+                    song.status_id = status;
 
-                        $rootScope.$broadcast('reload');
-                        $rootScope.$broadcast('toast', {
-                            message: 'Song posted!', 
-                            status: 'success'
+                    $element.hide();
+
+                    Api.post('/songs/create', angular.toJson(song))
+                        .then(function (callback) {
+
+                            $rootScope.$broadcast('reload');
+                            $rootScope.$broadcast('toast', {
+                                message: 'Song posted!', 
+                                status: 'success'
+                            });
+
+                            $element.remove();
+                            $('body').removeClass('is--not-scrollable'); 
+
+                        }, function(error){
+                            console.log(error);
                         });
-
-                        $element.remove();
-                        $('body').removeClass('is--not-scrollable'); 
-
-                    }, function(error){
-                        console.log(error);
-                    });
+                }
             }
 
             scope.update = function (song, status) {
 
-                $element.hide();
-                song.status_id = status;
+                if (validate(song)) {
 
-                Api.post('/songs/update/' + song.id, angular.toJson(song))
-                    .then(function (callback) {
+                    song.status_id = status;
 
-                        $rootScope.$broadcast('reload');
-                        $rootScope.$broadcast('toast', {
-                            message: 'Song updated!', 
-                            status: 'success'
+                    $element.hide();
+
+                    Api.post('/songs/update/' + song.id, angular.toJson(song))
+                        .then(function (callback) {
+
+                            $rootScope.$broadcast('reload');
+                            $rootScope.$broadcast('toast', {
+                                message: 'Song updated!', 
+                                status: 'success'
+                            });
+
+                            $element.remove(); 
+                            $('body').removeClass('is--not-scrollable');
+
+                        }, function(error){
+                            console.log(error);
                         });
 
-                        $element.remove(); 
-                        $('body').removeClass('is--not-scrollable');
-
-                    }, function(error){
-                        console.log(error);
-                    });
+                }
             }
 
             scope.delete = function (id) {
