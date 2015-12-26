@@ -6,5 +6,6 @@ bower_components
 libs
 vendor
 *.sql
+secrets.json
 application/config/twitter.php
 application/config/database.php
