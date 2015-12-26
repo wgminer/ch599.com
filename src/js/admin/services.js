@@ -7,7 +7,7 @@ app.factory('Api', function ($http, $q) {
         if (location.hostname == '127.0.0.1' || location.hostname == 'localhost') {
             var url = 'http://localhost:8888/channel-599/api';
         } else {
-            var url = 'http://channel599.com/';
+            var url = 'http://channel599.com/api';
         }
         
         return url;

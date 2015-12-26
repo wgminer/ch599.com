@@ -103,7 +103,8 @@ gulp.task('deploy', ['styles', 'images', 'partials', 'scripts'], function () {
         host: secrets.production.host,
         user: secrets.production.user,
         password: secrets.production.password,
-        parallel: 10,
+        parallel: 3,
+        maxConnections: 5,
         log: gutil.log
     }); 
 
@@ -112,7 +113,10 @@ gulp.task('deploy', ['styles', 'images', 'partials', 'scripts'], function () {
         './system/**',
         './public/**',
         './.htaccess',
-        './index.php'
+        './index.php',
+        './robots.txt',
+        './favicon.ico',
+        './apple-touch-icon.png'
     ]
 
     return gulp.src(globs, {base: './', buffer: false})
