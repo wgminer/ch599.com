@@ -87,8 +87,10 @@ $route['translate_uri_dashes'] = FALSE;
     $route['profile'] = 'view/profile';
     $route['errors'] = 'cron/errors';
 
+    $route['reset/(:any)'] = 'view/reset/$1';
+    $route['sitemap'] = 'view/sitemap';
 
-// Channel Routes
+// Site Routes
 
     $route['latest'] = 'view/latest';
     $route['authors'] = 'view/authors';
@@ -104,5 +106,7 @@ $route['translate_uri_dashes'] = FALSE;
 
     $route['search'] = 'view/search';
 
+// Mini Url Routes
     
+    $route['(:any)'] = 'view/hash/$1';
 

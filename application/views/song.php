@@ -1,4 +1,28 @@
-<?php $this->load->view('partials/head'); ?>
+<!DOCTYPE html>
+<html ng-app="599">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title><?php if (isset($title)) : ?><?php echo $title; ?> | <?php endif; ?>Channel 599</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        
+        <meta name="description" content="<?php if (isset($song->text)) { echo $song->text; } else { echo 'You\'re on Channel 599, a video music blog started in Rob\'s room.'; } ?>">
+        <meta id="og-img" property="og:image" content="<?php echo $song->image_url ?>">
+        
+        <link rel="icon" href="<?php echo base_url(); ?>favicon.ico" type="image/ico">
+
+        <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
+        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700|Oxygen+Mono|Source+Code+Pro:400,300,500,700,200' rel='stylesheet' type='text/css'>        
+        
+        <link rel="stylesheet" href="<?php echo base_url() ?>public/css/599.css">
+    
+    </head>
+    <body>
+        <div toast class="toast toast--{{ status }}" >{{ message }}</div>
+        
+    
 <?php $this->load->view('partials/toolbar'); ?>
 <?php $this->load->view('partials/controls'); ?>
 

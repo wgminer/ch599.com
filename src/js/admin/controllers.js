@@ -30,7 +30,7 @@ app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube
 
 app.controller('SettingsCtrl', function ($scope, $location, Api) {
 
-    Api.get('/users/' + '2')
+    Api.get('/users/' + user.id)
         .then(function (callback) {
             $scope.user = callback[0];
         }, function (error) {
@@ -38,10 +38,8 @@ app.controller('SettingsCtrl', function ($scope, $location, Api) {
         });
 
     $scope.updateUser = function (user) {
-        console.log(user);
         Api.post('/users/update/' + user.id, angular.toJson(user))
             .then(function (callback) {
-                console.log(callback);
                 $scope.user = callback;
             }, function(error){
                 console.log(error);
@@ -51,11 +49,53 @@ app.controller('SettingsCtrl', function ($scope, $location, Api) {
     $scope.updatePassword = function (password) {
         Api.post('/users/update/password/' + $scope.user.id, angular.toJson(password))
             .then(function (callback) {
-                console.log(callback);
-                $scope.password = {'new': ''}
+                $scope.password = '';
             }, function(error){
                 console.log(error);
             });
+    }
+
+});
+
+app.controller('ResetCtrl', function ($scope, $rootScope, $location, Api) {
+
+    Api.get('/users/' + user.id)
+        .then(function (callback) {
+            $scope.user = callback[0];
+        }, function (error) {
+            console.log(error);
+        });
+
+    $scope.save = function (user, password) {
+
+        console.log(user, password);
+
+        if (password && password.trim().length > 0) {
+
+            Api.post('/users/update/' + user.id, angular.toJson(user))
+                .then(function (callback) {
+
+                    console.log(callback);
+
+                    Api.post('/users/update/password/' + user.id, angular.toJson(password))
+                        .then(function (callback) {
+                            console.log(callback);
+                            window.location.href = baseUrl + 'milagro';
+                        }, function(error){
+                            console.log(error);
+                        });
+
+                }, function(error){
+                    console.log(error);
+                });
+
+        } else {
+            $rootScope.$broadcast('toast', {
+                message: 'Set a valid password!', 
+                status: 'danger'
+            });
+        }
+        
     }
 
 });

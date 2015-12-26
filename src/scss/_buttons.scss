@@ -1,12 +1,11 @@
 .button {
     border: $border;
     border-radius: 4px;
-    padding: .65rem 1rem .5rem;
+    padding: .75rem 1rem .75rem;
     background-color: #fff;
     margin: 0rem 0 0;
     font-size: .875rem;
     line-height: 1;
-    float: right;
 
     &--primary {
     	background-color: #eee;

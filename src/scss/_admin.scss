@@ -298,7 +298,7 @@
     background-color: #fff;
     position: fixed;
     top: 0;
-    max-width: 300px;
+    max-width: 500px;
     padding: .5rem 3rem;
     border-radius: 0 0 3px 3px;
     color: $brand-color;
@@ -314,5 +314,10 @@
     &.is--visible {
         transform: translate3d(-50%, 0, 0);
         opacity: 1;
+    }
+
+    &--danger {
+        color: $danger-color;
+        border-color: $danger-color;
     }
 }

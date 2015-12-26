@@ -29,7 +29,7 @@ class Auth extends CI_Controller {
 
             $this->session->set_userdata($cookie);
 
-            redirect('/latest', 'refresh');
+            redirect('/dashboard', 'refresh');
 
         } else {
             redirect('/milagro', 'refresh');

@@ -1,7 +1,6 @@
 User-agent: *
 Disallow: /public/
 Disallow: /system/
-Disallow: /dashboard
 Disallow: /settings
 Disallow: /dashboard
 Disallow: /tweet

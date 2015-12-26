@@ -65,7 +65,7 @@ class User extends CI_Controller {
         $match = array('id' => $id);
         
         $user = array(
-            'password' => md5($input['new'])
+            'password' => md5($input)
         );
 
         $updated = $this->CRUD->update('users', $match, $user);
