@@ -7,13 +7,13 @@ class Cron extends CI_Controller {
 
         $ytApiKey = 'AIzaSyBbHFX8Vfs6JA3U0QVO55QqAkg7QMAm8_0';
 
-        $match = array('songs.id >' => 0);
+        $match = array('songs.status_id' => 1);
         $results = $this->CRUD->read('songs', $match); 
 
         foreach ($results as $song) {
 
             // Only run on published YouTube songs
-            if ($song->status_id == 1 && $song->source == 'youtube') { 
+            if ($song->source == 'youtube') { 
 
                 // if image 404's (ie. song deleted or account suspended)
                 $image = @file_get_contents('https://i.ytimg.com/vi/' . $song->source_id . '/default.jpg');
@@ -36,6 +36,8 @@ class Cron extends CI_Controller {
                     }
                 }
             }
+
+            sleep(1);
         }
   
     }

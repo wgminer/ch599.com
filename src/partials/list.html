@@ -1,4 +1,4 @@
-<table class="list">
+<table class="list" ng-show="songs.length > 0">
     <tbody>
         <tr ng-repeat="song in songs" trigger-modal song="song">
             <td class="list__image"><img src="{{song.image_url}}" alt=""></td>
@@ -11,3 +11,5 @@
         </tr>
     </tbody>
 </table>
+
+<p class="list-null" ng-hide="songs.length > 0">Nada...</p>
