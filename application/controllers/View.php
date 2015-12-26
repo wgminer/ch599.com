@@ -43,11 +43,13 @@ class View extends CI_Controller {
         $data['user'] = $this->is_authed(false);
         $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
         $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
-        $data['title'] = 'Latest';
 
         $data['song'] = $this->CRUD->read('songs', array('songs.slug' => $slug))[0]; 
         $data['song']->text = $this->Format->parseTwitter($data['song']->text);
         $data['song']->created_at = date_format(date_create($data['song']->created_at), 'Y-m-d');
+
+        $data['title'] = $data['song']->title;
+        $data['related'] = $this->CRUD->read('songs', array('genres.slug' => $data['song']->genre_slug, 'songs.id <' => $data['song']->id), 4); 
 
         $this->load->view('song', $data);
     }
@@ -109,13 +111,15 @@ class View extends CI_Controller {
         }
         
         $data['genre'] = $this->CRUD->read('genres', array('slug' => $slug))[0];
-
         $data['songs'] = $this->CRUD->read('songs', array('genres.slug' => $slug), $this->config->item('limit'), $offset); 
-        $data['title'] = $data['songs'][0]->genre_name;
+        
+        if ($data['songs'] != false) { 
+            $data['title'] = $data['songs'][0]->genre_name;
 
-        foreach ($data['songs'] as $song) {
-            $song->text = $this->Format->parseTwitter($song->text);
-            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+            foreach ($data['songs'] as $song) {
+                $song->text = $this->Format->parseTwitter($song->text);
+                $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+            }
         }
 
         if (count($data['songs']) < $this->config->item('limit')) {

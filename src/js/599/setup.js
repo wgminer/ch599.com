@@ -4,7 +4,7 @@ $(function () {
 
     Player.init($('.control-group--player'));
 
-    $('.feed').on('click', '.song__media', function() {
+    $('body').on('click', '.song__media', function() {
         Player.create($(this).parents('.song'));
     });
 

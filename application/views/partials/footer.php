@@ -3,14 +3,7 @@
     <script src="//connect.soundcloud.com/sdk.js"></script>
     <script src="//w.soundcloud.com/player/api.js"></script>
 
-    <script src="<?php echo base_url() ?>libs/jquery/dist/jquery.js"></script>
-    <script src="<?php echo base_url() ?>libs/moment/moment.js"></script>
-    <script src="<?php echo base_url() ?>libs/lodash/lodash.js"></script>
-
-    <script src="<?php echo base_url() ?>public/js/player.js"></script>
-    <script src="<?php echo base_url() ?>public/js/playlist.js"></script>
-    <script src="<?php echo base_url() ?>public/js/search.js"></script>
-    <script src="<?php echo base_url() ?>public/js/setup.js"></script>
+    <script src="<?php echo base_url() ?>public/js/599.js"></script>
 
     <?php if (isset($user)) : ?>
 
@@ -23,12 +16,7 @@
         };
     </script>
 
-    <script src="<?php echo base_url() ?>libs/angular/angular.js"></script>
-    <script src="<?php echo base_url() ?>libs/angular-route/angular-route.js"></script>
-    <script src="<?php echo base_url() ?>public/js/admin/app.js"></script>
-    <script src="<?php echo base_url() ?>public/js/admin/controllers.js"></script>
-    <script src="<?php echo base_url() ?>public/js/admin/directives.js"></script>
-    <script src="<?php echo base_url() ?>public/js/admin/services.js"></script>
+    <script src="<?php echo base_url() ?>public/js/admin.js"></script>
 
     <?php endif; ?>
 

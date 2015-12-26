@@ -4,6 +4,29 @@
     max-width: 50%;
     padding: 0 2rem;
 
+    &--single {
+        max-width: 66%;
+        padding-top: 4rem;
+
+        // .song__title {
+        //     margin: 2rem 0 0;
+        // }
+
+        // .song__text {
+        //     color: $text-color;
+        //     margin: 1rem 0 2rem;
+        // }
+
+        // .song__genre,
+        // .song__created,
+        // .song__author {
+        //     float: left;
+        //     margin: 0 2rem 0 0;
+        //     line-height: 1.5;
+        //     color: $text-color;
+        // }
+    }
+
     &--soundcloud {
 
         img {
@@ -128,5 +151,77 @@
         width: 100%;
         height: 100%;
         z-index: 150;
+    }
+}
+
+.related-group {
+    @include clear;
+    max-width: 66%;
+    padding: 0 1rem 4rem;
+    margin: 0 auto;
+
+    &__title {
+        font-size: 1rem;
+        color: #ccc;
+        padding: 0 1rem;
+        margin: 0 0 1rem;
+        font-weight: 400;
+    }
+}
+
+.related {
+    width: 50%;
+    float: left;
+    padding: 0 1rem 2rem;
+
+    &--soundcloud {
+
+        img {
+            top: 0;
+            left: 50%;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &--youtube {
+
+        img {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-50%);
+        }
+    }
+
+    img {
+        position: absolute;
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__media {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+
+            .song__title {
+                padding: 0 1rem;
+            }
+
+            .song__info {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__image {
+        background-color: #000;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        cursor: pointer;
     }
 }

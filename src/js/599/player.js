@@ -108,7 +108,7 @@ var Player = (function () {
 
     module.create = function ($song, seekTo) {
 
-        var $aspect = $song.find('.song__media');
+        var $media = $song.find('.song__media');
 
         var song = {
             source: $song.attr('source'),
@@ -132,7 +132,7 @@ var Player = (function () {
         if (song.source == 'youtube') {
 
             var $sacrifice = $('<div id="player"></div>');
-            $aspect.prepend($sacrifice);
+            $media.prepend($sacrifice);
             
             player = new YT.Player('player', {
                 videoId: song.source_id,
@@ -177,9 +177,9 @@ var Player = (function () {
 
             SC.oEmbed(song.source_url, params, function(oembed){
 
-                $aspect.prepend(oembed.html);
+                $media.prepend(oembed.html);
 
-                player = SC.Widget($aspect.children()[0]);
+                player = SC.Widget($media.children()[0]);
 
                 player.source = song.source;
                 player.source_id = song.source_id;

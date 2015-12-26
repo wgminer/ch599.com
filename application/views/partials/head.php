@@ -6,8 +6,7 @@
         <title><?php if (isset($title)) : ?><?php echo $title; ?> | <?php endif; ?>Channel 599</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">    
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
-        <script src="https://use.typekit.net/owf6hsl.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
+        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700|Oxygen+Mono|Source+Code+Pro:400,300,500,700,200' rel='stylesheet' type='text/css'>        
         <link rel="stylesheet" href="<?php echo base_url() ?>public/css/599.css">
     </head>
     <body>

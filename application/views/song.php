@@ -2,7 +2,7 @@
 <?php $this->load->view('partials/toolbar'); ?>
 <?php $this->load->view('partials/controls'); ?>
 
-<article class="song song--<?php echo $song->source; ?>" source="<?php echo $song->source; ?>" source-id="<?php echo $song->source_id; ?>" source-url="<?php echo $song->source_url; ?>">
+<article class="song song--single song--<?php echo $song->source; ?>" source="<?php echo $song->source; ?>" source-id="<?php echo $song->source_id; ?>" source-url="<?php echo $song->source_url; ?>">
     <div class="song__media">
         <div class="song__image">
             <img src="<?php echo $song->image_url; ?>" alt="">
@@ -17,7 +17,27 @@
             <?php if ($song->text) : ?><p class="song__text">"<?php echo $song->text; ?>"</p><?php endif; ?>
         </div>
     </div>
-    <h2 class="song__title"><a href="<?php echo base_url() ?>song/<?php echo $song->slug; ?>"><?php echo $song->title; ?></a></h2>
+    <h2 class="song__title"><?php echo $song->title; ?></h2>
 </article>
+
+<?php if ($related) : ?>
+<div class="related-group">
+    <h2 class="related-group__title">Related</h2>
+
+<?php foreach ($related as $song) : ?>
+
+    <a href="<?php echo base_url() ?>song/<?php echo $song->slug; ?>" class="related related--<?php echo $song->source; ?>">
+        <div class="song__media">
+            <div class="song__image">
+                <img src="<?php echo $song->image_url; ?>" alt="">
+            </div>
+        </div>
+    </a>
+
+<?php endforeach; ?>
+
+</div>
+
+<?php endif; ?>
 
 <?php $this->load->view('partials/footer'); ?>

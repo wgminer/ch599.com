@@ -16,9 +16,6 @@
     border-bottom: 1px solid #fff;
 
     &.is--open {
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid #fff;
 
         .dropdown__menu {
             display: block;
@@ -29,12 +26,13 @@
         background-color: #fff;
         display: none;
         position: absolute;
-        min-width: 150px;
+        min-width: 12rem;
         right: -1px;
-        border: 1px solid #ccc;
-        border-radius: 3px 0 3px 3px;
+        border: $border;
+        border-radius: 3px;
         padding: .5rem 0;
-        top: 40px;
+        top: 2.5rem;
+        font-size: .875rem;
         z-index: 1;
     }
 
@@ -62,7 +60,7 @@
 
         a {
             display: block;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
 
             &:hover {   
                 background-color: $hover-color;
