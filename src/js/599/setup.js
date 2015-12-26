@@ -57,6 +57,19 @@ $(function () {
 
     $('.control--search').click(function () {
         Search.toggle();
-    })
+    });
+
+    // Typed.js stuff
+    $('.hero .js--typed').typed({
+        strings: ["You're on Channel 599,<br> a music blog started in Rob's room."],
+        contentType: 'html',
+        showCursor: false
+    });
+
+    $('body').on('click', '.song__media', function() {
+        Player.create($(this).parents('.song'));
+    });
+
+    $('.feed img.lazy').lazyload().removeClass('lazy');
 
 })

@@ -35,6 +35,8 @@ gulp.task('scripts', function () {
 
     var site = [
         './libs/jquery/dist/jquery.js',
+        './libs/typed.js/dist/typed.min.js',
+        './libs/jquery_lazyload/jquery.lazyload.js',
         './src/js/599/player.js',
         './src/js/599/playlist.js',
         './src/js/599/search.js',

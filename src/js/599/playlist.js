@@ -14,6 +14,7 @@ var Playlist = (function () {
         $.get(url, function (html) {
             $playlist.append(html);
             $button.text('Moar');
+            $('.feed img.lazy').lazyload().removeClass('lazy');
             offset+=increment;
         });
     }

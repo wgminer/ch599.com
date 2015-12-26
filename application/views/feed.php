@@ -4,7 +4,7 @@
 
 
 <div class="hero">
-	<p>You're on Channel 599,<br> a music blog started in Rob's room.</p>
+	<p style="min-height: 44px" class="js--typed"></p>
 </div>
 
 <div class="feed" reload>
