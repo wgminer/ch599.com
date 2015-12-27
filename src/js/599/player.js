@@ -209,7 +209,7 @@ var Player = (function () {
                 });
 
                 player.bind(SC.Widget.Events.FINISH, function(eventData) {
-                    scope.player.status = 0;
+                    player.status = 0;
                     module.next();
                 });
 

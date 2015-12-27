@@ -5,6 +5,7 @@ $(function () {
     Player.init($('.control-group--player'));
 
     $('body').on('click', '.song__media', function() {
+        console.log('twice?');
         Player.create($(this).parents('.song'));
     });
 
@@ -64,10 +65,6 @@ $(function () {
         strings: ["You're on Channel 599,<br> a music blog started in Rob's room."],
         contentType: 'html',
         showCursor: false
-    });
-
-    $('body').on('click', '.song__media', function () {
-        Player.create($(this).parents('.song'));
     });
 
     $('body').on('click', '.song__info a', function (event) {
