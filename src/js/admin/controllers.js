@@ -28,7 +28,7 @@ app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube
 
 });
 
-app.controller('SettingsCtrl', function ($scope, $location, Api) {
+app.controller('SettingsCtrl', function ($scope, $rootScope, $location, Api) {
 
     Api.get('/users/' + user.id)
         .then(function (callback) {
@@ -38,11 +38,22 @@ app.controller('SettingsCtrl', function ($scope, $location, Api) {
         });
 
     $scope.updateUser = function (user) {
+        console.log(user);
         Api.post('/users/update/' + user.id, angular.toJson(user))
             .then(function (callback) {
                 $scope.user = callback;
+                $scope.user.id = user.id;
+
+                $rootScope.$broadcast('toast', {
+                    message: 'Profile updated!', 
+                    status: 'success'
+                });
             }, function(error){
                 console.log(error);
+                $rootScope.$broadcast('toast', {
+                    message: 'Something went wrong...', 
+                    status: 'danger'
+                });
             });
     }
 
@@ -50,8 +61,16 @@ app.controller('SettingsCtrl', function ($scope, $location, Api) {
         Api.post('/users/update/password/' + $scope.user.id, angular.toJson(password))
             .then(function (callback) {
                 $scope.password = '';
+                $rootScope.$broadcast('toast', {
+                    message: 'Password updated!', 
+                    status: 'success'
+                });
             }, function(error){
                 console.log(error);
+                $rootScope.$broadcast('toast', {
+                    message: 'Something went wrong...', 
+                    status: 'danger'
+                });
             });
     }
 

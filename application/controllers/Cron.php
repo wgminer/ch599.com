@@ -14,6 +14,14 @@ class Cron extends CI_Controller {
         $hours = date('H');
         $offset = $hours * $limit;
 
+        if ($this->input->get('offset', true)) {
+            $offset = $this->input->get('offset', true);
+        }
+
+        if ($this->input->get('limit', true)) {
+            $limit = $this->input->get('limit', true);
+        }
+
         $results = $this->CRUD->read('songs', $match, $limit, $offset);
 
         foreach ($results as $song) {
@@ -25,9 +33,11 @@ class Cron extends CI_Controller {
                 $image = @file_get_contents('https://i.ytimg.com/vi/' . $song->source_id . '/default.jpg');
                 
                 if (!$image) {
-                    // var_dump($song->title);
-                    // echo '<br><br><br><br>';
                     $this->CRUD->update('songs', array('songs.id' => $song->id), array('status_id' => 3));
+                    if ($this->input->get('print', true)) {
+                        echo 'Error: <a href="<?php echo base_url() ?><?php echo $song->slug; ?>">' . $song->title . '</a>';
+                        echo '<br><br>';
+                    }
                     continue;
                 }
 
@@ -36,9 +46,11 @@ class Cron extends CI_Controller {
                 if (isset($contentDetails->items[0]->contentDetails->regionRestriction->blocked)) {
 
                     if (in_array("US", $contentDetails->items[0]->contentDetails->regionRestriction->blocked)) {
-                        // var_dump($song->title);
-                        // echo '<br><br><br><br>';
                         $this->CRUD->update('songs', array('songs.id' => $song->id), array('status_id' => 3));
+                        if ($this->input->get('print', true)) {
+                            echo 'Error: <a href="<?php echo base_url() ?><?php echo $song->slug; ?>">' . $song->title . '</a>';
+                            echo '<br><br>';
+                        }
                     }
                 }
             }

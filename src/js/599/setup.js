@@ -66,9 +66,13 @@ $(function () {
         showCursor: false
     });
 
-    $('body').on('click', '.song__media', function() {
+    $('body').on('click', '.song__media', function () {
         Player.create($(this).parents('.song'));
     });
+
+    $('body').on('click', '.song__info a', function (event) {
+        event.stopImmediatePropagation();
+    })
 
     $('.feed img.lazy').lazyload().removeClass('lazy');
 

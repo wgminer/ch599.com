@@ -50,6 +50,19 @@ app.directive('dropdown', function () {
     };
 });
 
+app.directive('stopPropagation', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            element.bind('click', function (event) {
+                event.stopImmediatePropagation()
+            })
+
+        }
+    };
+});
+
 app.directive('checkError', function (Api) {
     return {
         restrict: 'A',
@@ -181,6 +194,11 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
                         status: 'danger'
                     });
                     return false;
+                } else if (user.id == 1){
+                    $rootScope.$broadcast('toast', {
+                        message: 'Admins can not post', 
+                        status: 'danger'
+                    });
                 } else {
                     return true;
                 }
@@ -204,8 +222,6 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
             }
 
             scope.submit = function (song, status) {
-
-                
 
                 if (validate(song)) {
 

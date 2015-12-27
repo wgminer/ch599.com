@@ -187,14 +187,10 @@
         color: $text-color;
     }
 
-    &__genre {
-        width: 15%;
-        padding: 2.5rem 1rem 1rem;
-        @include ellipsis;
-    }
-
-    &__created-at {
-        width: 15%;
+    &__genre,
+    &__created-at,
+    &__links {
+        width: 10%;
         padding: 2.5rem 1rem 1rem;
         @include ellipsis;
     }

@@ -9,7 +9,8 @@ class Song extends CI_Controller {
         $limit = false;
         $offset = 0;
 
-        if (isset($_GET['user_id'])) {
+
+        if (isset($_GET['user_id']) && $_GET['user_id'] != 1) {
             $match['user_id'] = $_GET['user_id'];
         }
 
