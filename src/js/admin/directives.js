@@ -48,6 +48,29 @@ app.directive('dropdown', function () {
 
         }
     };
+});
+
+app.directive('checkError', function (Api) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+
+            element.bind('load', function () {
+                if (element[0].naturalHeight == 90 && element[0].naturalWidth == 120 && scope.song.status_id == 1) {
+                        
+                    scope.song.status_id = 3;
+
+                    Api.post('/songs/update/' + scope.song.id, angular.toJson(scope.song))
+                        .then(function (callback) {
+                            console.log('error: ' + callback.title);
+                        }, function(error){
+                            console.log(error);
+                        });
+                }
+            });
+
+        }
+    };
 })
 
 app.directive('toast', function ($rootScope, $location, Api, YouTube, SoundCloud) {
