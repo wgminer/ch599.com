@@ -113,7 +113,7 @@ class View extends CI_Controller {
         $data['genre'] = $this->CRUD->read('genres', array('slug' => $slug))[0];
         $data['songs'] = $this->CRUD->read('songs', array('genres.slug' => $slug, 'songs.status_id' => 1), $this->config->item('limit'), $offset); 
         
-        if ($data['songs'] != false) { 
+        if ($data['songs']) { 
             $data['title'] = $data['songs'][0]->genre_name;
 
             foreach ($data['songs'] as $song) {
@@ -206,9 +206,11 @@ class View extends CI_Controller {
             }
         }
 
-        foreach ($data['songs'] as $song) {
-            $song->text = $this->Format->parseTwitter($song->text);
-            $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+        if ($data['songs']) {
+            foreach ($data['songs'] as $song) {
+                $song->text = $this->Format->parseTwitter($song->text);
+                $song->created_at = date_format(date_create($song->created_at), 'Y-m-d');
+            }
         }
 
         if (count($data['songs']) < $this->config->item('limit')) {
