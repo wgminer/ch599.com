@@ -51,7 +51,7 @@ app.factory('Api', function ($http, $q) {
 
 app.factory('YouTube', function ($http, $q) {
 
-    var ytAPIKey = 'AIzaSyByLHiwIljNcIO7sSuhTT22RsnhDHg2X8c';
+    var ytAPIKey = 'AIzaSyBbHFX8Vfs6JA3U0QVO55QqAkg7QMAm8_0';
 
     var newYTSong = function(url) {
 
@@ -106,7 +106,7 @@ app.factory('SoundCloud', function ($http, $q) {
     var newSCSong = function(url) {
 
         SC.initialize({
-            client_id: 'e58c01b67bbc39c365f87269b927a868'
+            client_id: 'e732213f2ca2d1ca96c10924da125f83'
         });
 
         var deferred = $q.defer();
