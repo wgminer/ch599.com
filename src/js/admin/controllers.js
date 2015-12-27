@@ -12,6 +12,7 @@ app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube
             status = 3;
         }
 
+        console.log(user.id, status);
         Api.get('/songs?user_id=' + user.id + '&status_id=' + status)
             .then(function (callback) {
                 $scope.songs = callback;

@@ -87,6 +87,8 @@ $route['translate_uri_dashes'] = FALSE;
     $route['profile'] = 'view/profile';
     $route['errors'] = 'cron/errors';
 
+    $route['oops'] = 'cron/oops';
+
     $route['reset/(:any)'] = 'view/reset/$1';
     $route['sitemap'] = 'view/sitemap';
 

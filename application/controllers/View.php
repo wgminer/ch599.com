@@ -45,11 +45,12 @@ class View extends CI_Controller {
         $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
 
         $data['song'] = $this->CRUD->read('songs', array('songs.slug' => $slug))[0]; 
+        $data['song']->description = $data['song']->text;
         $data['song']->text = $this->Format->parseTwitter($data['song']->text);
         $data['song']->created_at = date_format(date_create($data['song']->created_at), 'Y-m-d');
 
         $data['title'] = $data['song']->title;
-        $data['related'] = $this->CRUD->read('songs', array('genres.slug' => $data['song']->genre_slug, 'songs.id <' => $data['song']->id), 4); 
+        $data['related'] = $this->CRUD->read('songs', array('genres.slug' => $data['song']->genre_slug, 'songs.id <' => $data['song']->id, 'songs.status_id' => 1), 4); 
 
         $this->load->view('song', $data);
     }

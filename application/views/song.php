@@ -8,7 +8,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1">    
         
-        <meta name="description" content="<?php if (isset($song->text)) { echo $song->text; } else { echo 'You\'re on Channel 599, a video music blog started in Rob\'s room.'; } ?>">
+        <meta name="description" content="<?php if (isset($song->description)) { echo $song->description; } else { echo 'You\'re on Channel 599, a video music blog started in Rob\'s room.'; } ?>">
         <meta id="og-img" property="og:image" content="<?php echo $song->image_url ?>">
         
         <link rel="icon" href="<?php echo base_url(); ?>favicon.ico" type="image/ico">

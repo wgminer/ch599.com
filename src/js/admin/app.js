@@ -2,7 +2,9 @@
 
 var app = angular.module('599', ['ngRoute']);
 
-app.run();
+app.run(function ($rootScope) {
+    $rootScope.baseUrl = baseUrl;
+});
 
 app.config(function ($routeProvider) {
     $routeProvider

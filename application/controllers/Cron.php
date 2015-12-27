@@ -3,6 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cron extends CI_Controller {
 
+    public function oops () {
+        $posts = $this->CRUD->read('posts', array('posts.post_id >' => 0));
+
+        foreach ($posts as $post) {
+
+            $song = $this->CRUD->read('songs', array('songs.hash' => $post->post_mini_url))[0];
+
+            if ($song) {
+                $this->CRUD->update('songs', array('songs.id' => $song->id), array('songs.user_id' => $post->post_author_id));
+            }
+        }
+    }
+
     public function errors () {
 
         $ytApiKey = 'AIzaSyBbHFX8Vfs6JA3U0QVO55QqAkg7QMAm8_0';

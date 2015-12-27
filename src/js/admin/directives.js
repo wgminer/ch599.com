@@ -194,7 +194,7 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
                         status: 'danger'
                     });
                     return false;
-                } else if (user.id == 1){
+                } else if (user.id == 1) {
                     $rootScope.$broadcast('toast', {
                         message: 'Admins can not post', 
                         status: 'danger'
