@@ -19,8 +19,15 @@ var Playlist = (function () {
         });
     }
 
+    module.error = function (img) {
+
+        // This is the dimension of the broken YT thumbnail
+        if (img.naturalHeight == 90 && img.naturalWidth == 120) {
+            $(img).parents('.song').hide();
+        }
+    }
+
     module.init = function (playlist) {
-        console.log();
         $playlist = playlist;
     }
         

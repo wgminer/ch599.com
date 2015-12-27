@@ -8,7 +8,13 @@ class Cron extends CI_Controller {
         $ytApiKey = 'AIzaSyBbHFX8Vfs6JA3U0QVO55QqAkg7QMAm8_0';
 
         $match = array('songs.status_id' => 1);
-        $results = $this->CRUD->read('songs', $match); 
+        $all = $this->CRUD->read('songs', $match); 
+
+        $limit = count($all) / 24; 
+        $hours = date('H');
+        $offset = $hours * $limit;
+
+        $results = $this->CRUD->read('songs', $match, $limit, $offset);
 
         foreach ($results as $song) {
 
@@ -37,7 +43,6 @@ class Cron extends CI_Controller {
                 }
             }
 
-            sleep(1);
         }
   
     }

@@ -594,7 +594,8 @@ module.init=function(controls){$controls=controls;}
 return module;})();
 
 'use strict';var Playlist=(function(){var module={};var $playlist;var increment=50;var offset=increment;var href=window.location.href;module.paginate=function($button){$button.text('Loading');var url=window.location.href+'?offset='+offset+'?&ajax=true';$.get(url,function(html){$playlist.append(html);$button.text('Moar');$('.feed img.lazy').lazyload().removeClass('lazy');offset+=increment;});}
-module.init=function(playlist){console.log();$playlist=playlist;}
+module.error=function(img){if(img.naturalHeight==90&&img.naturalWidth==120){$(img).parents('.song').hide();}}
+module.init=function(playlist){$playlist=playlist;}
 return module;})();
 
 'use strict';var Search=(function(){var module={};var $trigger;var $panel;module.toggle=function(){if($panel.hasClass('is--open')){$('body').removeClass('is--not-scrollable');$panel.removeClass('is--open')}else{$('body').addClass('is--not-scrollable');$panel.addClass('is--open').find('input').focus();}}
