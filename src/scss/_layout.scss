@@ -1,5 +1,5 @@
 .hero {
-    width: 50%;
+    width: $content-width;
     margin: 0 auto;
     padding: 33vh 2rem;
     transition: background-color .25s ease;
@@ -48,7 +48,7 @@
 }
 
 .column {
-	width: 50%;
+	width: $content-width;
 	float: left;
 }
 

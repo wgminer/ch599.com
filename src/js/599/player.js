@@ -220,6 +220,24 @@ var Player = (function () {
 
     module.init = function (controls) {
         $controls = controls;
+
+        // var check;
+        // var i = 0;
+        // var autoplay = function () {
+
+        //     console.log("checking");
+
+        //     // Make sure YT function is on the page.
+        //     if (typeof YT.Player !== 'undefined' && typeof SC.oEmbed !== 'undefined') {
+        //         module.create($('.song[autoplay]'));
+        //         clearInterval(check);
+        //     } else if (i > 500) {
+        //         clearInterval(check);
+        //     }   
+        // }
+
+        // autoplay();
+        // check = setInterval(autoplay, 300);
     }
         
     return module;

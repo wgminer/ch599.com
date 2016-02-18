@@ -119,7 +119,8 @@
 	&__links,
 	&__form {
 		@inlcude clear;
-		max-width: 50%;
+		width: $content-width;
+		min-width: $min-content-width;
 		padding: 50px 2rem 0;
 		margin: 0 auto; 
 	}

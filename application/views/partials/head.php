@@ -6,7 +6,6 @@
 
         <title><?php if (isset($title)) : ?><?php echo $title; ?> | <?php endif; ?>Channel 599</title>
         
-        <meta name="viewport" content="width=device-width, initial-scale=1">    
         <meta name="description" content="You're on Channel 599, a video music blog started in Rob's room.">
         <meta id="og-img" property="og:image" content="<?php echo base_url(); ?>apple-touch-icon.png">
         <link rel="icon" href="<?php echo base_url(); ?>favicon.ico" type="image/ico">
