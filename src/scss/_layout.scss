@@ -1,5 +1,7 @@
 .hero {
     width: $content-width;
+    min-width: $min-content-width;
+    max-width: $max-content-width;
     margin: 0 auto;
     padding: 33vh 2rem;
     transition: background-color .25s ease;
