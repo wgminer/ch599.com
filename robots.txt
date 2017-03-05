@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /public/
+Disallow: /system/
+Disallow: /settings
+Disallow: /dashboard
+Disallow: /tweet
+Sitemap: http://www.channel599.com/sitemap

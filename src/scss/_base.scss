@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    font-family: "Oxygen Mono", monospace;
+    color: $text-color;
+    line-height: 1.5;
+    background-color: #fff;
+
+    &.is--not-scrollable {
+    	overflow: hidden;
+    }
+}
+
+a {
+    color: $brand-color;
+    text-decoration: none;
+}
+

@@ -1,0 +1,19 @@
+<table class="list" ng-show="songs.length > 0">
+    <tbody>
+        <tr ng-repeat="song in songs" trigger-modal song="song">
+            <td class="list__image"><img src="{{song.image_url}}" check-error alt=""></td>
+            <td class="list__title">
+                <p class="list__song-title"><a stop-propagation href="{{ baseUrl }}song/{{ song.slug }}" target="_blank">{{song.title}}</a></p>
+                <p class="list__song-text">{{song.text}}</p>
+            </td>
+            <td class="list__genre">{{song.genre_name}}</td>
+            <td class="list__created-at">{{song.created_at}}</td>
+            <td class="list__links">
+                <a stop-propagation href="{{ song.source_url }}" target="_blank">Source</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="list-null" ng-hide="songs">Loading...</p>
+<p class="list-null" ng-show="songs.length == 0">Nada...</p>

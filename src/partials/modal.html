@@ -1,0 +1,57 @@
+<div class="modal" modal>
+    <div class="modal__content">
+        <div class="modal__preview">
+            <div class="preview preview--{{preview.source}}">
+                <div class="preview__media">
+                    <div class="preview__image">
+                        <img ng-show="preview.image_url" src="{{ preview.image_url}}" alt="">
+                    </div>
+                </div>
+                <h2 class="preview__title"><a href="">{{preview.title}}</a></h2>
+            </div>
+        </div>
+        <div class="modal__form">
+        
+            <div class="form-group">
+                <label class="form-group__label" for="source_url">URL</label>
+                <input id="source_url" class="form-group__control" type="text" ng-change="previewSong(preview.source_url)" ng-model="preview.source_url">
+            </div>
+
+            <div class="form-group">
+                <label class="form-group__label" for="title">Title</label>
+                <input id="title" class="form-group__control" type="text" ng-model="preview.title">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-group__label" for="genre">Genre</label>
+                <select ng-model="preview.genre_id" class="form-group__control" ng-options="genre.id as genre.name for genre in genres">
+                    <option value="">Select</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-group__label" for="text">Text ({{ 116 - preview.text.length }} Characters Left)</label>
+                <textarea class="form-group__control" id="text" maxlength="116" rows="4" ng-model="preview.text"></textarea>
+            </div>
+
+            <div ng-hide="preview.status_id" class="button-group">
+                <button ng-click="submit(preview, 1)" class="button button--primary">Post</button>
+                <button ng-click="submit(preview, 2)" class="button">Draft</button>
+                <button ng-click="close()" class="button button--last">Cancel</button>
+            </div>
+            
+            <div ng-show="preview.status_id" class="button-group">
+                <button ng-hide="confirm" ng-click="update(preview, 1)" class="button button--primary">{{ updateButton(preview.status_id) }}</button>
+                <button ng-hide="confirm" ng-click="update(preview, 2)" class="button">Draft</button>
+                <button ng-hide="confirm" ng-click="confirm = true" class="button">Delete</button>
+                
+                <button ng-show="confirm" ng-click="delete(preview.id)" class="button button--danger">Yes, Delete</button>
+                <button ng-show="confirm" ng-click="confirm = false" class="button">Nevermind</button>
+
+                <button ng-click="close()" class="button button--last">Cancel</button>
+            </div>            
+        
+        </div>
+
+    </div>
+</div>

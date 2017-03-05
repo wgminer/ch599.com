@@ -1,0 +1,178 @@
+.bar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 3.75rem;
+	height: 100%;
+	border-right: $border;
+	z-index: 161;
+	background-color: #fff;
+}
+
+.control-group {
+	position: absolute;
+	width: 100%;
+	
+	&--site {
+		top: 0;
+	}
+
+	&--player {
+		bottom: 1rem;
+	}
+
+	&.is--playing {
+		.control--play {
+			display: block;
+		}
+	}
+
+	&.is--paused {
+		.control--pause {
+			display: block;
+		}
+	}
+
+	&.is--loading {
+		.control--loading {
+			display: block;
+		}
+	}
+}
+
+.control {
+	width: 100%;
+	line-height: 2.5rem;
+	height: 2.5rem;
+	border: 0;
+	padding: 0;
+	display: block;
+	margin: 0;
+	background-color: transparent;
+	text-align: center;	
+
+	&--home {
+		line-height: 3.75rem;
+		height: 3.75rem;
+		font-size: 1.25rem;
+		color: $text-color;
+	}
+
+	&--search {
+		font-size: 1.25rem;
+	}
+
+	&--play {
+		display: none;
+	}
+
+	&--pause {
+		display: none;
+	}
+
+	&--loading {
+		display: none;
+
+		i:before {
+			animation: spin 1s infinite linear;
+			display: block;
+		}
+	}
+
+	@keyframes spin {
+	    0% { transform: rotate(0deg); }
+	    100% { transform: rotate(359deg); } 
+	}
+}
+
+.search {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	right: 0;
+	overflow: auto;
+	background-color: rgba(#fff, 1);
+	z-index: 160;
+	padding-bottom: 50vh;
+	opacity: 0;
+	transform: translate3d(-100%,0,0);
+	transition: opacity .25s ease;
+
+	&.is--open {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+
+	&__close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 3.75rem;
+		height: 3.75rem;
+		text-align: center;
+		line-height: 3.75rem;
+		background-color: transparent;
+		border: 0;
+	}
+	
+	&__links,
+	&__form {
+		@inlcude clear;
+		width: $content-width;
+		min-width: $min-content-width;
+		padding: 50px 2rem 0;
+		margin: 0 auto; 
+	}
+
+	&__links {
+		display: flex;
+	}
+
+	&__column {
+		flex: 0 0 auto;
+		width: 62%;
+
+		&:first-child {
+			width: 38%;
+		}
+	}
+
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			margin-bottom: .25rem;
+		}
+
+		&-title {
+			font-size: 1rem;
+			margin: 0 0 1rem;
+		}
+
+		&--float {
+			li {
+				float: left; 
+				width: 50%;
+			}
+		}
+	}
+
+	&__input {
+		background-color: transparent;
+		display: block;
+		line-height: 2.5rem;
+		padding: 10px 0;
+		font-size: 1rem;
+		border: 0;
+		border-bottom: $border;
+		width: 100%;
+
+		&:focus {
+			outline: none;
+			border-bottom: 1px solid $brand-color;
+		}
+	}
+}

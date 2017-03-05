@@ -1,0 +1,92 @@
+.hero {
+    width: $content-width;
+    min-width: $min-content-width;
+    max-width: $max-content-width;
+    margin: 0 auto;
+    padding: 33vh 2rem;
+    transition: background-color .25s ease;
+
+    p {
+    	margin: 0 0 1rem;
+
+    	&:last-child {
+    		margin: 0;
+    	}
+    }
+}
+
+.paginate {
+	background-color: transparent;
+	border: 1px solid $brand-color;
+	padding: .5rem 3rem;
+	margin: 6rem auto 6rem;
+	display: block;
+	text-align: center;
+	border-radius: 3px;
+	color: $brand-color;
+}
+
+.image {
+	float: left;
+	position: relative;
+	padding: .25rem;
+
+	&__overlay {
+		position: absolute;	
+		top: .25rem;
+		left: .25rem;
+		bottom: .25rem;
+		right: .25rem;
+		z-index: 2;
+		background-color: rgba($brand-color, .25);
+	}
+
+	img {
+		z-index: 1;
+		position: relative;
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.column {
+	width: $content-width;
+	float: left;
+}
+
+.authors {
+	min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    padding: 4rem 1.75rem 0 60px;
+	
+	&__text {
+		width: 50%;
+		padding-left: 1rem;
+		display: flex;
+        align-items: center;
+        justify-content: center;
+	}
+
+    &__images {
+		width: 50%;
+		padding-left: 1rem;
+		display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__inner {
+    	@include clear;
+		display: box;
+    }
+}
+
+.null {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	color: #ccc;
+	max-width: 50%;
+    padding: 0 2rem;
+}
