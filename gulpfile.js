@@ -108,7 +108,11 @@ gulp.task('serve', ['styles', 'images', 'partials', 'scripts'], function () {
 //         parallel: 3,
 //         maxConnections: 5,
 //         log: gutil.log
+<<<<<<< HEAD
 //     });
+=======
+//     }); 
+>>>>>>> 34dd0139e87ece60234e3ab9662946272fe00f42
 
 //     var globs = [
 //         './application/**',
