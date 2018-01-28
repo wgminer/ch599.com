@@ -1,6 +1,6 @@
 // Requirements
 
-var gulp = require('gulp'); 
+var gulp = require('gulp');
 var clean = require('gulp-clean');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
@@ -14,7 +14,7 @@ var concat = require('gulp-concat');
 
 var ftp = require('vinyl-ftp');
 var gutil = require('gulp-util');
-var secrets = require('./secrets.json');
+// var secrets = require('./secrets.json');
 
 gulp.task('styles', function () {
 
@@ -99,30 +99,30 @@ gulp.task('serve', ['styles', 'images', 'partials', 'scripts'], function () {
     gulp.watch('images/**/*', {cwd: './src'}, ['images']);
 });
 
-gulp.task('deploy', ['styles', 'images', 'partials', 'scripts'], function () {
+// gulp.task('deploy', ['styles', 'images', 'partials', 'scripts'], function () {
 
-    var conn = ftp.create({
-        host: secrets.production.host,
-        user: secrets.production.user,
-        password: secrets.production.password,
-        parallel: 3,
-        maxConnections: 5,
-        log: gutil.log
-    }); 
+//     var conn = ftp.create({
+//         host: secrets.production.host,
+//         user: secrets.production.user,
+//         password: secrets.production.password,
+//         parallel: 3,
+//         maxConnections: 5,
+//         log: gutil.log
+//     });
 
-    var globs = [
-        './application/**',
-        './system/**',
-        './public/**',
-        './.htaccess',
-        './index.php',
-        './robots.txt',
-        './favicon.ico',
-        './apple-touch-icon.png'
-    ]
+//     var globs = [
+//         './application/**',
+//         './system/**',
+//         './public/**',
+//         './.htaccess',
+//         './index.php',
+//         './robots.txt',
+//         './favicon.ico',
+//         './apple-touch-icon.png'
+//     ]
 
-    return gulp.src(globs, {base: './', buffer: false})
-        .pipe(conn.newer(secrets.production.path))
-        .pipe(conn.dest(secrets.production.path));
+//     return gulp.src(globs, {base: './', buffer: false})
+//         .pipe(conn.newer(secrets.production.path))
+//         .pipe(conn.dest(secrets.production.path));
 
-});
+// });

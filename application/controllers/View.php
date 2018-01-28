@@ -7,10 +7,10 @@ class View extends CI_Controller {
 
         $user_id = $this->session->userdata('id');
 
-        if (!isset($user_id) && $redirect) {   
+        if (!isset($user_id) && $redirect) {
             redirect('/milagro', 'refresh');
         } else {
-            return $this->CRUD->read('users', array('id' => $user_id))[0]; 
+            return $this->CRUD->read('users', array('id' => 2))[0];
         }
     }
 
@@ -20,7 +20,7 @@ class View extends CI_Controller {
 
     public function dashboard () {
         $data['admin'] = true;
-        $data['user'] = $this->is_authed(true);
+        $data['user'] = $this->is_authed(false);
         $data['title'] = 'Dashboard';
         $this->load->view('dashboard', $data);
     }
@@ -44,13 +44,13 @@ class View extends CI_Controller {
         $data['genres'] = $this->CRUD->read('genres', array('id >' => 0));
         $data['authors'] = $this->CRUD->read('users', array('id >' => 1));
 
-        $data['song'] = $this->CRUD->read('songs', array('songs.slug' => $slug))[0]; 
+        $data['song'] = $this->CRUD->read('songs', array('songs.slug' => $slug))[0];
         $data['song']->description = $data['song']->text;
         $data['song']->text = $this->Format->parseTwitter($data['song']->text);
         $data['song']->created_at = date_format(date_create($data['song']->created_at), 'Y-m-d');
 
         $data['title'] = $data['song']->title;
-        $data['related'] = $this->CRUD->read('songs', array('genres.slug' => $data['song']->genre_slug, 'songs.id <' => $data['song']->id, 'songs.status_id' => 1), 4); 
+        $data['related'] = $this->CRUD->read('songs', array('genres.slug' => $data['song']->genre_slug, 'songs.id <' => $data['song']->id, 'songs.status_id' => 1), 4);
 
         $this->load->view('song', $data);
     }
@@ -68,7 +68,7 @@ class View extends CI_Controller {
             $offset = 0;
         }
 
-        $data['songs'] = $this->CRUD->read('songs', array('songs.status_id' => 1), $this->config->item('limit'), $offset); 
+        $data['songs'] = $this->CRUD->read('songs', array('songs.status_id' => 1), $this->config->item('limit'), $offset);
 
         foreach ($data['songs'] as $song) {
             $song->text = $this->Format->parseTwitter($song->text);
@@ -110,11 +110,11 @@ class View extends CI_Controller {
         } else {
             $offset = 0;
         }
-        
+
         $data['genre'] = $this->CRUD->read('genres', array('slug' => $slug))[0];
-        $data['songs'] = $this->CRUD->read('songs', array('genres.slug' => $slug, 'songs.status_id' => 1), $this->config->item('limit'), $offset); 
-        
-        if ($data['songs']) { 
+        $data['songs'] = $this->CRUD->read('songs', array('genres.slug' => $slug, 'songs.status_id' => 1), $this->config->item('limit'), $offset);
+
+        if ($data['songs']) {
             $data['title'] = $data['songs'][0]->genre_name;
 
             foreach ($data['songs'] as $song) {
@@ -153,7 +153,7 @@ class View extends CI_Controller {
         $data['author'] = $this->CRUD->read('users', array('slug' => $slug))[0];
         $data['author']->bio = $this->Format->parseTwitter($data['author']->bio);
 
-        $data['songs'] = $this->CRUD->read('songs', array('users.slug' => $slug, 'songs.status_id' => 1), $this->config->item('limit'), $offset); 
+        $data['songs'] = $this->CRUD->read('songs', array('users.slug' => $slug, 'songs.status_id' => 1), $this->config->item('limit'), $offset);
         $data['title'] = $data['songs'][0]->user_name;
 
         foreach ($data['songs'] as $song) {
@@ -198,12 +198,12 @@ class View extends CI_Controller {
                 $terms = explode(' ', $term);
 
                 foreach ($terms as $term) {
-                    $songs = $this->CRUD->read('songs', array('songs.title' => $term, 'songs.status_id' => 1), $this->config->item('limit'), $offset, true); 
+                    $songs = $this->CRUD->read('songs', array('songs.title' => $term, 'songs.status_id' => 1), $this->config->item('limit'), $offset, true);
                     $data['songs'] = array_merge($data['songs'], $songs);
                 }
 
             } else {
-                $data['songs'] = $this->CRUD->read('songs', array('songs.title' => $term, 'songs.status_id' => 1), $this->config->item('limit'), $offset, true); 
+                $data['songs'] = $this->CRUD->read('songs', array('songs.title' => $term, 'songs.status_id' => 1), $this->config->item('limit'), $offset, true);
             }
         }
 
@@ -246,7 +246,7 @@ class View extends CI_Controller {
         header("Content-Type: text/xml;charset=iso-8859-1");
 
         $this->load->view('sitemap', $data);
-    
+
     }
 
     public function hash ($hash) {
@@ -256,7 +256,7 @@ class View extends CI_Controller {
         if ($song) {
             redirect('/song/' . $song->slug, 'refresh');
         }
-    
+
     }
 
 }

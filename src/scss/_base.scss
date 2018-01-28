@@ -7,13 +7,13 @@ html {
 }
 
 body {
-    font-family: "Oxygen Mono", monospace;
+    font-family: "Inconsolata", monospace;
     color: $text-color;
     line-height: 1.5;
     background-color: #fff;
 
     &.is--not-scrollable {
-    	overflow: hidden;
+        overflow: hidden;
     }
 }
 

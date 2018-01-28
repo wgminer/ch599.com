@@ -3,7 +3,7 @@
 app.factory('Api', function ($http, $q) {
 
     var url = function() {
-        
+
         return baseUrl + 'api';
 
     }
@@ -120,7 +120,7 @@ app.factory('SoundCloud', function ($http, $q) {
                 } else {
                     var image = data.user.avatar_url;
                 }
-                    
+
                 var newSong = {
                     title: data.title,
                     image_url: image.replace('large', 't500x500'),

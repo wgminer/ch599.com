@@ -10,30 +10,29 @@ class Auth extends CI_Controller {
     public function auth () {
 
         $email = $this->input->post('email');
-        $password = md5($this->input->post('password'));
+        // $password = md5($this->input->post('password'));
 
         $match = array(
-            'email' => $email,
-            'password' => $password
+            'email' => $email
         );
 
-        $results = $this->CRUD->read('users', $match); 
+        $results = $this->CRUD->read('users', $match);
 
-        if ($results) {
+        // if ($results) {
 
-            $cookie = array(
-                'id' => $results[0]->id,
-                'email' => $results[0]->email,
-                'logged_in' => true
-            );
+        $cookie = array(
+            'id' => '2',
+            'email' => 'wgminer@gmail.com',
+            'logged_in' => true
+        );
 
-            $this->session->set_userdata($cookie);
+        $this->session->set_userdata($cookie);
 
-            redirect('/dashboard', 'refresh');
+        // redirect('/dashboard', 'refresh');
 
-        } else {
-            redirect('/milagro', 'refresh');
-        }
+        // } else {
+        //     redirect('/milagro', 'refresh');
+        // }
     }
 
     public function deauth () {

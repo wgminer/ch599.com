@@ -70,7 +70,7 @@ app.directive('checkError', function (Api) {
 
             element.bind('load', function () {
                 if (element[0].naturalHeight == 90 && element[0].naturalWidth == 120 && scope.song.status_id == 1) {
-                        
+
                     scope.song.status_id = 3;
 
                     Api.post('/songs/update/' + scope.song.id, angular.toJson(scope.song))
@@ -144,7 +144,7 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
             }
 
             var init = function () {
-                
+
                 $('body').addClass('is--not-scrollable');
 
                 scope.preview = angular.copy(scope.song);
@@ -172,31 +172,31 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
                 if (typeof song.source_url == 'undefined') {
                     $rootScope.$broadcast('toast', {
-                        message: 'Seriously...', 
+                        message: 'Seriously...',
                         status: 'danger'
                     });
                     return false;
                 } else if (typeof song.title == 'undefined' || song.title == '') {
                     $rootScope.$broadcast('toast', {
-                        message: 'A title is required!', 
+                        message: 'A title is required!',
                         status: 'danger'
                     });
                     return false;
                 } else if (typeof song.genre_id == 'undefined' || song.genre_id == null) {
                     $rootScope.$broadcast('toast', {
-                        message: 'A genre is required!', 
+                        message: 'A genre is required!',
                         status: 'danger'
                     });
                     return false;
                 } else if (typeof song.text == 'undefined' || song.text == '') {
                     $rootScope.$broadcast('toast', {
-                        message: 'Say anything...', 
+                        message: 'Say anything...',
                         status: 'danger'
                     });
                     return false;
                 } else if (user.id == 1) {
                     $rootScope.$broadcast('toast', {
-                        message: 'Admins can not post', 
+                        message: 'Admins can not post',
                         status: 'danger'
                     });
                 } else {
@@ -216,7 +216,7 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
             scope.close = function () {
                 $element.click(function () {
-                    $element.remove();        
+                    $element.remove();
                     $('body').removeClass('is--not-scrollable');
                 });
             }
@@ -234,12 +234,12 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
                             $rootScope.$broadcast('reload');
                             $rootScope.$broadcast('toast', {
-                                message: 'Song posted!', 
+                                message: 'Song posted!',
                                 status: 'success'
                             });
 
                             $element.remove();
-                            $('body').removeClass('is--not-scrollable'); 
+                            $('body').removeClass('is--not-scrollable');
 
                         }, function(error){
                             console.log(error);
@@ -260,11 +260,11 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
                             $rootScope.$broadcast('reload');
                             $rootScope.$broadcast('toast', {
-                                message: 'Song updated!', 
+                                message: 'Song updated!',
                                 status: 'success'
                             });
 
-                            $element.remove(); 
+                            $element.remove();
                             $('body').removeClass('is--not-scrollable');
 
                         }, function(error){
@@ -280,11 +280,11 @@ app.directive('modal', function ($rootScope, $location, Api, YouTube, SoundCloud
 
                         $rootScope.$broadcast('reload');
                         $rootScope.$broadcast('toast', {
-                            message: 'Song deleted!', 
+                            message: 'Song deleted!',
                             status: 'success'
                         });
 
-                        $element.remove(); 
+                        $element.remove();
                         $('body').removeClass('is--not-scrollable');
 
                     }, function(error){
@@ -342,7 +342,7 @@ app.directive('triggerModal', function ($http, $compile, $rootScope, Api) {
                         $('body').append($compile(html)(scope));
                     });
             });
-            
+
         }
     };
 });

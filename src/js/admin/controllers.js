@@ -22,7 +22,7 @@ app.controller('ListCtrl', function ($scope, $rootScope, $location, Api, YouTube
     }
 
     init();
-    
+
     $scope.$on('reload', function(event, args) {
         init();
     });
@@ -46,13 +46,13 @@ app.controller('SettingsCtrl', function ($scope, $rootScope, $location, Api) {
                 $scope.user.id = user.id;
 
                 $rootScope.$broadcast('toast', {
-                    message: 'Profile updated!', 
+                    message: 'Profile updated!',
                     status: 'success'
                 });
             }, function(error){
                 console.log(error);
                 $rootScope.$broadcast('toast', {
-                    message: 'Something went wrong...', 
+                    message: 'Something went wrong...',
                     status: 'danger'
                 });
             });
@@ -63,13 +63,13 @@ app.controller('SettingsCtrl', function ($scope, $rootScope, $location, Api) {
             .then(function (callback) {
                 $scope.password = '';
                 $rootScope.$broadcast('toast', {
-                    message: 'Password updated!', 
+                    message: 'Password updated!',
                     status: 'success'
                 });
             }, function(error){
                 console.log(error);
                 $rootScope.$broadcast('toast', {
-                    message: 'Something went wrong...', 
+                    message: 'Something went wrong...',
                     status: 'danger'
                 });
             });
@@ -111,11 +111,11 @@ app.controller('ResetCtrl', function ($scope, $rootScope, $location, Api) {
 
         } else {
             $rootScope.$broadcast('toast', {
-                message: 'Set a valid password!', 
+                message: 'Set a valid password!',
                 status: 'danger'
             });
         }
-        
+
     }
 
 });
